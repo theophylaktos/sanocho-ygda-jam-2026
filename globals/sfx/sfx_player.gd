@@ -1,0 +1,400 @@
+extends Node
+## How to use this SFX Manager:
+#
+### Setup:
+#
+#- Copy all of the files inside of the "globals" folder into your project.
+#- Add the **SCENE** "sfx_player.tscn" as an autoload in your project. 
+#- I would recommend naming it "SFX", but you can choose whatever.
+#
+### Use:
+#
+#- When you want to add a new sound, start by loading the file into Godot.
+#- Add a descriptive name to the enum "Id" in sfx_player.gd.
+#- This name should be in **ALL_CAPS**.
+#- Go into the **inspector** of the node "SfxPlayer" in sfx_player.gd.
+#- In the dictionary "Id to Setting," select the your new key (name from Id) and value (create a new SFXSettings).
+#- Select your audio file as the **"stream."**
+#- Make sure to click "Add Key/Value Pair" before exiting the inspector.
+#- You can now call SFX.play(SFX.Id.YOUR_ID).
+#
+#- The most important function is **SFX.play(SFX.Id.YOUR_ID)**
+
+# Note: Currently, play_2d and play_3d do not work with .wav files. (.ogg has not been tested.)
+# If you need to convert from .wav to .mp3, I would recommend https://convert.to.it
+# It is a free, open-source, local file converter.
+
+# Optionally, append a comment (##) after each id to describe where it is used
+## List of all sounds. Add a new id here when you add a new sound.
+enum Id {
+	YOUR_ID,
+}
+
+const PRINT_DEBUG_MESSAGES: bool = false
+
+## Variable to make each [AudioStreamPlayer]'s name unique. 
+## Increased by one when a new [AudioStreamPlayer] is instantiated.
+var counter: int = 0
+
+## A dictionary storing ids from [code]SFX.Id[/code] and the associated [code]sfx_settings.gd[/code]
+@export var id_to_setting: Dictionary[Id, SfxSettings]
+
+const SFX_PLAYER_SETTINGS = preload("uid://08s6w51f3gvp")
+
+## [b]Play a sound in a new [AudioStreamPlayer], as defined by [param id]. [br]
+## [br]
+## Called as[/b] [code]SFX.play(SFX.Id.NAME)[/code]. [br]
+##[br]
+## [param id]: The sound you want to play, defined in SFX.Id [br]
+## [param loop]: Whether the sound should loop or not. [code]Default: FALSE[/code] [br]
+## [param volume_mod]: Volume that is added after variation is calculated. [code]Default: 0.0[/code] [br]
+## [param pitch_mod]: Pitch that is added after variation is calculated. [code]Default: 0.0[/code] [br]
+## [br]
+## Returns the newly instantiated [AudioStreamPlayer]
+func play(id: Id, loop: bool = false, volume_mod: float = 0.0, pitch_mod: float = 0.0) -> AudioStreamPlayer:
+	# Checks if a min_delay_timer is in the scene tree, and if so, return early
+	if has_node(Id.keys()[id] + "MinDelayTimer"):
+		return
+	
+	## The instance of an AudioStreamPlayer
+	var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
+	audio_stream_player.set_script(SFX_PLAYER_SETTINGS)
+	
+	## The instance of sfx_settings.gd
+	var setting: SfxSettings = id_to_setting[id]
+	audio_stream_player.bus = setting.bus
+	audio_stream_player.stream = setting.stream
+	audio_stream_player.name = Id.keys()[id] + str(counter)
+	counter += 1
+	audio_stream_player.volume_db = setting.volume + randf_range(-1,1) * setting.volume_variance + volume_mod
+	audio_stream_player.pitch_scale = setting.pitch + randf_range(-0.99,1.0) * setting.pitch_variance + pitch_mod
+	if loop == true:
+		if audio_stream_player.stream is AudioStreamWAV:
+			audio_stream_player.stream.loop_mode = 1
+			audio_stream_player.stream.loop_end = audio_stream_player.stream.get_length() * audio_stream_player.stream.mix_rate
+		elif audio_stream_player.stream is AudioStreamMP3:
+			audio_stream_player.stream.loop = true
+	
+	add_child(audio_stream_player)
+	audio_stream_player.finished.connect(audio_stream_player.queue_free)
+	audio_stream_player.playing = true
+	
+	if PRINT_DEBUG_MESSAGES:
+		print("Played one sound: ", audio_stream_player)
+		
+	if setting.min_delay != 0:
+		_add_min_delay_timer(id)
+		
+	return audio_stream_player
+	
+## [b] Play a random sound from [param Id], in a new [AudioStreamPlayer] [/b] [br]
+## This is called as [code]SFX.play_random([SFX.Id.NAME1, SFX.Id.NAME2])[/code] [br]
+## [br]
+## [param Id]: An array of Ids you want to play [br]
+## [param loop]: Whether the sound should loop or not. [br]
+## [param volume_mod]: Volume that is added after variation is calculated. [br]
+## [param pitch_mod]: Pitch that is added after variation is calculated. [br]
+## [br]
+## Returns the newly instantiated [AudioStreamPlayer]
+func play_random(ids: Array[Id] = [], loop: bool = false, volume_mod: float = 0.0, pitch_mod: float = 0.0) -> AudioStreamPlayer:
+	var sound: int = randi_range(0,Id.size() - 1)
+	var id: Id = ids[sound]
+	var audio_stream_player: AudioStreamPlayer = SFX.play(id, loop, volume_mod, pitch_mod)
+	var keys: Array[String] = []
+	for i: Id in Id:
+		keys.append(Id.find_key(i))
+	print("Played random sound: ", audio_stream_player, ", chosen from ", keys)
+	return audio_stream_player
+
+#region unpause, pause, clear, play_2d
+## [b]Unpause one [AudioStreamPlayer], with an optional fade in[/b] [br]
+## [br]
+## [param audio_stream_player]: The [AudioStreamPlayer] to be unpaused [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade in for. [code][code]Default: 1.0[/code][/code]
+func unpause_one(audio_stream_player: AudioStreamPlayer, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node == audio_stream_player:
+			if fade == true:
+				_add_fade_timer(node, "unpause", fade_length)
+			else:
+				node.play()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[_node_to_id(audio_stream_player)] +  "MinDelayTimer":
+			node.set_paused(false)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Unpaused one sound: ", audio_stream_player)
+
+## [b]Unpause all [AudioStreamPlayer]s of a specific id, with an optional fade in[/b] [br]
+## [br]
+## [param id]: [AudioStreamPlayer]s that use this id will be unpaused [br]
+## [param fade]: Whether the audio should fade in. [br]
+## [param fade_length]: In seconds, how long the sound should fade in for.
+func unpause_type(id: Id, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if Id.keys()[id] not in node.name:
+				continue
+			if fade == true:
+				_add_fade_timer(node, "unpause", fade_length)
+			else:
+				node.play()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[id] +  "MinDelayTimer":
+			node.set_paused(false)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Unpaused all sounds of type: ", Id.keys()[id])
+
+## [b]Unpause all [AudioStreamPlayer]s, with an optional fade in[/b] [br]
+## [br]
+## [param fade]: Whether the audio should fade in. [br]
+## [param fade_length]: In seconds, how long the sound should fade in for. 
+func unpause_all(fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if fade == true:
+				_add_fade_timer(node, "unpause", fade_length)
+			else:
+				node.play()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name.contains("MinDelayTimer"):
+			node.set_paused(false)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Unpaused all sounds")
+
+## [b]Pause one [AudioStreamPlayer], with an optional fade out.[/b] [br]
+## [br]
+## [param audio_stream_player]: The [AudioStreamPlayer] to be paused [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func pause_one(audio_stream_player: AudioStreamPlayer, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node == audio_stream_player:
+			if fade == true:
+				_add_fade_timer(node, "pause", fade_length)
+			else:
+				node.stop()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[_node_to_id(audio_stream_player)] +  "MinDelayTimer":
+			node.set_paused(true)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Paused one sound: ", audio_stream_player)
+
+## [b]Pause all [AudioStreamPlayer]s of a specific id, with an optional fade in[/b] [br]
+## [br]
+## [param id]: [AudioStreamPlayer]s that use this id will be paused [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func pause_type(id: Id, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if Id.keys()[id] not in node.name:
+				continue
+			if fade == true:
+				_add_fade_timer(node, "pause", fade_length)
+			else:
+				node.stop()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[id] +  "MinDelayTimer":
+			node.set_paused(true)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Paused all sounds of type: ", Id.keys()[id])
+
+## [b]Pause all [AudioStreamPlayer]s, with an optional fade out[/b] [br]
+## [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func pause_all(fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if fade == true:
+				_add_fade_timer(node, "pause", fade_length)
+			else:
+				node.stop()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name.contains("MinDelayTimer"):
+			node.set_paused(true)
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Paused all sounds")
+
+## [b]Clear one [AudioStreamPlayer], with an optional fade out.[/b] [br]
+## [br]
+## [param audio_stream_player]: The [AudioStreamPlayer] to be paused [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func clear_one(audio_stream_player: AudioStreamPlayer, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node == audio_stream_player:
+			if fade == true:
+				_add_fade_timer(node, "clear", fade_length)
+			else:
+				node.queue_free()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[_node_to_id(audio_stream_player)] +  "MinDelayTimer":
+			node.queue_free()
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("cleared one sound: ", audio_stream_player)
+
+## [b]Clear all [AudioStreamPlayer]s of a specific id, with an optional fade out[/b] [br]
+## [br]
+## [param id]: [AudioStreamPlayer]s that use this id will be cleared [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func clear_type(id: Id, fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if Id.keys()[id] not in node.name:
+				continue
+			if fade == true:
+				_add_fade_timer(node, "clear", fade_length)
+			else:
+				node.queue_free()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name == Id.keys()[id] +  "MinDelayTimer":
+			node.queue_free()
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Cleared all sounds of type: ", Id.keys()[id])
+
+## [b]Clear all [AudioStreamPlayer]s, with an optional fade out[/b] [br]
+## [br]
+## [param fade]: Whether the audio should fade out. [br]
+## [param fade_length]: In seconds, how long the sound should fade out for.
+func clear_all(fade: bool = false, fade_length: float = 1.0) -> void:
+	for node: Node in get_children():
+		if node is AudioStreamPlayer:
+			if fade == true:
+				_add_fade_timer(node, "clear", fade_length)
+			else:
+				node.queue_free()
+		# If the node is a MinDelayTimer, unpause it
+		if node.name.contains("MinDelayTimer"):
+			node.queue_free()
+			
+	if PRINT_DEBUG_MESSAGES:
+		print("Cleared all sounds")
+
+## [b]Attaches an AudioStreamPlayer2D as a child of a node[/b] [br]
+## [br]
+## [param id]: The id that the [AudioStreamPlayer2D] should use. Currently, .wav files don't work[br]
+## [param node]: The node that the [AudioStreamPlayer2D] should be attached on [br]
+## [param loop]: Whether the sound should loop or not. [br]
+## [br]
+## Returns the newly instantiated [AudioStreamPlayer2D]
+func play_2d(id: Id, node: Node, loop: bool = false) -> AudioStreamPlayer2D:
+	var setting: SfxSettings = id_to_setting[id]
+	var audio_stream_player_2d: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	audio_stream_player_2d.stream = setting.stream
+	audio_stream_player_2d.volume_db = setting.volume + randf_range(-1,1) * setting.volume_variance
+	audio_stream_player_2d.pitch_scale = setting.pitch +  + randf_range(-1,1) * setting.pitch_variance
+	audio_stream_player_2d.bus = setting.bus
+	node.add_child(audio_stream_player_2d)
+	audio_stream_player_2d.playing = true
+	
+	if loop == true:
+		if audio_stream_player_2d.stream is AudioStreamWAV:
+			audio_stream_player_2d.stream.loop_mode = 1
+		elif audio_stream_player_2d.stream is AudioStreamMP3:
+			audio_stream_player_2d.stream.loop = true
+	
+	return audio_stream_player_2d
+
+## [b]Attaches an AudioStreamPlayer3D as a child of a node[/b] [br]
+## [br]
+## [param id]: The id that the [AudioStreamPlayer3D] should use. Currently, .wav files don't work[br]
+## [param node]: The node that the [AudioStreamPlayer3D] should be attached on [br]
+## [param loop]: Whether the sound should loop or not. [br]
+## [br]
+## Returns the newly instantiated [AudioStreamPlayer3D]
+func play_3d(id: Id, node: Node, loop: bool = false) -> AudioStreamPlayer3D:
+	var setting: SfxSettings = id_to_setting[id]
+	var audio_stream_player_3d: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	
+	audio_stream_player_3d.stream = setting.stream
+	audio_stream_player_3d.volume_db = setting.volume + randf_range(-1,1) * setting.volume_variance
+	audio_stream_player_3d.pitch_scale = setting.pitch +  + randf_range(-1,1) * setting.pitch_variance
+	audio_stream_player_3d.bus = setting.bus
+	
+	if loop == true:
+		audio_stream_player_3d.stream.loop = true
+	
+	node.add_child(audio_stream_player_3d)
+	
+	return audio_stream_player_3d
+
+#endregion
+
+#region private functions: _add_min_delay_timer, _add_fade_timer, _process, _node_to_id
+func _add_min_delay_timer(id: Id) -> void:
+	var setting: SfxSettings = id_to_setting[id]
+	var min_delay_timer: Timer = Timer.new()
+	min_delay_timer.name = Id.keys()[id] + "MinDelayTimer"
+	min_delay_timer.wait_time = setting.min_delay
+	min_delay_timer.autostart = true
+	min_delay_timer.timeout.connect(min_delay_timer.queue_free)
+	add_child(min_delay_timer)
+
+
+func _add_fade_timer(audio_stream_player: AudioStreamPlayer, type: String, length: float) -> void:
+	for node: Node in audio_stream_player.get_children():
+		node.queue_free()
+	var timer: Timer = Timer.new()
+	timer.name = audio_stream_player.name + type + str(counter)
+	counter += 1
+	timer.wait_time = length
+	timer.autostart = true
+	timer.one_shot = true
+	audio_stream_player.add_child(timer)
+	audio_stream_player.volume_limit = audio_stream_player.volume_db
+
+
+func _process(_delta: float) -> void:
+	for node: Node in get_children():
+		if node is not AudioStreamPlayer:
+			continue
+		
+		for timer: Timer in node.get_children():
+			var type: String
+			if "unpause" in timer.name:
+				type = "unpause"
+			elif "pause" in timer.name:
+				type = "pause"
+			elif "clear" in timer.name:
+				type = "clear"
+				
+			if timer.time_left > 0:
+				var volume: float = id_to_setting[_node_to_id(node)].volume
+				if type == "unpause": ## Fade in
+					node.stream_paused = false
+					var distance_through_curve: float = (timer.wait_time - timer.time_left) / timer.wait_time
+					var multiplicand: float = (db_to_linear(volume) - db_to_linear(node.volume_limit)) / db_to_linear(volume)
+					var adder: float = db_to_linear(node.volume_limit - volume)
+					node.volume_db = linear_to_db((distance_through_curve * multiplicand) + adder) + volume
+				if type == "pause" or type == "clear": ## Fade out
+					node.volume_db = linear_to_db(timer.time_left / timer.wait_time) + node.volume_limit
+					
+			if timer.time_left == 0:
+				timer.queue_free()
+				if type == "unpause":
+					node.stream_paused = false
+				if type == "pause":
+					node.stream_paused = true
+				if type == "clear":
+					node.queue_free()
+
+
+## [b]Accepts a node of type [AudioStreamPlayer], and returns its associated id.[/b] [br]
+## [br]
+## [param audio_stream_player]: The [AudioStreamPlayer] whose id will be returned
+func _node_to_id(audio_stream_player: AudioStreamPlayer) -> Id:
+	var text: String = audio_stream_player.name.remove_chars("1234567890")
+	text = text.to_upper()
+	return Id[text]
+#endregion

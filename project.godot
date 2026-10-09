@@ -14,6 +14,10 @@ config/name="sanocho-ygda-jam-2026"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://0vsqr3hn4yi7"
 
+[autoload]
+
+SFX="*uid://d1mff478o3ug3"
+
 [display]
 
 window/size/viewport_width=960
