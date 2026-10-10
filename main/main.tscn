@@ -1,34 +1,37 @@
 [gd_scene format=3 uid="uid://j0l0agjlk84b"]
 
 [ext_resource type="PackedScene" uid="uid://m2cldvo15avu" path="res://player/player.tscn" id="1_53q0u"]
-[ext_resource type="Texture2D" uid="uid://bgpt8mmii3gp3" path="res://1 assets/icon.svg" id="2_pjrb6"]
+[ext_resource type="Script" uid="uid://b3j75vuo2n56a" path="res://main/main.gd" id="1_kfbq2"]
 [ext_resource type="Texture2D" uid="uid://d2difdoi4qxr2" path="res://1 assets/programmer_art/ringone.png" id="3_kfbq2"]
 [ext_resource type="Texture2D" uid="uid://w0u5i3jfysl6" path="res://1 assets/programmer_art/ringthree.png" id="4_4dugh"]
 [ext_resource type="Texture2D" uid="uid://day272fq88gjy" path="res://1 assets/programmer_art/ringtwo.png" id="5_67ri8"]
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="6_grrlh"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fngjv"]
+viewport_path = NodePath("Rings")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kfbq2"]
 shader = ExtResource("6_grrlh")
 shader_parameter/pixel_size = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fngjv"]
-viewport_path = NodePath("Rings")
-
 [node name="Main" type="Node2D" unique_id=1035895957]
-
-[node name="Global" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
+script = ExtResource("1_kfbq2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660505547]
 zoom = Vector2(4, 4)
 
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=890723379]
-texture = ExtResource("2_pjrb6")
-region_enabled = true
-region_rect = Rect2(50, 50, 30, 30)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055199253]
+texture = SubResource("ViewportTexture_fngjv")
 
 [node name="Rings" type="SubViewport" parent="." unique_id=1282565648]
 transparent_bg = true
 size = Vector2i(128, 128)
+
+[node name="RingOne" type="Sprite2D" parent="Rings" unique_id=1621549551]
+material = SubResource("ShaderMaterial_kfbq2")
+position = Vector2(64, 64)
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_kfbq2")
 
 [node name="RingTwo" type="Sprite2D" parent="Rings" unique_id=1586691060]
 position = Vector2(64, 64)
@@ -39,12 +42,4 @@ texture = ExtResource("5_67ri8")
 position = Vector2(64, 64)
 texture = ExtResource("4_4dugh")
 
-[node name="RingOne" type="Sprite2D" parent="Rings" unique_id=1621549551]
-material = SubResource("ShaderMaterial_kfbq2")
-position = Vector2(64, 64)
-rotation = 0.7853982
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("3_kfbq2")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055199253]
-texture = SubResource("ViewportTexture_fngjv")
+[node name="Global" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]

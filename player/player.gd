@@ -9,7 +9,7 @@ func _ready() -> void:
 	await get_tree().create_timer(3).timeout
 	GameState.positionNode(self, $Local, 5, 2, 2)
 	print(GameState.object_locations)
-	
+	await get_tree().create_timer(3).timeout
 
 func _process(_delta: float) -> void:
 	pass
