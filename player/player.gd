@@ -8,7 +8,7 @@ extends Node2D
 
 @export var local: Node2D
 
-@export var selected_ring = 0
+@export var selected_ring: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,14 +57,28 @@ func _process(_delta: float) -> void:
 			GameState.toggle_select_ring(selected_ring + 1)
 			selected_ring += 1
 		
-	if Input.is_action_just_pressed("move_out"):
-		if ring > 0:
-			GameState.update_position(ring, degree, ring - 1, degree, self)
-			GameState.position_node(self, ring - 1, degree, 1)
-			print("ring: ", ring)
-			
-	if Input.is_action_just_pressed("move_in"):
-		if ring < 2:
-			GameState.update_position(ring, degree, ring + 1, degree, self)
-			GameState.position_node(self, ring + 1, degree, 1)
-			print("ring: ", ring)
+	if Input.is_action_just_pressed("move_up"):
+		print(degree)
+		if degree < 4:
+			_move_in()
+		else:
+			_move_out()
+	
+	if Input.is_action_just_pressed("move_down"):
+		print(degree)
+		if degree < 4:
+			_move_out()
+		else:
+			_move_in()
+
+func _move_in():
+	if ring < 2:
+		GameState.update_position(ring, degree, ring + 1, degree, self)
+		GameState.position_node(self, ring + 1, degree, 1)
+		print("ring: ", ring)
+		
+func _move_out():
+	if ring > 0:
+		GameState.update_position(ring, degree, ring - 1, degree, self)
+		GameState.position_node(self, ring - 1, degree, 1)
+		print("ring: ", ring)
