@@ -2,147 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://m2cldvo15avu" path="res://player/player.tscn" id="1_53q0u"]
 [ext_resource type="Script" uid="uid://b3j75vuo2n56a" path="res://main/main.gd" id="1_kfbq2"]
-[ext_resource type="Texture2D" uid="uid://b844x83kfl874" path="res://1 assets/art/ring_segments/ring_zero/r0c0.png" id="2_d00gp"]
-[ext_resource type="Texture2D" uid="uid://d2a8eacsnsakn" path="res://1 assets/art/ring_segments/ring_zero/r0c1.png" id="3_d8vpj"]
-[ext_resource type="Texture2D" uid="uid://badm1i6s07jwe" path="res://1 assets/art/ring_segments/ring_zero/r0c2.png" id="4_qs5eo"]
-[ext_resource type="Texture2D" uid="uid://b2khgmi4rmfjx" path="res://1 assets/art/ring_segments/ring_zero/r0c3.png" id="5_frbr6"]
-[ext_resource type="Texture2D" uid="uid://jinfgtto2bnf" path="res://1 assets/art/ring_segments/ring_zero/r0c4.png" id="6_o8j3b"]
-[ext_resource type="Texture2D" uid="uid://d246vnuhe8nsw" path="res://1 assets/art/ring_segments/ring_zero/r0c5.png" id="7_wpkmi"]
-[ext_resource type="Texture2D" uid="uid://b2jfvw0fdjh0g" path="res://1 assets/art/ring_segments/ring_zero/r0c6.png" id="8_o0l78"]
-[ext_resource type="Texture2D" uid="uid://cietnbyv7yhre" path="res://1 assets/art/ring_segments/ring_zero/r0c7.png" id="9_576ah"]
-[ext_resource type="Texture2D" uid="uid://cxevy2nad3jra" path="res://1 assets/art/ring_segments/ring_one/r1c0.png" id="10_wpvt5"]
-[ext_resource type="Texture2D" uid="uid://bmab4xyhw36gx" path="res://1 assets/art/ring_segments/ring_one/r1c1.png" id="11_amlcg"]
-[ext_resource type="Texture2D" uid="uid://bs7e1177dmucx" path="res://1 assets/art/ring_segments/ring_one/r1c2.png" id="12_ue0mw"]
-[ext_resource type="Texture2D" uid="uid://c4qs7qpt0p8av" path="res://1 assets/art/ring_segments/ring_one/r1c3.png" id="13_vqjab"]
-[ext_resource type="Texture2D" uid="uid://byvokk82kfw4e" path="res://1 assets/art/ring_segments/ring_one/r1c4.png" id="14_h3axc"]
-[ext_resource type="Texture2D" uid="uid://c6pp73ueyswkp" path="res://1 assets/art/ring_segments/ring_one/r1c5.png" id="15_d7rgo"]
-[ext_resource type="Texture2D" uid="uid://ca4f6i7br1qvt" path="res://1 assets/art/ring_segments/ring_one/r1c6.png" id="16_yjufm"]
-[ext_resource type="Texture2D" uid="uid://4wcbl7nkwqgr" path="res://1 assets/art/ring_segments/ring_one/r1c7.png" id="17_phifs"]
-[ext_resource type="Texture2D" uid="uid://bbgonrl7rbr33" path="res://1 assets/art/ring_segments/ring_two/r2c0.png" id="18_cgvj2"]
-[ext_resource type="Texture2D" uid="uid://jxyo8a3nn0if" path="res://1 assets/art/ring_segments/ring_two/r2c1.png" id="19_t1yuj"]
-[ext_resource type="Texture2D" uid="uid://cyq1igfj3vuem" path="res://1 assets/art/ring_segments/ring_two/r2c2.png" id="20_4pcu1"]
-[ext_resource type="Texture2D" uid="uid://pejl532r14ww" path="res://1 assets/art/ring_segments/ring_two/r2c3.png" id="21_7eg6f"]
-[ext_resource type="Texture2D" uid="uid://cncjbmt3maw6b" path="res://1 assets/art/ring_segments/ring_two/r2c4.png" id="22_rue0h"]
-[ext_resource type="Texture2D" uid="uid://6g0stwxgvxmr" path="res://1 assets/art/ring_segments/ring_two/r2c5.png" id="23_c5cfd"]
-[ext_resource type="Texture2D" uid="uid://dre2n1vuvoela" path="res://1 assets/art/ring_segments/ring_two/r2c6.png" id="24_v40no"]
-[ext_resource type="Texture2D" uid="uid://rb15wpl8xhcx" path="res://1 assets/art/ring_segments/ring_two/r2c7.png" id="25_omb8t"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_fngjv"]
-viewport_path = NodePath("Rings")
+[ext_resource type="PackedScene" uid="uid://c66vu3d2k881i" path="res://level/level.tscn" id="3_xwkvk"]
 
 [node name="Main" type="Node2D" unique_id=1035895957]
 script = ExtResource("1_kfbq2")
 
+[node name="Level" parent="." unique_id=1566976824 instance=ExtResource("3_xwkvk")]
+unique_name_in_owner = true
+position = Vector2(-56, 0)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660505547]
 zoom = Vector2(4, 4)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2055199253]
-texture = SubResource("ViewportTexture_fngjv")
-
-[node name="Rings" type="SubViewport" parent="." unique_id=1282565648]
-transparent_bg = true
-size = Vector2i(128, 128)
-
-[node name="RingZero" type="Node" parent="Rings" unique_id=1347991085]
-
-[node name="RingZeroColumnZero" type="Sprite2D" parent="Rings/RingZero" unique_id=315688134]
-position = Vector2(64, 64)
-texture = ExtResource("2_d00gp")
-
-[node name="RingZeroColumnOne" type="Sprite2D" parent="Rings/RingZero" unique_id=617920536]
-position = Vector2(64, 64)
-texture = ExtResource("3_d8vpj")
-
-[node name="RingZeroColumnTwo" type="Sprite2D" parent="Rings/RingZero" unique_id=415670308]
-position = Vector2(64, 64)
-texture = ExtResource("4_qs5eo")
-
-[node name="RingZeroColumnThree" type="Sprite2D" parent="Rings/RingZero" unique_id=1095777117]
-position = Vector2(64, 64)
-texture = ExtResource("5_frbr6")
-
-[node name="RingZeroColumnFour" type="Sprite2D" parent="Rings/RingZero" unique_id=384439720]
-position = Vector2(64, 64)
-texture = ExtResource("6_o8j3b")
-
-[node name="RingZeroColumnFive" type="Sprite2D" parent="Rings/RingZero" unique_id=581291986]
-position = Vector2(64, 64)
-texture = ExtResource("7_wpkmi")
-
-[node name="RingZeroColumnSix" type="Sprite2D" parent="Rings/RingZero" unique_id=1587661817]
-position = Vector2(64, 64)
-texture = ExtResource("8_o0l78")
-
-[node name="RingZeroColumnSeven" type="Sprite2D" parent="Rings/RingZero" unique_id=1067779858]
-position = Vector2(64, 64)
-texture = ExtResource("9_576ah")
-
-[node name="RingOne" type="Node" parent="Rings" unique_id=1553571108]
-
-[node name="RingOneColumnZero" type="Sprite2D" parent="Rings/RingOne" unique_id=1853399899]
-position = Vector2(64, 64)
-texture = ExtResource("10_wpvt5")
-
-[node name="RingOneColumnOne" type="Sprite2D" parent="Rings/RingOne" unique_id=423557463]
-position = Vector2(64, 64)
-texture = ExtResource("11_amlcg")
-
-[node name="RingOneColumnTwo" type="Sprite2D" parent="Rings/RingOne" unique_id=623328059]
-position = Vector2(64, 64)
-texture = ExtResource("12_ue0mw")
-
-[node name="RingOneColumnThree" type="Sprite2D" parent="Rings/RingOne" unique_id=712680317]
-position = Vector2(64, 64)
-texture = ExtResource("13_vqjab")
-
-[node name="RingOneColumnFour" type="Sprite2D" parent="Rings/RingOne" unique_id=1189529540]
-position = Vector2(64, 64)
-texture = ExtResource("14_h3axc")
-
-[node name="RingOneColumnFive" type="Sprite2D" parent="Rings/RingOne" unique_id=1936289453]
-position = Vector2(64, 64)
-texture = ExtResource("15_d7rgo")
-
-[node name="RingOneColumnSix" type="Sprite2D" parent="Rings/RingOne" unique_id=524437188]
-position = Vector2(64, 64)
-texture = ExtResource("16_yjufm")
-
-[node name="RingOneColumnSeven" type="Sprite2D" parent="Rings/RingOne" unique_id=1704957075]
-position = Vector2(64, 64)
-texture = ExtResource("17_phifs")
-
-[node name="RingTwo" type="Node" parent="Rings" unique_id=1781961767]
-
-[node name="RingTwoColumnZero" type="Sprite2D" parent="Rings/RingTwo" unique_id=1614920035]
-position = Vector2(64, 64)
-texture = ExtResource("18_cgvj2")
-
-[node name="RingTwoColumnOne" type="Sprite2D" parent="Rings/RingTwo" unique_id=1544064860]
-position = Vector2(64, 64)
-texture = ExtResource("19_t1yuj")
-
-[node name="RingTwoColumnTwo" type="Sprite2D" parent="Rings/RingTwo" unique_id=1321618704]
-position = Vector2(64, 64)
-texture = ExtResource("20_4pcu1")
-
-[node name="RingTwoColumnThree" type="Sprite2D" parent="Rings/RingTwo" unique_id=1742880759]
-position = Vector2(64, 64)
-texture = ExtResource("21_7eg6f")
-
-[node name="RingTwoColumnFour" type="Sprite2D" parent="Rings/RingTwo" unique_id=1221252572]
-position = Vector2(64, 64)
-texture = ExtResource("22_rue0h")
-
-[node name="RingTwoColumnFive" type="Sprite2D" parent="Rings/RingTwo" unique_id=333340784]
-position = Vector2(64, 64)
-texture = ExtResource("23_c5cfd")
-
-[node name="RingTwoColumnSix" type="Sprite2D" parent="Rings/RingTwo" unique_id=1214005517]
-position = Vector2(64, 64)
-texture = ExtResource("24_v40no")
-
-[node name="RingTwoColumnSeven" type="Sprite2D" parent="Rings/RingTwo" unique_id=1620759178]
-position = Vector2(64, 64)
-texture = ExtResource("25_omb8t")
-
-[node name="Global" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
+[node name="Player" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
+position = Vector2(-56, 0)
