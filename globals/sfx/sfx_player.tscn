@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1mff478o3ug3"]
 
-[ext_resource type="Script" uid="uid://fmnyqc2cx2fw" path="res://globals/sfx_player.gd" id="1_xnm38"]
+[ext_resource type="Script" uid="uid://lgdy71js6lx2" path="res://globals/sfx/sfx_player.gd" id="1_blmy5"]
 
 [node name="SfxPlayer" type="Node" unique_id=1790965844]
 process_mode = 3
-script = ExtResource("1_xnm38")
+script = ExtResource("1_blmy5")

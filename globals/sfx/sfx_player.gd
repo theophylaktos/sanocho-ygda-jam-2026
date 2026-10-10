@@ -39,7 +39,7 @@ var counter: int = 0
 ## A dictionary storing ids from [code]SFX.Id[/code] and the associated [code]sfx_settings.gd[/code]
 @export var id_to_setting: Dictionary[Id, SfxSettings]
 
-const SFX_PLAYER_SETTINGS = preload("uid://08s6w51f3gvp")
+const SFX_PLAYER_SETTINGS = preload("uid://d1mff478o3ug3")
 
 ## [b]Play a sound in a new [AudioStreamPlayer], as defined by [param id]. [br]
 ## [br]
