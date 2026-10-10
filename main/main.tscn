@@ -1,9 +1,20 @@
 [gd_scene format=3 uid="uid://j0l0agjlk84b"]
 
-[ext_resource type="PackedScene" uid="uid://m2cldvo15avu" path="res://character.tscn" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://m2cldvo15avu" path="res://player/player.tscn" id="1_53q0u"]
+[ext_resource type="Texture2D" uid="uid://bgpt8mmii3gp3" path="res://1 assets/icon.svg" id="2_pjrb6"]
+[ext_resource type="Texture2D" uid="uid://r65n0ye150yo" path="res://1 assets/programmer_art/prog_background.png" id="3_xwkvk"]
 
 [node name="Main" type="Node2D" unique_id=1035895957]
+
+[node name="ProgBackground" type="Sprite2D" parent="." unique_id=1092219374]
+scale = Vector2(0.4449833, 0.4449833)
+texture = ExtResource("3_xwkvk")
 
 [node name="Global" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660505547]
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=890723379]
+texture = ExtResource("2_pjrb6")
+region_enabled = true
+region_rect = Rect2(50, 50, 30, 30)

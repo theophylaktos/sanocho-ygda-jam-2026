@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://m2cldvo15avu"]
+
+[ext_resource type="Texture2D" uid="uid://bgpt8mmii3gp3" path="res://1 assets/icon.svg" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://br3436ss5tv3p" path="res://player/player.gd" id="1_pjt0s"]
+
+[node name="Player" type="Node2D" unique_id=2070042470]
+script = ExtResource("1_pjt0s")
+
+[node name="Local" type="Node2D" parent="." unique_id=772166326]
+position = Vector2(270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Local" unique_id=739250406]
+texture = ExtResource("1_glpr6")
+region_enabled = true
+region_rect = Rect2(50, 50, 30, 30)
