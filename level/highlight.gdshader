@@ -1,8 +1,9 @@
 shader_type canvas_item;
 
-uniform bool enabled = false;
+uniform bool select_enabled = false;
+uniform bool attack_enabled = false;
 
 void fragment() {
-	COLOR.r += 0.2 * float(enabled);
-	COLOR.gb -= 0.2 * float(enabled);
+	COLOR.r += 1.0 * float(attack_enabled);
+	COLOR.g += 1.0 * float(select_enabled);
 }

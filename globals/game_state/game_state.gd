@@ -58,7 +58,6 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	_rotate_nodes(ring, degree)
 	
 func _rotate_nodes(ring: int, degree: int):
-	print("this is how much the nodes are getting rotated by: ", degree)
 	for degrees in abs(degree):
 		if degree > 0:
 			var temp: Node = object_locations[ring][-1]
@@ -71,7 +70,13 @@ func _rotate_nodes(ring: int, degree: int):
 				object_locations[ring][i] = object_locations[ring][i + 1]
 			object_locations[ring][-1] = temp
 
-func toggle_segment(ring: int, degree: int):
+func toggle_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	var is_enabled: bool = material.get_shader_parameter("enabled")
-	material.set_shader_parameter("enabled", not is_enabled)
+	var is_enabled: bool = material.get_shader_parameter("attack_enabled")
+	material.set_shader_parameter("attack_enabled", not is_enabled)
+	
+func toggle_select_ring(ring: int):
+	for i in 8:
+		var material: ShaderMaterial = segments[ring][i].get_material()
+		var is_enabled: bool = material.get_shader_parameter("select_enabled")
+		material.set_shader_parameter("select_enabled", not is_enabled)

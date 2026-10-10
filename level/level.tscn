@@ -32,99 +32,123 @@ viewport_path = NodePath("Rings")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dti72"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ml0fe"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h74y2"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cdnq"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lsj08"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u5n7q"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qslh7"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdj2k"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1aav"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdahv"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krw8e"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ifo17"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4dhf"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u1dsc"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8yb03"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vdk1"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpm0y"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7f1l"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uphv1"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_go7hd"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rox15"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykwf8"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fu4sj"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k57k0"]
 shader = ExtResource("2_ml0fe")
-shader_parameter/enabled = false
+shader_parameter/select_enabled = false
+shader_parameter/attack_enabled = false
 
 [node name="Level" type="Node2D" unique_id=1566976824 node_paths=PackedStringArray("ring_zero", "ring_one", "ring_two")]
 script = ExtResource("1_kdsbj")
