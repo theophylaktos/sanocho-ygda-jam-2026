@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bgpt8mmii3gp3" path="res://1 assets/icon.svg" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://br3436ss5tv3p" path="res://player/player.gd" id="1_pjt0s"]
 
-[node name="Player" type="Node2D" unique_id=2070042470]
+[node name="Player" type="Node2D" unique_id=2070042470 node_paths=PackedStringArray("local")]
 script = ExtResource("1_pjt0s")
+local = NodePath("Local")
 
 [node name="Local" type="Node2D" parent="." unique_id=772166326]
 position = Vector2(41, 0)

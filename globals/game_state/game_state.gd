@@ -2,7 +2,6 @@ extends Node
 
 var object_locations: Array[Array] = []
 
-var angle: Array[float] = [22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5]
 var distance: Array[int] = [25, 41, 57]
 
 func _init() -> void:
@@ -30,19 +29,29 @@ func positionNode(global: Node2D, local: Node2D, degree: int, ring: int, time: f
 	
 	tween.parallel().tween_property(local, "position", Vector2(distance[ring], 0), time)
 
-func rotateRing(ring: int, ring_parent: Node, degree: int, direction: int, time: float):
+func rotateRing(ring: int, ring_parent: Node, degree: int, time: float):
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(ring_parent, "rotation", ring_parent.rotation + (degree * (PI / 4)), time)
-	#for node in ring_parent:
-		#tween.parallel().tween_property(node, "rotation", node.rotation + angle[degree], time)
+	for node in ring_parent.get_children():
+		tween.parallel().tween_property(node, "rotation", node.rotation + (degree * (PI / 4)), time)
 	
-	#if direction == 1:
-		#var temp: Node = object_locations[ring][7]
-		#for i in object_locations[ring].size() - 2:
-			#object_locations[ring][i] = object_locations[ring][i+1]
-		#object_locations[ring][0] = temp
-	#if direction == -1:
-		#var temp: Node = object_locations[ring][0]
-		#for i in object_locations[ring].size() - 2:
-			#object_locations[ring][i+1] = object_locations[ring][i]
-		#object_locations[ring][7] = temp
+	print(object_locations[ring])
+	for i in object_locations[ring].size():
+		var node: Node2D = object_locations[ring][i]
+		print(node)
+		if node != null:
+			GameState.positionNode(node, node.local, degree + node.location.x, node.location.y, time)
+	
+	for i in abs(degree):
+		rotateOnce(ring, degree)
+		
+func rotateOnce(ring: int, degree: int):
+	if degree > 0:
+		var temp: Node = object_locations[ring][-1]
+		for i in range(1, object_locations[0].size() - 1):
+			object_locations[ring][-i] = object_locations[ring][-i - 1]
+		object_locations[ring][0] = temp
+	if degree < 0:
+		var temp: Node = object_locations[ring][0]
+		for i in range(0, object_locations[0].size() - 1):
+			object_locations[ring][i] = object_locations[ring][i + 1]
+		object_locations[ring][-1] = temp
