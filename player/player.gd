@@ -38,6 +38,6 @@ func _process(_delta: float) -> void:
 			
 	if Input.is_action_just_pressed("move_in"):
 		if ring < 2:
-			GameState.update_position(ring, degree, ring - 1, degree, self)
-			GameState.position_node(self, ring - 1, degree, 1)
+			GameState.update_position(ring, degree, ring + 1, degree, self)
+			GameState.position_node(self, ring + 1, degree, 1)
 			print("ring: ", ring)

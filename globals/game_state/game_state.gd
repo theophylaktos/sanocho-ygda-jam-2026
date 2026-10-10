@@ -4,7 +4,7 @@ var object_locations: Array[Array] = []
 
 var segments: Array[Array] = []
 
-var distance: Array[int] = [25, 41, 57]
+var distance: Array[int] = [57, 41, 25]
 
 func _init() -> void:
 	object_locations.resize(3)
@@ -62,7 +62,7 @@ func _rotate_nodes(ring: int, degree: int):
 	for degrees in abs(degree):
 		if degree > 0:
 			var temp: Node = object_locations[ring][-1]
-			for i in range(1, object_locations[0].size() - 1):
+			for i in range(1, object_locations[0].size()):
 				object_locations[ring][-i] = object_locations[ring][-i - 1]
 			object_locations[ring][0] = temp
 		if degree < 0:
