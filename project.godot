@@ -17,6 +17,7 @@ config/icon="uid://0vsqr3hn4yi7"
 [autoload]
 
 SFX="*uid://d1mff478o3ug3"
+GameState="*uid://c1svxnqyb4xtj"
 
 [display]
 
