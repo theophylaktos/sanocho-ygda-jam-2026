@@ -1,12 +1,19 @@
 extends Node
 
-var object_positions: Array[Array] = []
+var object_locations: Array[Array] = []
+
+func _init() -> void:
+	object_locations.resize(3)
+	for array in object_locations:
+		array.resize(8)
 
 var angle: Array[float] = [22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5]
-var distance: Array[int] = [0, 90, 180, 270]
+var distance: Array[int] = [90, 180, 270]
 
 func positionNode(global: Node2D, local: Node2D, degree: int, ring: int, time: float):
-	object_positions[degree][ring] = global
+	object_locations[ring][degree] = global
+	object_locations[global.location.x][global.location.y] = null
+	global.location = Vector2(ring, degree)
 	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 	var global_rotation: float = global.rotation
 	var local_rotation: float = local.rotation
