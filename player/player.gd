@@ -32,58 +32,63 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ring_left"):
 		selected_direction = "A"
+		
 		if RoundManager.current_phase == "PlayerAttack":
 			toggle()
 		
-		if GameState.moves_left <= 0:
-			return
-	
-		GameState.moves_left -= 1
-		match ring:
-			0:
-				GameState.rotate_ring(0, %Level.ring_zero, -1, SPEED)
-			1:
-				GameState.rotate_ring(1, %Level.ring_one, -1, SPEED)
-			2:
-				GameState.rotate_ring(2, %Level.ring_two, -1, SPEED)
+		if RoundManager.current_phase == "Move":
+			if GameState.moves_left <= 0:
+				return
+		
+			GameState.moves_left -= 1
+			match ring:
+				0:
+					GameState.rotate_ring(0, %Level.ring_zero, -1, SPEED)
+				1:
+					GameState.rotate_ring(1, %Level.ring_one, -1, SPEED)
+				2:
+					GameState.rotate_ring(2, %Level.ring_two, -1, SPEED)
 		
 	if Input.is_action_just_pressed("ring_right"):
 		selected_direction = "D"
 		if RoundManager.current_phase == "PlayerAttack":
 			toggle()
+			
+		if RoundManager.current_phase == "Move":
+			if GameState.moves_left <= 0:
+				return
 		
-		if GameState.moves_left <= 0:
-			return
-	
-		GameState.moves_left -= 1
-		match ring:
-			0:
-				GameState.rotate_ring(0, %Level.ring_zero, 1, SPEED)
-			1:
-				GameState.rotate_ring(1, %Level.ring_one, 1, SPEED)
-			2:
-				GameState.rotate_ring(2, %Level.ring_two, 1, SPEED)
+			GameState.moves_left -= 1
+			match ring:
+				0:
+					GameState.rotate_ring(0, %Level.ring_zero, 1, SPEED)
+				1:
+					GameState.rotate_ring(1, %Level.ring_one, 1, SPEED)
+				2:
+					GameState.rotate_ring(2, %Level.ring_two, 1, SPEED)
 		
 	if Input.is_action_just_pressed("move_up"):
 		selected_direction = "W"
 		if RoundManager.current_phase == "PlayerAttack":
 			toggle()
-		
-		if abs(degree) % 8 < 4:
-			_move_in()
-		else:
-			_move_out()
+			
+		if RoundManager.current_phase == "Move":
+			if abs(degree) % 8 < 4:
+				_move_in()
+			else:
+				_move_out()
 
 	
 	if Input.is_action_just_pressed("move_down"):
 		selected_direction = "S"
 		if RoundManager.current_phase == "PlayerAttack":
 			toggle()
-		
-		if abs(degree) % 8 < 4:
-			_move_out()
-		else:
-			_move_in()
+			
+		if RoundManager.current_phase == "Move":
+			if abs(degree) % 8 < 4:
+				_move_out()
+			else:
+				_move_in()
 
 			
 	if Input.is_action_just_pressed("toggle"):
