@@ -134,10 +134,10 @@ func _rotate_segments(ring: int, degree: int):
 				segments[ring][i] = segments[ring][i + 1]
 			segments[ring][-1] = temp
 
-func toggle_attack_segment(ring: int, degree: int):
+func toggle_player_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	var is_enabled: bool = material.get_shader_parameter("attack_enabled")
-	material.set_shader_parameter("attack_enabled", not is_enabled)
+	var is_enabled: bool = material.get_shader_parameter("player_attack_enabled")
+	material.set_shader_parameter("player_attack_enabled", not is_enabled)
 	
 func toggle_select_ring(ring: int):
 	for i in 8:
@@ -150,11 +150,25 @@ func clear_select_ring(ring: int):
 			var material: ShaderMaterial = segments[ring][i].get_material()
 			material.set_shader_parameter("select_enabled", false)
 	
-func clear_attack_segment(ring: int, degree: int):
+func clear_player_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	material.set_shader_parameter("attack_enabled", false)
+	material.set_shader_parameter("player_attack_enabled", false)
 
-func clear_all_attack_segments():
+func clear_all_player_attack_segments():
 	for ring in segments.size():
 		for degree in segments[0].size():
-			clear_attack_segment(ring, degree)
+			clear_player_attack_segment(ring, degree)
+
+func toggle_enemy_attack_segment(ring: int, degree: int):
+	var material: ShaderMaterial = segments[ring][degree].get_material()
+	var is_enabled: bool = material.get_shader_parameter("enemy_attack_enabled")
+	material.set_shader_parameter("enemy_attack_enabled", not is_enabled)
+
+func clear_enemy_attack_segment(ring: int, degree: int):
+	var material: ShaderMaterial = segments[ring][degree].get_material()
+	material.set_shader_parameter("enemy_attack_enabled", false)
+
+func clear_all_enemy_attack_segments():
+	for ring in segments.size():
+		for degree in segments[0].size():
+			clear_enemy_attack_segment(ring, degree)

@@ -90,7 +90,7 @@ func _process(_delta: float) -> void:
 		toggle()
 		
 func toggle():
-	GameState.clear_all_attack_segments()
+	GameState.clear_all_player_attack_segments()
 	
 	for i in AttackPatterns.attack_patterns["attack"].size():
 		var x = AttackPatterns.attack_patterns["attack"][i].x
@@ -159,7 +159,7 @@ func toggle():
 			if segment.y < 0:
 				segment.y = 8 + segment.y
 			segment.y = segment.y % 8
-			GameState.toggle_attack_segment(segment.x, segment.y)
+			GameState.toggle_player_attack_segment(segment.x, segment.y)
 
 func _move_in():
 	if ring >= 2:
