@@ -33,10 +33,11 @@ func start_round():
 	for node in rounds[current_round]:
 		randomly_spawn_enemy(node, spawned_positions)
 	
-	for ring in GameState.object_locations:
-		for degree in GameState.object_locations[0]:
-			pass
-			#uhh basically check if they r enemy, if so call highlight thingy
+	for ring in GameState.object_locations.size():
+		for degree in GameState.object_locations[0].size():
+			if GameState.object_locations[ring][degree] != null:
+				if GameState.object_locations[ring][degree] is Enemy:
+					GameState.object_locations[ring][degree].highlight_attack()
 
 func randomly_spawn_enemy(node: PackedScene, spawned_positions: Array[Array]):
 	var random_ring: int = randi_range(0,2)

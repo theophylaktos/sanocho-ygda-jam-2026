@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name enemy
+class_name Enemy
 
 @export var attacks: Dictionary[String, Array] = {}
 
@@ -25,14 +25,24 @@ func _process(_delta: float) -> void:
 func highlight_attack():
 	for attack in attacks["attack"]:
 		var v= (Vector2i)(attack)
-		GameState.toggle_enemy_attack_segment(ring+v.x,degree+v.y)
+		if ring + v.x >= 0 and ring + v.x <= 2:
+			var new_y: int = degree + v.y
+			if new_y < 0:
+				new_y = 8 + new_y
+			new_y = new_y % 8
+			GameState.toggle_enemy_attack_segment(ring+v.x, new_y)
 	return
 
 func attack():
 	for attack in attacks["attack"]:
 		var v = attack
-		if GameState.object_locations[ring + v.x][degree + v.y] == GameState.player:
-			GameState.health_left -= 1
+		if ring + v.x >= 0 and ring + v.x <= 2:
+			var new_y: int = degree + v.y
+			if new_y < 0:
+				new_y = 8 + new_y
+			new_y = new_y % 8
+			if GameState.object_locations[ring + v.x][new_y] == GameState.player:
+				GameState.health_left -= 1
 	return
 
 func take_damage(damage: int):
