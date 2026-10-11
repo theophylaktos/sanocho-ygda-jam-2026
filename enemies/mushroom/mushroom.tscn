@@ -81,5 +81,6 @@ local = NodePath("Local")
 position = Vector2(41, 0)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1525012640]
+position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_7bva4")
 animation = &"idle_back"

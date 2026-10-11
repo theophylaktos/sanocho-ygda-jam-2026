@@ -74,12 +74,18 @@ func _process(_delta: float) -> void:
 			
 	if Input.is_action_just_pressed("toggle"):
 		for i in AttackPatterns.attack_patterns["attack"].size():
-			var segment: Vector2 = AttackPatterns.attack_patterns["attack"][i] + Vector2i(ring, degree)
-			if segment.x >= 0 and segment.x <= 2:
-				if sign(segment.y) == 1 or sign(segment.y) == 0:
-					GameState.toggle_attack_segment(int(segment.x), int(segment.y) % 8)
-				else:
-					GameState.toggle_attack_segment(int(segment.x), 8 - (int(abs(segment.y)) % 8))
+			var segments: Array[Vector2] = [
+				AttackPatterns.attack_patterns["attack"][i] + Vector2i(ring, degree),
+				AttackPatterns.attack_patterns["attack"][i] + Vector2i(-1 * ring, -1 * degree),
+				AttackPatterns.attack_patterns["attack"][i] + Vector2i(degree, ring),
+				AttackPatterns.attack_patterns["attack"][i] + Vector2i(-1 * degree, -1 * ring),
+			]
+			for segment in segments:
+				if segment.x >= 0 and segment.x <= 2:
+					if sign(segment.y) == 1 or sign(segment.y) == 0:
+						GameState.toggle_attack_segment(int(segment.x), int(segment.y) % 8)
+					else:
+						GameState.toggle_attack_segment(int(segment.x), 8 - (int(abs(segment.y)) % 8))
 
 func _move_in():
 	if ring >= 2:

@@ -11,4 +11,5 @@ local = NodePath("Local")
 position = Vector2(41, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Local" unique_id=739250406]
+position = Vector2(0, -4)
 texture = ExtResource("2_rkbax")

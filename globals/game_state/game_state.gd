@@ -4,7 +4,7 @@ var object_locations: Array[Array] = []
 
 var segments: Array[Array] = []
 
-var distance: Array[int] = [57, 41, 25]
+var distance: Array[int] = [57, 39, 25]
 
 var rotating = false
 
