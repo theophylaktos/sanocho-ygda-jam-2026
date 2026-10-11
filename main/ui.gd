@@ -81,3 +81,15 @@ func _on_button_pressed() -> void:
 func _on_skip_button_pressed() -> void:
 	if GameState.moves_left > 0:
 		GameState.moves_left -= 1
+
+
+func _on_weapon_1_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_weapon_2_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_weapon_3_button_pressed() -> void:
+	pass # Replace with function body.
