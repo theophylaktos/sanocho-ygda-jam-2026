@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://bxspl7j0qli5q"]
+
+[ext_resource type="Script" uid="uid://c0qpku2mg6f4" path="res://attack_patterns/attack_pattern.gd" id="1_ij04g"]
+
+[resource]
+script = ExtResource("1_ij04g")
+attack_pattern = Array[Vector2]([Vector2(1, 0)])

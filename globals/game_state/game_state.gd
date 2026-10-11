@@ -6,6 +6,8 @@ var segments: Array[Array] = []
 
 var distance: Array[int] = [57, 41, 25]
 
+var rotating = false
+
 func _init() -> void:
 	object_locations.resize(3)
 	for array in object_locations:
@@ -25,6 +27,7 @@ func update_position(old_ring: int, old_degree: int, new_ring: int, new_degree: 
 	object_locations[old_ring][old_degree] = null
 	
 func position_node(node: Node2D, ring: int, degree: int, time: float):
+	rotating = true
 	#object_locations[ring][degree] = global
 	#object_locations[global.ring][global.degree] = null
 	node.ring = ring
@@ -45,8 +48,15 @@ func position_node(node: Node2D, ring: int, degree: int, time: float):
 	
 	tween.parallel().tween_property(node.local, "position", Vector2(distance[ring], 0), time)
 	
+	await tween.finished
+	rotating = false
+	
+	
+	
 func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
+	rotating = true
 	var tween: Tween = get_tree().create_tween()
+	
 	for node in ring_parent.get_children():
 		tween.parallel().tween_property(node, "rotation", node.rotation + (degree * (PI / 4)), time)
 	
@@ -56,6 +66,10 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 			GameState.position_node(node, node.ring, (degree + node.degree) % 8, time)
 			#node.rotateable = false
 	_rotate_nodes(ring, degree)
+	_rotate_segments(ring, degree)
+	
+	await tween.finished
+	rotating = false
 	
 func _rotate_nodes(ring: int, degree: int):
 	for degrees in abs(degree):
@@ -70,6 +84,19 @@ func _rotate_nodes(ring: int, degree: int):
 				object_locations[ring][i] = object_locations[ring][i + 1]
 			object_locations[ring][-1] = temp
 
+func _rotate_segments(ring: int, degree: int):
+	for degrees in abs(degree):
+		if degree > 0:
+			var temp: Node = segments[ring][-1]
+			for i in range(1, segments[0].size()):
+				segments[ring][-i] = segments[ring][-i - 1]
+			segments[ring][0] = temp
+		if degree < 0:
+			var temp: Node = segments[ring][0]
+			for i in range(0, segments[0].size() - 1):
+				segments[ring][i] = segments[ring][i + 1]
+			segments[ring][-1] = temp
+
 func toggle_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
 	var is_enabled: bool = material.get_shader_parameter("attack_enabled")
@@ -80,3 +107,8 @@ func toggle_select_ring(ring: int):
 		var material: ShaderMaterial = segments[ring][i].get_material()
 		var is_enabled: bool = material.get_shader_parameter("select_enabled")
 		material.set_shader_parameter("select_enabled", not is_enabled)
+		
+func clear_ring(ring: int):
+		for i in 8:
+			var material: ShaderMaterial = segments[ring][i].get_material()
+			material.set_shader_parameter("select_enabled", false)
