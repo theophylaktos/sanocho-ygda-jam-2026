@@ -29,8 +29,17 @@ signal moves_left_changed
 		moves_left = new_value
 		moves_left_changed.emit()
 
-@export var max_attacks = 1
-@export var attacks_left = 1
+signal max_attacks_changed
+@export var max_attacks = 1:
+	set(new_value):
+		max_attacks = new_value
+		max_attacks_changed.emit()
+
+signal attacks_left_changed
+@export var attacks_left = 1:
+	set(new_value):
+		attacks_left = new_value
+		attacks_left_changed.emit()
 
 func _init() -> void:
 	object_locations.resize(3)

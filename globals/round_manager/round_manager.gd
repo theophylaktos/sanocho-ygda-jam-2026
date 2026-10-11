@@ -12,6 +12,7 @@ func change_scene_to_main():
 	get_tree().change_scene_to_file("uid://j0l0agjlk84b")
 	
 func change_scene_to_shop():
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("uid://iy5jea5tf8ka")
 	
 func start_round():
