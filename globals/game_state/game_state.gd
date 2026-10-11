@@ -14,6 +14,8 @@ var enemies_folder: Node
 
 var center: Vector2 = Vector2(-55, 0)
 
+var attacks: Array[String]=["attack","",""]
+
 signal max_health_changed
 @export var max_health = 5:
 	set(new_value):
