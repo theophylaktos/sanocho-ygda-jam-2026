@@ -8,8 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://ba3p4xkleu16q" path="res://1 assets/programmer_art/move_icon.png" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://dy8kdfo4ueb6i" path="res://main/ui.gd" id="5_67ri8"]
 [ext_resource type="Texture2D" uid="uid://68rolvwokb64" path="res://1 assets/programmer_art/attack_icon.png" id="6_67ri8"]
+[ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
+shader = ExtResource("9_grrlh")
+shader_parameter/pixel_size = 16
 
 [node name="Main" type="Node2D" unique_id=1035895957]
 script = ExtResource("1_kfbq2")
@@ -146,6 +151,20 @@ layout_mode = 2
 text = "sbmt atk"
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1574358632]
+z_index = 1
+material = SubResource("ShaderMaterial_7bva4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -68.0
+offset_right = 120.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer/SkipButton" to="UI" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer/SubmitButton" to="UI" method="_on_button_pressed"]
