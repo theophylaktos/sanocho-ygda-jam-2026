@@ -2,9 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bt4bge2fcrp6o" path="res://globals/round_manager/round_manager.gd" id="1_7qxc4"]
 [ext_resource type="PackedScene" uid="uid://dktx6iodn45ko" path="res://enemies/mushroom/mushroom.tscn" id="2_1hms0"]
+[ext_resource type="PackedScene" uid="uid://b7mh580xxik10" path="res://enemies/golem/golem.tscn" id="2_jr4ve"]
+[ext_resource type="PackedScene" uid="uid://2d6hvyas8v7c" path="res://enemies/goblin/goblin.tscn" id="3_ath2p"]
+[ext_resource type="PackedScene" uid="uid://57ce4qqyp5pq" path="res://enemies/snake/snake.tscn" id="4_f3jt3"]
+[ext_resource type="PackedScene" uid="uid://by52rlb2ob5qc" path="res://enemies/ghost/ghost.tscn" id="5_6kvut"]
 
 [node name="RoundManager" type="Node" unique_id=330263800]
 script = ExtResource("1_7qxc4")
 rounds = Dictionary[int, Array]({
-0: [ExtResource("2_1hms0"), ExtResource("2_1hms0")]
+0: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve")],
+1: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("3_ath2p")],
+2: [ExtResource("3_ath2p"), ExtResource("3_ath2p"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve")],
+3: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("3_ath2p"), ExtResource("4_f3jt3")],
+4: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("4_f3jt3"), ExtResource("4_f3jt3")],
+5: [ExtResource("2_jr4ve"), ExtResource("5_6kvut"), ExtResource("2_1hms0")],
+6: [ExtResource("2_1hms0"), ExtResource("2_1hms0"), ExtResource("4_f3jt3")],
+7: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve")],
+8: [ExtResource("5_6kvut"), ExtResource("5_6kvut"), ExtResource("5_6kvut")],
+9: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("3_ath2p"), ExtResource("3_ath2p"), ExtResource("4_f3jt3")],
+10: [ExtResource("5_6kvut"), ExtResource("5_6kvut"), ExtResource("2_1hms0"), ExtResource("2_1hms0"), ExtResource("4_f3jt3")]
 })
