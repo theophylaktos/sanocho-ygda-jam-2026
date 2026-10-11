@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
+	GameState.enemies_folder = $Enemies
 	await get_tree().create_timer(7).timeout
 	#for i in range(0,3):
 		#for j in range(0,8):

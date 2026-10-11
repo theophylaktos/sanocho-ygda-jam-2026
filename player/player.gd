@@ -10,8 +10,8 @@ const SPEED = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameState.addNode(self, ring, degree)
-	GameState.toggle_select_ring(ring)
+	GameState.player = self
+	#GameState.add_node(self, ring, degree)
 	#GameState.positionNode(self, $Local, 1, 2, 2)
 	#print(GameState.object_locations)
 	#await get_tree().create_timer(3).timeout
@@ -20,9 +20,13 @@ func _ready() -> void:
 	#await get_tree().create_timer(3).timeout
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("start"):
+		RoundManager.start_round()
+		print(ring, " " ,degree)
+	
 	if Input.is_action_just_pressed("location"):
 		print(GameState.object_locations)
-		
+	
 	if GameState.rotating == true:
 		return
 	

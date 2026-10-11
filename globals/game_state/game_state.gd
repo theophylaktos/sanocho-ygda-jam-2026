@@ -8,6 +8,12 @@ var distance: Array[int] = [57, 41, 25]
 
 var rotating = false
 
+var player: Node2D
+
+var enemies_folder: Node
+
+var center: Vector2 = Vector2(-55, 0)
+
 func _init() -> void:
 	object_locations.resize(3)
 	for array in object_locations:
@@ -18,10 +24,28 @@ func _init() -> void:
 		array.resize(8)
 
 ## This adds node to Vector2(ring, degree)
-func addNode(node: Node2D, ring: int, degree: int):
+func add_node(node: Node2D, ring: int, degree: int):
+	node.ring = ring
+	node.degree = degree
+	node.position = center
+	node.local.position.x = distance[ring]
 	object_locations[ring][degree] = node
+	print(object_locations[ring][degree])
 	node.rotation = (PI / 8) + degree * (PI / 4)
 	node.local.rotation = -1 * ((PI / 8) + degree * (PI / 4))
+
+## This adds node to Vector2(ring, degree)
+func create_and_add_node(node: PackedScene, ring: int, degree: int):
+	var temp = node.instantiate()
+	temp.name = str(Time.get_ticks_msec()) + "enemy"
+	enemies_folder.add_child(temp)
+	temp.ring = ring
+	temp.degree = degree
+	temp.local.position.x = distance[ring]
+	temp.position = center
+	object_locations[ring][degree] = temp
+	temp.rotation = (PI / 8) + degree * (PI / 4)
+	temp.local.rotation = -1 * ((PI / 8) + degree * (PI / 4))
 
 ## This clears the old position and puts node in the new position
 func update_position(old_ring: int, old_degree: int, new_ring: int, new_degree: int, node: Node2D):

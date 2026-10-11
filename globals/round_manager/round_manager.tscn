@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bs65uhkg7j7wc"]
+
+[ext_resource type="Script" uid="uid://bt4bge2fcrp6o" path="res://globals/round_manager/round_manager.gd" id="1_7qxc4"]
+[ext_resource type="PackedScene" uid="uid://dktx6iodn45ko" path="res://enemies/mushroom/mushroom.tscn" id="2_1hms0"]
+
+[node name="RoundManager" type="Node" unique_id=330263800]
+script = ExtResource("1_7qxc4")
+rounds = Dictionary[int, Array]({
+0: [ExtResource("2_1hms0"), ExtResource("2_1hms0")]
+})
