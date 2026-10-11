@@ -2,11 +2,20 @@ extends Node2D
 
 @export var ring: int = 1
 
-@export var degree: int = 2
+@export var degree: int = 2:
+	set(new_value):
+		if new_value < 0:
+			new_value = 8 + new_value
+		degree = new_value % 8
 
 @export var local: Node2D
 
 const SPEED = 0.5
+
+var selected_direction: String = "W":
+	set(new_value):
+		selected_direction = new_value
+		print("selected direction: ", new_value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +32,7 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("ring_left"):
+		selected_direction = "A"
 		if GameState.moves_left <= 0:
 			return
 	
@@ -36,6 +46,7 @@ func _process(_delta: float) -> void:
 				GameState.rotate_ring(2, %Level.ring_two, -1, SPEED)
 		
 	if Input.is_action_just_pressed("ring_right"):
+		selected_direction = "D"
 		if GameState.moves_left <= 0:
 			return
 	
@@ -49,43 +60,102 @@ func _process(_delta: float) -> void:
 				GameState.rotate_ring(2, %Level.ring_two, 1, SPEED)
 		
 	if Input.is_action_just_pressed("move_up"):
-		if sign(degree) == 1 or sign(degree) == 0:
-			if abs(degree) % 8 < 4:
-				_move_in()
-			else:
-				_move_out()
+		selected_direction = "W"
+		if abs(degree) % 8 < 4:
+			_move_in()
 		else:
-			if abs(degree) % 8 > 4:
-				_move_in()
-			else:
-				_move_out()
+			_move_out()
 	
 	if Input.is_action_just_pressed("move_down"):
-		if sign(degree) == 1 or sign(degree) == 0:
-			if abs(degree) % 8 < 4:
-				_move_out()
-			else:
-				_move_in()
+		selected_direction = "S"
+		if abs(degree) % 8 < 4:
+			_move_out()
 		else:
-			if abs(degree) % 8 > 4:
-				_move_out()
-			else:
-				_move_in()
+			_move_in()
+
 			
 	if Input.is_action_just_pressed("toggle"):
 		for i in AttackPatterns.attack_patterns["attack"].size():
-			var segments: Array[Vector2] = [
-				AttackPatterns.attack_patterns["attack"][i] + Vector2i(ring, degree),
-				AttackPatterns.attack_patterns["attack"][i] + Vector2i(-1 * ring, -1 * degree),
-				AttackPatterns.attack_patterns["attack"][i] + Vector2i(degree, ring),
-				AttackPatterns.attack_patterns["attack"][i] + Vector2i(-1 * degree, -1 * ring),
-			]
-			for segment in segments:
-				if segment.x >= 0 and segment.x <= 2:
-					if sign(segment.y) == 1 or sign(segment.y) == 0:
-						GameState.toggle_attack_segment(int(segment.x), int(segment.y) % 8)
-					else:
-						GameState.toggle_attack_segment(int(segment.x), 8 - (int(abs(segment.y)) % 8))
+			var x = AttackPatterns.attack_patterns["attack"][i].x
+			var y = AttackPatterns.attack_patterns["attack"][i].y
+			print("Base direction of segment to be changed: ", x, " ", y)
+			print("Coordinates of player: ", Vector2i(ring, degree))
+			print("Current selected direction: ", selected_direction)
+			
+			var faces: Dictionary[String, Vector2] = {
+				"Forward": Vector2i(ring, degree) + Vector2i(x, y),
+				"Backward": Vector2i(ring, degree) + Vector2i(-x, -y),
+				"Leftward": Vector2i(ring, degree) + Vector2i(y, x),
+				"Rightward": Vector2i(ring, degree) + Vector2i(-y, -x),
+			}
+			
+			var segment: Vector2i = Vector2i(0,0)
+			var direction = ""
+			
+			if degree == 0 or degree == 7:
+				direction = "Right"
+			if degree == 1 or degree == 2:
+				direction = "Down"
+			if degree == 3 or degree == 4:
+				direction = "Left"
+			if degree == 5 or degree == 6:
+				direction = "Up"
+			
+			if selected_direction == "W":
+				if direction == "Right":
+					segment = faces["Rightward"]
+				if direction == "Down":
+					segment = faces["Forward"]
+				if direction == "Left":
+					segment = faces["Leftward"]
+				if direction == "Up":
+					segment = faces["Backward"]
+			
+			if selected_direction == "S":
+				if direction == "Right":
+					segment = faces["Leftward"]
+				if direction == "Down":
+					segment = faces["Backward"]
+				if direction == "Left":
+					segment = faces["Rightward"]
+				if direction == "Up":
+					segment = faces["Forward"]
+					
+			if selected_direction == "A":
+				if direction == "Right":
+					segment = faces["Forward"]
+				if direction == "Down":
+					segment = faces["Leftward"]
+				if direction == "Left":
+					segment = faces["Backward"]
+				if direction == "Up":
+					segment = faces["Rightward"]
+					
+			if selected_direction == "D":
+				if direction == "Right":
+					segment = faces["Backward"]
+				if direction == "Down":
+					segment = faces["Rightward"]
+				if direction == "Left":
+					segment = faces["Forward"]
+				if direction == "Up":
+					segment = faces["Leftward"]
+					
+			print("Coordinates of the segment to attempt to change: ", segment)
+			
+			if segment.x >= 0 and segment.x <= 2:
+				if segment.y < 0:
+					segment.y = 8 + segment.y
+				segment.y = segment.y % 8
+				GameState.toggle_attack_segment(segment.x, segment.y)
+			
+			#for segment in segments:
+				#print(segment)
+				#if segment.x >= 0 and segment.x <= 2:
+					#if sign(segment.y) == 1 or sign(segment.y) == 0:
+						#GameState.toggle_attack_segment(int(segment.x), int(segment.y) % 8)
+					#else:
+						#GameState.toggle_attack_segment(int(segment.x), 8 - (int(abs(segment.y)) % 8))
 
 func _move_in():
 	if ring >= 2:
