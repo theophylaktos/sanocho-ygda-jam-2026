@@ -8,6 +8,7 @@ local = NodePath("Node2D")
 attacks = Dictionary[String, Array]({
 "attack": [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
+health = 3
 
 [node name="Node2D" type="Node2D" parent="." unique_id=254523115]
 
