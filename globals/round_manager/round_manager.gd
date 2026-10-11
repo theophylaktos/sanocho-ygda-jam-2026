@@ -69,3 +69,5 @@ func start_enemy_attack_phase():
 			if material.get_shader_parameter("enemy_attack_enabled") == true:
 				if GameState.object_locations[ring][degree] is Player:
 					GameState.object_locations[ring][degree].take_damage(1)
+	
+	start_move_phase()

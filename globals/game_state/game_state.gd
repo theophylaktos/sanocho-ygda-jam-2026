@@ -205,6 +205,17 @@ func damage_enemies():
 				if object_locations[ring][degree] is Enemy:
 					object_locations[ring][degree].take_damage(1)
 	refresh_enemy_highlights()
+	
+	if count_enemies() == 0:
+		RoundManager.change_scene_to_shop()
+
+func count_enemies() -> int:
+	var count: int = 0
+	for ring in object_locations.size():
+		for degree in object_locations[0].size():
+			if object_locations[ring][degree] is Enemy:
+				count += 1
+	return count
 
 func refresh_enemy_highlights():
 	clear_all_enemy_attack_segments()
