@@ -10,8 +10,8 @@
 [node name="RoundManager" type="Node" unique_id=330263800]
 script = ExtResource("1_7qxc4")
 rounds = Dictionary[int, Array]({
-0: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve")],
-1: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("3_ath2p")],
+0: [ExtResource("3_ath2p"), ExtResource("3_ath2p")],
+1: [ExtResource("2_jr4ve"), ExtResource("3_ath2p"), ExtResource("3_ath2p")],
 2: [ExtResource("3_ath2p"), ExtResource("3_ath2p"), ExtResource("2_jr4ve"), ExtResource("2_jr4ve")],
 3: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("3_ath2p"), ExtResource("4_f3jt3")],
 4: [ExtResource("2_jr4ve"), ExtResource("2_jr4ve"), ExtResource("4_f3jt3"), ExtResource("4_f3jt3")],
