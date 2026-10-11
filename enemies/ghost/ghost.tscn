@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://by52rlb2ob5qc"]
+
+[ext_resource type="Script" uid="uid://cfleuny8sdt0e" path="res://enemies/ghost/ghost.gd" id="1_4xhpb"]
+[ext_resource type="Texture2D" uid="uid://dwcjt534ayv8i" path="res://1 assets/art/enemies/ghost/ghost-front.png" id="2_dufq0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytihs"]
+atlas = ExtResource("2_dufq0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2tme"]
+atlas = ExtResource("2_dufq0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_566vf"]
+atlas = ExtResource("2_dufq0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqcb8"]
+atlas = ExtResource("2_dufq0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1su5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytihs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2tme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_566vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqcb8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ghost" type="Node2D" unique_id=2112427627 node_paths=PackedStringArray("local")]
+script = ExtResource("1_4xhpb")
+local = NodePath("Local")
+attacks = Dictionary[String, Array]({
+"attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
+})
+
+[node name="Local" type="Node2D" parent="." unique_id=2020720134]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=315474355]
+sprite_frames = SubResource("SpriteFrames_1su5m")
+offset = Vector2(-2, -4)
