@@ -62,3 +62,10 @@ func start_attack_phase():
 func start_enemy_attack_phase():
 	current_phase = "EnemyAttack"
 	GameState.clear_all_player_attack_segments()
+	
+	for ring in GameState.segments.size():
+		for degree in GameState.segments[0].size():
+			var material: ShaderMaterial = GameState.segments[ring][degree].get_material()
+			if material.get_shader_parameter("enemy_attack_enabled") == true:
+				if GameState.object_locations[ring][degree] is Player:
+					GameState.object_locations[ring][degree].take_damage(1)

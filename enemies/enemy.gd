@@ -52,5 +52,5 @@ func take_damage(damage: int):
 	return
 
 func die():
-	GameState.object_locations[ring][degree]=null
+	GameState.object_locations[ring][degree] = null
 	self.queue_free()

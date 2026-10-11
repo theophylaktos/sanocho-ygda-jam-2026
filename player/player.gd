@@ -193,3 +193,6 @@ func _move_out():
 	GameState.toggle_select_ring(ring - 1)
 	GameState.update_position(ring, degree, ring - 1, degree, self)
 	GameState.position_node(self, ring - 1, degree, SPEED)
+
+func take_damage(damage: int):
+	GameState.health_left -= 1

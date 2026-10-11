@@ -14,15 +14,25 @@ var enemies_folder: Node
 
 var center: Vector2 = Vector2(-55, 0)
 
-@export var max_health = 5
-@export var health_left = 5
+signal max_health_changed
+@export var max_health = 5:
+	set(new_value):
+		max_health = new_value
+		max_health_changed.emit()
+		
+signal health_left_changed
+@export var health_left = 5:
+	set(new_value):
+		print("where")
+		health_left = new_value
+		health_left_changed.emit()
 
 signal max_moves_changed
 @export var max_moves = 3:
 	set(new_value):
 		max_moves = new_value
 		max_moves_changed.emit()
-		
+
 signal moves_left_changed
 @export var moves_left: int = 3:
 	set(new_value):
@@ -123,7 +133,6 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	for r in object_locations.size():
 		for d in object_locations[0].size():
 			if object_locations[r][d] is Enemy:
-				print("is enemy")
 				object_locations[r][d].highlight_attack()
 	
 	await tween.finished
@@ -187,7 +196,15 @@ func clear_enemy_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
 	material.set_shader_parameter("enemy_attack_enabled", false)
 
-func clear_all_enemy_attack_segments():
+func clear_all_enemy_attack_segments(): 
 	for ring in segments.size():
 		for degree in segments[0].size():
 			clear_enemy_attack_segment(ring, degree)
+
+func damage_enemies():
+	for ring in segments.size():
+		for degree in segments[0].size():
+			var material: ShaderMaterial = segments[ring][degree].get_material()
+			if material.get_shader_parameter("player_attack_enabled") == true:
+				if object_locations[ring][degree] is Enemy:
+					object_locations[ring][degree].take_damage(1)

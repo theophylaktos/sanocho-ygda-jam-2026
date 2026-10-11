@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dy8kdfo4ueb6i" path="res://main/ui.gd" id="5_67ri8"]
 [ext_resource type="Texture2D" uid="uid://68rolvwokb64" path="res://1 assets/programmer_art/attack_icon.png" id="6_67ri8"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
+
 [node name="Main" type="Node2D" unique_id=1035895957]
 script = ExtResource("1_kfbq2")
 
@@ -38,7 +40,6 @@ script = ExtResource("5_67ri8")
 [node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1776847383]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.54
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -78,6 +79,11 @@ layout_mode = 2
 texture = ExtResource("4_kfbq2")
 stretch_mode = 5
 
+[node name="Heart5" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=1016056403]
+layout_mode = 2
+texture = ExtResource("4_kfbq2")
+stretch_mode = 5
+
 [node name="Moves" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=1424306176]
 unique_name_in_owner = true
 layout_mode = 2
@@ -112,7 +118,15 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/RightSide" unique_id=699235023]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=952358066]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer/RightSide/HBoxContainer" unique_id=1399014379]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7bva4")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/RightSide/HBoxContainer" unique_id=699235023]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 2
@@ -120,9 +134,10 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Button" type="Button" parent="UI/MarginContainer/RightSide/MarginContainer" unique_id=660376527]
+[node name="Button" type="Button" parent="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer" unique_id=660376527]
 layout_mode = 2
+text = "SUBMIT ATK"
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
 
-[connection signal="pressed" from="UI/MarginContainer/RightSide/MarginContainer/Button" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/Button" to="UI" method="_on_button_pressed"]
