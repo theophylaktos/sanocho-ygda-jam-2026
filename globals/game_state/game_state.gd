@@ -14,6 +14,19 @@ var enemies_folder: Node
 
 var center: Vector2 = Vector2(-55, 0)
 
+@export var max_health = 5
+@export var health_left = 5
+
+signal moves_left_changed
+@export var max_moves = 3
+@export var moves_left: int = 3:
+	set(new_value):
+		moves_left = new_value
+		moves_left_changed.emit()
+
+@export var max_attacks = 1
+@export var attacks_left = 1
+
 func _init() -> void:
 	object_locations.resize(3)
 	for array in object_locations:
@@ -30,11 +43,10 @@ func add_node(node: Node2D, ring: int, degree: int):
 	node.position = center
 	node.local.position.x = distance[ring]
 	object_locations[ring][degree] = node
-	print(object_locations[ring][degree])
 	node.rotation = (PI / 8) + degree * (PI / 4)
 	node.local.rotation = -1 * ((PI / 8) + degree * (PI / 4))
 
-## This adds node to Vector2(ring, degree)
+## This creates a new node from the packedscene and adds said node to Vector2(ring, degree)
 func create_and_add_node(node: PackedScene, ring: int, degree: int):
 	var temp = node.instantiate()
 	temp.name = str(Time.get_ticks_msec()) + "enemy"
