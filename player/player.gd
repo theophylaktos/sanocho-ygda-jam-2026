@@ -21,9 +21,6 @@ func _ready() -> void:
 	GameState.player = self
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("start"):
-		RoundManager.start_round()
-	
 	if Input.is_action_just_pressed("location"):
 		print(GameState.object_locations)
 	
@@ -57,7 +54,7 @@ func _process(_delta: float) -> void:
 		if RoundManager.current_phase == "Move":
 			if GameState.moves_left <= 0:
 				return
-		
+			
 			GameState.moves_left -= 1
 			match ring:
 				0:

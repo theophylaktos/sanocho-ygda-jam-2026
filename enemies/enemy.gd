@@ -13,15 +13,7 @@ class_name Enemy
 		if new_value < 0:
 			new_value = 8 + new_value
 		degree = new_value % 8
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
+		
 func highlight_attack():
 	for attack in attacks["attack"]:
 		var v= (Vector2i)(attack)

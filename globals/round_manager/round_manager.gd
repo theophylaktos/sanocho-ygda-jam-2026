@@ -8,6 +8,9 @@ extends Node
 
 @export var starting_position: Vector2i = Vector2i(2, 6)
 
+func change_scene_to_menu():
+	get_tree().change_scene_to_file("uid://clc5dgdphsk57")
+
 func change_scene_to_main():
 	get_tree().change_scene_to_file("uid://j0l0agjlk84b")
 	

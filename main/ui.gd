@@ -57,15 +57,13 @@ func _change_max_attacks():
 		%Attacks.add_child(attack)
 	
 func _change_health_left():
-	print(GameState.health_left)
-	print(GameState.max_health)
 	if GameState.health_left == GameState.max_health:
 		for child in %Health.get_children():
 			child.texture = health_icon
 	if GameState.health_left < GameState.max_health:
 		%Health.get_child(GameState.max_health - GameState.health_left - 1).texture = health_icon_used
 	if GameState.health_left == 0:
-		print("u died")
+		RoundManager.change_scene_to_menu()
 	
 func _change_max_health():
 	for node in %Health.get_children():
@@ -78,3 +76,8 @@ func _change_max_health():
 
 func _on_button_pressed() -> void:
 	GameState.attacks_left -= 1
+
+
+func _on_skip_button_pressed() -> void:
+	if GameState.moves_left > 0:
+		GameState.moves_left -= 1

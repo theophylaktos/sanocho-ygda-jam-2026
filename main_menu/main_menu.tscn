@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://clc5dgdphsk57"]
+
+[ext_resource type="Script" uid="uid://bvs544ki7vv48" path="res://main_menu/main_menu.gd" id="1_oa53l"]
+
+[node name="MainMenu" type="Control" unique_id=1458588434]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oa53l")
+
+[node name="Button" type="Button" parent="." unique_id=88246534]
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 333.0
+text = "PLAY"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

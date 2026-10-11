@@ -23,7 +23,6 @@ signal max_health_changed
 signal health_left_changed
 @export var health_left = 5:
 	set(new_value):
-		print("where")
 		health_left = new_value
 		health_left_changed.emit()
 

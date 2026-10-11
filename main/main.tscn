@@ -134,10 +134,18 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Button" type="Button" parent="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer" unique_id=660376527]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer" unique_id=899507074]
 layout_mode = 2
-text = "SUBMIT ATK"
+
+[node name="SkipButton" type="Button" parent="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer" unique_id=2138842112]
+layout_mode = 2
+text = "skip"
+
+[node name="SubmitButton" type="Button" parent="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer" unique_id=660376527]
+layout_mode = 2
+text = "sbmt atk"
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
 
-[connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/Button" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer/SkipButton" to="UI" method="_on_skip_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/RightSide/HBoxContainer/MarginContainer/HBoxContainer/SubmitButton" to="UI" method="_on_button_pressed"]
