@@ -129,11 +129,7 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	_rotate_nodes(ring, degree)
 	_rotate_segments(ring, degree)
 	
-	clear_all_enemy_attack_segments()
-	for r in object_locations.size():
-		for d in object_locations[0].size():
-			if object_locations[r][d] is Enemy:
-				object_locations[r][d].highlight_attack()
+	refresh_enemy_highlights()
 	
 	await tween.finished
 	rotating = false
@@ -208,3 +204,11 @@ func damage_enemies():
 			if material.get_shader_parameter("player_attack_enabled") == true:
 				if object_locations[ring][degree] is Enemy:
 					object_locations[ring][degree].take_damage(1)
+	refresh_enemy_highlights()
+
+func refresh_enemy_highlights():
+	clear_all_enemy_attack_segments()
+	for r in object_locations.size():
+		for d in object_locations[0].size():
+			if object_locations[r][d] is Enemy:
+				object_locations[r][d].highlight_attack()

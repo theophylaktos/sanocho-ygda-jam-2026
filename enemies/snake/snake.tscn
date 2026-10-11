@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://57ce4qqyp5pq"]
 
 [ext_resource type="Script" uid="uid://ve0nl8xfi603" path="res://enemies/snake/snake.gd" id="1_akjkm"]
+[ext_resource type="Texture2D" uid="uid://ifve78uuog5b" path="res://1 assets/programmer_art/snake.png" id="2_0sd6a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suq1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0sd6a")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Snake" type="Node2D" unique_id=2144745896 node_paths=PackedStringArray("local")]
 script = ExtResource("1_akjkm")
@@ -13,3 +25,4 @@ health = 2
 [node name="Local" type="Node2D" parent="." unique_id=1994054727]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1049131727]
+sprite_frames = SubResource("SpriteFrames_suq1p")
