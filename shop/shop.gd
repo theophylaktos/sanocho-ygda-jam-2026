@@ -26,6 +26,10 @@ func pick_three_valid() -> Array[int]:
 	var options: Array[int]
 	var possibility: int
 	var position: int
+	if(GameState.health_left<GameState.max_health):
+		options[0]=0
+		possibility+=2
+		position+=1
 	for bool in items_had:
 		if(bool==false):
 			possibility+=1
@@ -39,3 +43,28 @@ func pick_three_valid() -> Array[int]:
 				options[position]=current
 				position+=1
 	return options
+func give_item(choice: int):
+	var is_removed: bool
+	if(choice==0):
+		is_removed=false
+	elif(choice==1 && GameState.max_health<=7):
+		is_removed=false
+	elif(choice==2 && GameState.max_attacks<=3):
+		is_removed=false
+	elif(choice==4 && GameState.max_moves<=5):
+		is_removed=false
+	else:
+		is_removed=true
+	if(is_removed):
+		items_had[choice]=true
+	match choice:
+		1:
+			GameState.health_left+=2
+			if(GameState.health_left>GameState.max_health):
+				GameState.health_left=GameState.max_health
+		2:
+			GameState.max_health+=1
+		3:
+			GameState.max_attacks+=1
+		4:
+			GameState.max_moves+=1
