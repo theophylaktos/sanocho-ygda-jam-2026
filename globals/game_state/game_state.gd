@@ -17,8 +17,13 @@ var center: Vector2 = Vector2(-55, 0)
 @export var max_health = 5
 @export var health_left = 5
 
+signal max_moves_changed
+@export var max_moves = 3:
+	set(new_value):
+		max_moves = new_value
+		max_moves_changed.emit()
+		
 signal moves_left_changed
-@export var max_moves = 3
 @export var moves_left: int = 3:
 	set(new_value):
 		moves_left = new_value

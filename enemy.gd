@@ -6,7 +6,11 @@ class_name enemy
 
 @export var ring: int
 
-@export var degree: int
+@export var degree: int:
+	set(new_value):
+		if new_value < 0:
+			new_value = 8 + new_value
+		degree = new_value % 8
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
