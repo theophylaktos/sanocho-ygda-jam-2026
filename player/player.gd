@@ -14,10 +14,7 @@ class_name Player
 
 const SPEED = 0.5
 
-var selected_direction: String = "W":
-	set(new_value):
-		selected_direction = new_value
-		print("selected direction: ", new_value)
+var selected_direction: String = "W"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,9 +95,6 @@ func toggle():
 	for i in AttackPatterns.attack_patterns["attack"].size():
 		var x = AttackPatterns.attack_patterns["attack"][i].x
 		var y = AttackPatterns.attack_patterns["attack"][i].y
-		print("Base direction of segment to be changed: ", x, " ", y)
-		print("Coordinates of player: ", Vector2i(ring, degree))
-		print("Current selected direction: ", selected_direction)
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(ring, degree) + Vector2i(x, y),
@@ -161,8 +155,6 @@ func toggle():
 			if direction == "Up":
 				segment = faces["Leftward"]
 				
-		print("Coordinates of the segment to attempt to change: ", segment)
-		
 		if segment.x >= 0 and segment.x <= 2:
 			if segment.y < 0:
 				segment.y = 8 + segment.y
