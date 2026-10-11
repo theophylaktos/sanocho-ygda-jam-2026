@@ -5,5 +5,11 @@
 [node name="AttackPatterns" type="Node" unique_id=1381599388]
 script = ExtResource("1_7t61d")
 attack_patterns = Dictionary[String, Array]({
-"attack": [Vector2i(1, 0)]
+"all_diagonals": [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)],
+"all_horizontals": [Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(0, -1)],
+"attack": [Vector2i(1, 0)],
+"attack2": [Vector2i(2, 0)],
+"attack4": [Vector2i(3, 0)],
+"diagonal": [Vector2i(1, 1)],
+"knight": [Vector2i(2, 1), Vector2i(1, 2)]
 })
