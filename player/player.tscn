@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bc0kvd3ohhsb5" path="res://1 assets/programmer_art/player.png" id="2_rkbax"]
 
 [node name="Player" type="Node2D" unique_id=2070042470 node_paths=PackedStringArray("local")]
+rotation = 0.5235988
 script = ExtResource("1_pjt0s")
 local = NodePath("Local")
 
 [node name="Local" type="Node2D" parent="." unique_id=772166326]
 position = Vector2(41, 0)
+rotation = -0.5235988
 
 [node name="Sprite2D" type="Sprite2D" parent="Local" unique_id=739250406]
 texture = ExtResource("2_rkbax")

@@ -16,16 +16,19 @@ func _init() -> void:
 	segments.resize(3)
 	for array in segments:
 		array.resize(8)
-	
+
+## This adds node to Vector2(ring, degree)
 func addNode(node: Node2D, ring: int, degree: int):
 	object_locations[ring][degree] = node
 	node.rotation = (PI / 8) + degree * (PI / 4)
 	node.local.rotation = -1 * ((PI / 8) + degree * (PI / 4))
 
+## This clears the old position and puts node in the new position
 func update_position(old_ring: int, old_degree: int, new_ring: int, new_degree: int, node: Node2D):
 	object_locations[new_ring][new_degree] = node
 	object_locations[old_ring][old_degree] = null
 	
+## This moves node to Vector2(ring, degree)
 func position_node(node: Node2D, ring: int, degree: int, time: float):
 	rotating = true
 	#object_locations[ring][degree] = global
@@ -50,8 +53,6 @@ func position_node(node: Node2D, ring: int, degree: int, time: float):
 	
 	await tween.finished
 	rotating = false
-	
-	
 	
 func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	rotating = true
@@ -108,7 +109,11 @@ func toggle_select_ring(ring: int):
 		var is_enabled: bool = material.get_shader_parameter("select_enabled")
 		material.set_shader_parameter("select_enabled", not is_enabled)
 		
-func clear_ring(ring: int):
+func clear_select_ring(ring: int):
 		for i in 8:
 			var material: ShaderMaterial = segments[ring][i].get_material()
 			material.set_shader_parameter("select_enabled", false)
+	
+func clear_attack_segment(ring: int, degree: int):
+	var material: ShaderMaterial = segments[ring][degree].get_material()
+	material.set_shader_parameter("attack_enabled", false)
