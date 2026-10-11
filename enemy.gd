@@ -30,7 +30,7 @@ func highlight_attack():
 			if new_y < 0:
 				new_y = 8 + new_y
 			new_y = new_y % 8
-			GameState.toggle_enemy_attack_segment(ring+v.x, new_y)
+			GameState.enable_enemy_attack_segment(ring+v.x, new_y)
 	return
 
 func attack():

@@ -156,8 +156,7 @@ func toggle_player_attack_segment(ring: int, degree: int):
 func toggle_select_ring(ring: int):
 	for i in 8:
 		var material: ShaderMaterial = segments[ring][i].get_material()
-		var is_enabled: bool = material.get_shader_parameter("select_enabled")
-		material.set_shader_parameter("select_enabled", not is_enabled)
+		material.set_shader_parameter("select_enabled", true)
 		
 func clear_select_ring(ring: int):
 		for i in 8:
@@ -173,10 +172,9 @@ func clear_all_player_attack_segments():
 		for degree in segments[0].size():
 			clear_player_attack_segment(ring, degree)
 
-func toggle_enemy_attack_segment(ring: int, degree: int):
+func enable_enemy_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	var is_enabled: bool = material.get_shader_parameter("enemy_attack_enabled")
-	material.set_shader_parameter("enemy_attack_enabled", not is_enabled)
+	material.set_shader_parameter("enemy_attack_enabled", true)
 
 func clear_enemy_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
