@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://b7mh580xxik10"]
 
 [ext_resource type="Script" uid="uid://cbjo6j2stj14p" path="res://enemies/golem/golem.gd" id="1_mkirv"]
+[ext_resource type="Texture2D" uid="uid://svqw8tdjm5sx" path="res://1 assets/programmer_art/golem.png" id="2_kit87"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2x0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kit87")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Golem" type="Node2D" unique_id=598334917 node_paths=PackedStringArray("local")]
 script = ExtResource("1_mkirv")
@@ -13,3 +25,4 @@ health = 2
 [node name="Local" type="Node2D" parent="." unique_id=1118463028]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1466242329]
+sprite_frames = SubResource("SpriteFrames_f2x0q")

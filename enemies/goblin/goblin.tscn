@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://2d6hvyas8v7c"]
 
 [ext_resource type="Script" uid="uid://x0dmnaqfrw2c" path="res://enemies/goblin/goblin.gd" id="1_yx8al"]
+[ext_resource type="Texture2D" uid="uid://onov2tvup251" path="res://1 assets/programmer_art/goblin.png" id="2_r03s4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqqj1"]
+atlas = ExtResource("2_r03s4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0yn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqqj1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local")]
 script = ExtResource("1_yx8al")
@@ -13,3 +29,4 @@ health = 3
 [node name="Node2D" type="Node2D" parent="." unique_id=254523115]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=121862124]
+sprite_frames = SubResource("SpriteFrames_p0yn0")

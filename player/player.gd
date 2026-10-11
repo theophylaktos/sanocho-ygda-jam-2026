@@ -195,4 +195,4 @@ func _move_out():
 	GameState.position_node(self, ring - 1, degree, SPEED)
 
 func take_damage(damage: int):
-	GameState.health_left -= 1
+	GameState.health_left -= damage
