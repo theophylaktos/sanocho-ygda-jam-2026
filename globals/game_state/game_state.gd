@@ -153,3 +153,8 @@ func clear_select_ring(ring: int):
 func clear_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
 	material.set_shader_parameter("attack_enabled", false)
+
+func clear_all_attack_segments():
+	for ring in segments.size():
+		for degree in segments[0].size():
+			clear_attack_segment(ring, degree)

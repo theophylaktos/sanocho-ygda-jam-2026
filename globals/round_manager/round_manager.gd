@@ -4,6 +4,8 @@ extends Node
 
 @export var current_round = 0
 
+@export var current_phase = ""
+
 @export var starting_position: Vector2i = Vector2i(2, 6)
 
 func change_scene_to_main():
@@ -13,6 +15,7 @@ func change_scene_to_shop():
 	get_tree().change_scene_to_file("uid://iy5jea5tf8ka")
 	
 func start_round():
+	current_phase = "Move"
 	GameState.moves_left = GameState.max_moves
 	GameState.attacks_left = GameState.max_attacks
 	var spawned_positions: Array[Array] = []
@@ -39,6 +42,7 @@ func randomly_spawn_enemy(enemy: PackedScene, spawned_positions: Array[Array]):
 		randomly_spawn_enemy(enemy, spawned_positions)
 		
 func start_attack_phase():
+	current_phase = "PlayerAttack"
 	GameState.clear_select_ring(0)
 	GameState.clear_select_ring(1)
 	GameState.clear_select_ring(2)
