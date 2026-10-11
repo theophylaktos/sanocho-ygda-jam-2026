@@ -6,7 +6,7 @@
 script = ExtResource("1_akjkm")
 local = NodePath("Local")
 attacks = Dictionary[String, Array]({
-"attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2), Vector2i(0, 1), Vector2i(0, -1)]
+"attack": [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 1), Vector2i(0, -1), Vector2i(0, 2), Vector2i(0, -2)]
 })
 health = 2
 
