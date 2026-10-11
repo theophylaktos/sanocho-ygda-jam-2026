@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Player
+
 @export var ring: int = 1
 
 @export var degree: int = 2:
