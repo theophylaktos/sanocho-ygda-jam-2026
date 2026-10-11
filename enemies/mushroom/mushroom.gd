@@ -1,7 +1,3 @@
-extends Node2D
+extends "res://enemy.gd"
 
 @export var local: Node2D
-
-@export var ring: int
-
-@export var degree: int
