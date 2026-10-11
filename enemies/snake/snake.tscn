@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://57ce4qqyp5pq"]
+
+[ext_resource type="Script" uid="uid://ve0nl8xfi603" path="res://enemies/snake/snake.gd" id="1_akjkm"]
+
+[node name="Snake" type="Node2D" unique_id=2144745896 node_paths=PackedStringArray("local")]
+script = ExtResource("1_akjkm")
+local = NodePath("Local")
+attacks = Dictionary[String, Array]({
+"attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2), Vector2i(0, 1), Vector2i(0, -1)]
+})
+
+[node name="Local" type="Node2D" parent="." unique_id=1994054727]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1049131727]

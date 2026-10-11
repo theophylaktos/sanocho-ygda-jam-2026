@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://2d6hvyas8v7c"]
+
+[ext_resource type="Script" uid="uid://x0dmnaqfrw2c" path="res://enemies/goblin/goblin.gd" id="1_yx8al"]
+
+[node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local")]
+script = ExtResource("1_yx8al")
+local = NodePath("Node2D")
+attacks = Dictionary[String, Array]({
+"attack": [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
+})
+
+[node name="Node2D" type="Node2D" parent="." unique_id=254523115]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=121862124]

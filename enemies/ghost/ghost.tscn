@@ -39,8 +39,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ghost" type="Node2D" unique_id=2112427627]
+[node name="Ghost" type="Node2D" unique_id=2112427627 node_paths=PackedStringArray("local")]
 script = ExtResource("1_4xhpb")
+local = NodePath("Local")
 attacks = Dictionary[String, Array]({
 "attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
