@@ -43,7 +43,7 @@ animations = [{
 script = ExtResource("1_4xhpb")
 local = NodePath("Local")
 attacks = Dictionary[String, Array]({
-"attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
+"attack": [Vector2i(2, 0), Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
 health = 1
 
