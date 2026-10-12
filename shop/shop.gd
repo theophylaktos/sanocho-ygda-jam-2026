@@ -4,18 +4,18 @@ var shop: Array[String]
 var items_had: Array[bool]
 
 var textures: Dictionary = {
-	"Heal": preload("uid://o37gts8apes7"),
-	"Add Heart": null,
-	"Add Attack": null,
-	"More Damage": null,
-	"Add Movement": null,
-	"diagonal": preload("uid://bwn8ypto7o7jl"),
-	"attack2": "",
+	"Heal 2": preload("uid://c822q0w7pcwgj"),
+	"Add Heart": preload("uid://bhut60woybcnx"),
+	"Add Attack": preload("uid://68rolvwokb64"),
+	"More Damage": preload("uid://b04xm6fdq5o5l"),
+	"Add Movement": preload("uid://bga5uw67eyhr1"),
+	"diagonal": preload("uid://d30hood7b3jia"),
+	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
-	"knight": null,
+	"knight": preload("uid://c2hshq4wc3crf"),
 	"all_diagonals": null,
 	"all_horizontals": null,
-	"attack": preload("uid://d30hood7b3jia"),
+	"attack": null,
 }
 
 ## array of valid items to sell in a shop: valid=false

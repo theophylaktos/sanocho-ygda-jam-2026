@@ -10,13 +10,13 @@ const attack_icon = preload("uid://68rolvwokb64")
 const attack_icon_used = preload("uid://wsslysm1iufd")
 
 var attack_icons: Dictionary = {
-	"all_diagonals": preload("uid://dncfsm8ae3hpp"),
-	"all_horizontals": preload("uid://wbgcybg6wl7w"),
-	"attack2": preload("uid://gvjrsb5poe8o"),
-	"attack4": preload("uid://nblycygllhr7"),
-	"attack": preload("uid://b4fj23dssqgx4"),
-	"diagonal": preload("uid://bsmxo5kxe8e4u"),
-	"knight": preload("uid://vkx6oum5e4pm"),
+	"diagonal": preload("uid://d30hood7b3jia"),
+	"attack2": preload("uid://bwn8ypto7o7jl"),
+	"attack4": preload("uid://ddlottmvshgpf"),
+	"knight": preload("uid://c2hshq4wc3crf"),
+	"all_diagonals": null,
+	"all_horizontals": null,
+	"attack": null,
 }
 
 func _ready() -> void:
