@@ -13,8 +13,8 @@ script = ExtResource("1_oa53l")
 
 [node name="Button" type="Button" parent="." unique_id=88246534]
 layout_mode = 0
-offset_right = 483.0
-offset_bottom = 333.0
+offset_right = 893.0
+offset_bottom = 491.0
 text = "PLAY"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

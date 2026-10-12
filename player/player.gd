@@ -21,6 +21,18 @@ func _ready() -> void:
 	GameState.player = self
 
 func _process(_delta: float) -> void:
+	
+	var direction: String = ""
+	
+	if degree == 0 or degree == 7:
+			direction = "Right"
+	if degree == 1 or degree == 2:
+		direction = "Down"
+	if degree == 3 or degree == 4:
+		direction = "Left"
+	if degree == 5 or degree == 6:
+		direction = "Up"
+	
 	if Input.is_action_just_pressed("location"):
 		print(GameState.object_locations)
 	
@@ -38,13 +50,21 @@ func _process(_delta: float) -> void:
 				return
 		
 			GameState.moves_left -= 1
-			match ring:
-				0:
-					GameState.rotate_ring(0, %Level.ring_zero, -1, SPEED)
-				1:
-					GameState.rotate_ring(1, %Level.ring_one, -1, SPEED)
-				2:
-					GameState.rotate_ring(2, %Level.ring_two, -1, SPEED)
+			if direction == "Right":
+				_move_in()
+			if direction == "Down":
+				_rotate_ring(1)
+			if direction == "Left":
+				_move_out()
+			if direction == "Up":
+				_rotate_ring(-1)
+			#match ring:
+				#0:
+					#GameState.rotate_ring(0, %Level.ring_zero, -1, SPEED)
+				#1:
+					#GameState.rotate_ring(1, %Level.ring_one, -1, SPEED)
+				#2:
+					#GameState.rotate_ring(2, %Level.ring_two, -1, SPEED)
 		
 	if Input.is_action_just_pressed("ring_right"):
 		selected_direction = "D"
@@ -56,13 +76,21 @@ func _process(_delta: float) -> void:
 				return
 			
 			GameState.moves_left -= 1
-			match ring:
-				0:
-					GameState.rotate_ring(0, %Level.ring_zero, 1, SPEED)
-				1:
-					GameState.rotate_ring(1, %Level.ring_one, 1, SPEED)
-				2:
-					GameState.rotate_ring(2, %Level.ring_two, 1, SPEED)
+			if direction == "Right":
+				_move_out()
+			if direction == "Down":
+				_rotate_ring(-1)
+			if direction == "Left":
+				_move_in()
+			if direction == "Up":
+				_rotate_ring(1)
+			#match ring:
+				#0:
+					#GameState.rotate_ring(0, %Level.ring_zero, 1, SPEED)
+				#1:
+					#GameState.rotate_ring(1, %Level.ring_one, 1, SPEED)
+				#2:
+					#GameState.rotate_ring(2, %Level.ring_two, 1, SPEED)
 		
 	if Input.is_action_just_pressed("move_up"):
 		selected_direction = "W"
@@ -70,10 +98,18 @@ func _process(_delta: float) -> void:
 			toggle()
 			
 		if RoundManager.current_phase == "Move":
-			if abs(degree) % 8 < 4:
+			if direction == "Right":
+				_rotate_ring(-1)
+			if direction == "Down":
 				_move_in()
-			else:
+			if direction == "Left":
+				_rotate_ring(1)
+			if direction == "Up":
 				_move_out()
+			#if abs(degree) % 8 < 4:
+				#_move_in()
+			#else:
+				#_move_out()
 
 	
 	if Input.is_action_just_pressed("move_down"):
@@ -82,15 +118,33 @@ func _process(_delta: float) -> void:
 			toggle()
 			
 		if RoundManager.current_phase == "Move":
-			if abs(degree) % 8 < 4:
+			if direction == "Right":
+				_rotate_ring(1)
+			if direction == "Down":
 				_move_out()
-			else:
+			if direction == "Left":
+				_rotate_ring(-1)
+			if direction == "Up":
 				_move_in()
+			
+			#if abs(degree) % 8 < 4:
+				#_move_out()
+			#else:
+				#_move_in()
 
 			
 	if Input.is_action_just_pressed("toggle"):
 		toggle()
-		
+
+func _rotate_ring(amount: int):
+	match ring:
+		0:
+			GameState.rotate_ring(0, %Level.ring_zero, amount, SPEED)
+		1:
+			GameState.rotate_ring(1, %Level.ring_one, amount, SPEED)
+		2:
+			GameState.rotate_ring(2, %Level.ring_two, amount, SPEED)
+	
 func toggle():
 	GameState.clear_all_player_attack_segments()
 	

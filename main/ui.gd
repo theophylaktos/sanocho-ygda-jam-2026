@@ -37,7 +37,8 @@ func _change_moves_left():
 		for child in %Moves.get_children():
 			child.texture = move_icon
 	if GameState.moves_left < GameState.max_moves:
-		%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
+		pass
+		#%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
 	if GameState.moves_left == 0:
 		RoundManager.start_attack_phase()
 	

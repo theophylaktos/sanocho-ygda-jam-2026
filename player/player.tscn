@@ -8,6 +8,7 @@ script = ExtResource("1_pjt0s")
 local = NodePath("Local")
 
 [node name="Local" type="Node2D" parent="." unique_id=772166326]
+y_sort_enabled = true
 position = Vector2(41, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Local" unique_id=739250406]

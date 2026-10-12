@@ -4,7 +4,13 @@ class_name Enemy
 
 @export var attacks: Dictionary[String, Array] = {}
 
-@export var health: int = 0
+@export var max_health: int = 0
+
+@export var health: int = 0:
+	set(new_value):
+		health = new_value
+		if health_bar != null:
+			health_bar.value = health * 1.0 / max_health
 
 @export var ring: int
 
@@ -14,6 +20,8 @@ class_name Enemy
 			new_value = 8 + new_value
 		degree = new_value % 8
 		
+@export var health_bar: ProgressBar
+
 func highlight_attack():
 	for attack in attacks["attack"]:
 		var v= (Vector2i)(attack)

@@ -73,15 +73,35 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Mushroom" type="Node2D" unique_id=1610362007 node_paths=PackedStringArray("local")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofswk"]
+bg_color = Color(0.45490196, 0.5921569, 0.6509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hikq"]
+bg_color = Color(0.8509804, 0.12941177, 0.30980393, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
+
+[node name="Mushroom" type="Node2D" unique_id=1610362007 node_paths=PackedStringArray("local", "health_bar")]
+y_sort_enabled = true
 script = ExtResource("1_k2em4")
 local = NodePath("Local")
 attacks = Dictionary[String, Array]({
 "attack": [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
+max_health = 2
 health = 2
+health_bar = NodePath("Local/HealthBar")
 
 [node name="Local" type="Node2D" parent="." unique_id=1218504257]
+y_sort_enabled = true
 position = Vector2(41, 0)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1525012640]
@@ -89,6 +109,14 @@ position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_7bva4")
 animation = &"idle_back"
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1559944994]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="HealthBar" type="ProgressBar" parent="Local" unique_id=240309242]
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 7.0
+offset_bottom = 6.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ofswk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8hikq")
+max_value = 1.0
+step = 0.0
+value = 1.0
+show_percentage = false

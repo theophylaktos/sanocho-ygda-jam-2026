@@ -18,19 +18,46 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r03s4"]
+bg_color = Color(0.45490196, 0.5921569, 0.6509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqqj1"]
+bg_color = Color(0.8509804, 0.12941177, 0.30980393, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
+
+[node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local", "health_bar")]
 script = ExtResource("1_yx8al")
 local = NodePath("Node2D")
 attacks = Dictionary[String, Array]({
 "attack": [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
+max_health = 3
 health = 3
+health_bar = NodePath("Node2D/HealthBar")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=254523115]
+y_sort_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=121862124]
 sprite_frames = SubResource("SpriteFrames_p0yn0")
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=201845594]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="HealthBar" type="ProgressBar" parent="Node2D" unique_id=201845594]
+offset_left = -8.0
+offset_top = 6.0
+offset_right = 7.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_r03s4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqqj1")
+max_value = 1.0
+step = 0.0
+value = 1.0
+show_percentage = false
