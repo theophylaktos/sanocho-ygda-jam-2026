@@ -6,6 +6,8 @@ var next_attack: int=0
 ## array of valid items to sell in a shop: valid=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	shop.resize(12)
+	items_had.resize(12)
 	shop[0]="Heal"
 	shop[1]="Add Heart"
 	shop[2]="Add Attack"
