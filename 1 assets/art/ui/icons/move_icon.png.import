@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cskr21f181ur"
-path="res://.godot/imported/diagonal-chakram.png-65ea3e73376b007f9eae0fe2b036fee0.ctex"
+uid="uid://bh4jbss3p34a4"
+path="res://.godot/imported/move_icon.png-9c4a8cf0f91f15b15b487b93bc89dcb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/diagonal-chakram.png"
-dest_files=["res://.godot/imported/diagonal-chakram.png-65ea3e73376b007f9eae0fe2b036fee0.ctex"]
+source_file="res://1 assets/art/ui/icons/move_icon.png"
+dest_files=["res://.godot/imported/move_icon.png-9c4a8cf0f91f15b15b487b93bc89dcb7.ctex"]
 
 [params]
 

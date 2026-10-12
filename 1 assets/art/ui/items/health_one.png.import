@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v24kksj3gc81"
-path="res://.godot/imported/atk_two.png-61d334b220a4138280d044e69b9cddc6.ctex"
+uid="uid://o37gts8apes7"
+path="res://.godot/imported/health_one.png-b2ff33cbf5144473ef53633213f71007.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/atk_two.png"
-dest_files=["res://.godot/imported/atk_two.png-61d334b220a4138280d044e69b9cddc6.ctex"]
+source_file="res://1 assets/art/ui/items/health_one.png"
+dest_files=["res://.godot/imported/health_one.png-b2ff33cbf5144473ef53633213f71007.ctex"]
 
 [params]
 

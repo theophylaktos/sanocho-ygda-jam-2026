@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c32p5tt3tijbu"
-path="res://.godot/imported/health_empty.png-d7b8c45be45d534533aba65867d51d20.ctex"
+uid="uid://bs07rvx8acl1r"
+path="res://.godot/imported/used_move_icon.png-428e93a5b51c313671c1e977a0c5a7dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/health_empty.png"
-dest_files=["res://.godot/imported/health_empty.png-d7b8c45be45d534533aba65867d51d20.ctex"]
+source_file="res://1 assets/art/ui/icons/used_move_icon.png"
+dest_files=["res://.godot/imported/used_move_icon.png-428e93a5b51c313671c1e977a0c5a7dc.ctex"]
 
 [params]
 

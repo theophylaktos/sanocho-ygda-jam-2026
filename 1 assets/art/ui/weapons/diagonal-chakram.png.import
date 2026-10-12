@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d30hood7b3jia"
-path="res://.godot/imported/sword.png-63b8dbaaf160d03541176805f322a19e.ctex"
+uid="uid://cskr21f181ur"
+path="res://.godot/imported/diagonal-chakram.png-39aedfac2c8b77d04c2eeb2f081523de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/sword.png"
-dest_files=["res://.godot/imported/sword.png-63b8dbaaf160d03541176805f322a19e.ctex"]
+source_file="res://1 assets/art/ui/weapons/diagonal-chakram.png"
+dest_files=["res://.godot/imported/diagonal-chakram.png-39aedfac2c8b77d04c2eeb2f081523de.ctex"]
 
 [params]
 

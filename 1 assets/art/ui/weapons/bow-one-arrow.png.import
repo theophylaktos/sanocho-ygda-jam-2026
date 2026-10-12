@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cop404wtgqx3h"
-path="res://.godot/imported/horizontal-kunai.png-a1937c5f7ab77c34f1202f3375e90ecc.ctex"
+uid="uid://ddlottmvshgpf"
+path="res://.godot/imported/bow-one-arrow.png-b91d53a6d452c27a37eeaf8f71866fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/horizontal-kunai.png"
-dest_files=["res://.godot/imported/horizontal-kunai.png-a1937c5f7ab77c34f1202f3375e90ecc.ctex"]
+source_file="res://1 assets/art/ui/weapons/bow-one-arrow.png"
+dest_files=["res://.godot/imported/bow-one-arrow.png-b91d53a6d452c27a37eeaf8f71866fed.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7ptnpwn3k0ni"
-path="res://.godot/imported/horizontal-hammer.png-a636110e3fd8fe2761606396e77786b4.ctex"
+path="res://.godot/imported/horizontal-hammer.png-1eb0f932d2fe4f4ae85051e3b4b40a70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/horizontal-hammer.png"
-dest_files=["res://.godot/imported/horizontal-hammer.png-a636110e3fd8fe2761606396e77786b4.ctex"]
+source_file="res://1 assets/art/ui/weapons/horizontal-hammer.png"
+dest_files=["res://.godot/imported/horizontal-hammer.png-1eb0f932d2fe4f4ae85051e3b4b40a70.ctex"]
 
 [params]
 

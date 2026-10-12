@@ -3,11 +3,9 @@ extends Control
 const health_icon = preload("uid://b5m36i1cyrvs8")
 const health_icon_used = preload("uid://c32p5tt3tijbu")
 
-const move_icon = preload("uid://ba3p4xkleu16q")
-const move_icon_used = preload("uid://bq1rbfcvjbdwa")
+const move_icon_used = preload("uid://bs07rvx8acl1r")
 
-const attack_icon = preload("uid://68rolvwokb64")
-const attack_icon_used = preload("uid://wsslysm1iufd")
+const attack_icon_used = preload("uid://dhsnyd16t61qp")
 
 var attack_icons: Dictionary = {
 	"diagonal": preload("uid://d30hood7b3jia"),
@@ -18,6 +16,15 @@ var attack_icons: Dictionary = {
 	"all_horizontals": preload("uid://b4fj23dssqgx4"),
 	"attack": preload("uid://b4fj23dssqgx4"),
 }
+
+var health_icon_animated = preload("uid://cn65pyff78c3n")
+var attack_icon_animated = preload("uid://dvem5fcvpnvuh")
+var move_icon_animated = preload("uid://bh4jbss3p34a4")
+
+var heart_loss_frame_length = 1.0 / 12.0
+var attack_idle_frame_length = 1.0 / 5.0
+var moves_idle_frame_length = 1.0 / 5.0
+
 
 func _ready() -> void:
 	GameState.health_left_changed.connect(_change_health_left)
@@ -40,29 +47,45 @@ func _ready() -> void:
 
 	GameState.max_attacks = GameState.max_attacks
 	GameState.attacks_left = GameState.attacks_left
-
+	
+	animate_attack_icon(0)
+	animate_move_icon(0)
+	
 func _change_moves_left():
 	if GameState.moves_left == GameState.max_moves:
 		for child in %Moves.get_children():
-			child.texture = move_icon
+			child.texture = AtlasTexture.new()
+			child.texture.atlas = move_icon_animated
+			child.texture.region = Rect2(0,0,16,16)
 	if GameState.moves_left < GameState.max_moves:
 		if %Moves.get_child(GameState.max_moves - GameState.moves_left - 1) != null:
 			%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
 	if GameState.moves_left == 0:
 		RoundManager.start_attack_phase()
+		
+func animate_move_icon(frame: int):
+	frame = frame % 3
+	for node in %Moves.get_children():
+		node.texture.region = Rect2(frame * 16, 0, 16, 16)
+	await get_tree().create_timer(moves_idle_frame_length).timeout
+	animate_move_icon(frame + 1)
 	
 func _change_max_moves():
 	for node in %Moves.get_children():
 		node.queue_free()
 	for count in GameState.max_moves:
-		var moves = TextureRect.new()
-		moves.texture = move_icon
-		%Moves.add_child(moves)
+		var move = TextureRect.new()
+		var texture = AtlasTexture.new()
+		texture.atlas = attack_icon_animated
+		move.texture = move
+		%Moves.add_child(move)
 
 func _change_attacks_left():
 	if GameState.attacks_left == GameState.max_attacks:
 		for child in %Attacks.get_children():
-			child.texture = attack_icon
+			child.texture = AtlasTexture.new()
+			child.texture.atlas = attack_icon_animated
+			child.texture.region = Rect2(0,0,16,16)
 	if GameState.attacks_left < GameState.max_attacks:
 		GameState.damage_enemies()
 		if %Attacks.get_child(GameState.max_attacks - GameState.attacks_left - 1) != null:
@@ -70,12 +93,21 @@ func _change_attacks_left():
 	if GameState.attacks_left == 0:
 		RoundManager.start_enemy_attack_phase()
 	
+func animate_attack_icon(frame: int):
+	frame = frame % 8
+	for node in %Attacks.get_children():
+		node.texture.region = Rect2(frame * 16, 0, 16, 16)
+	await get_tree().create_timer(attack_idle_frame_length).timeout
+	animate_attack_icon(frame + 1)
+	
 func _change_max_attacks():
 	for node in %Attacks.get_children():
 		node.queue_free()
 	for count in GameState.max_attacks:
 		var attack = TextureRect.new()
-		attack.texture = attack_icon
+		var texture = AtlasTexture.new()
+		texture.atlas = attack_icon_animated
+		attack.texture = texture
 		%Attacks.add_child(attack)
 	
 func _change_health_left():
@@ -84,9 +116,18 @@ func _change_health_left():
 			child.texture = health_icon
 	if GameState.health_left < GameState.max_health:
 		if %Health.get_child(GameState.max_health - GameState.health_left - 1) != null:
-			%Health.get_child(GameState.max_health - GameState.health_left - 1).texture = health_icon_used
+			play_health_loss_animation(%Health.get_child(GameState.max_health - GameState.health_left - 1))
 	if GameState.health_left == 0:
 		RoundManager.change_scene_to_menu()
+	
+func play_health_loss_animation(node: Node):
+	for row in 4:
+		for col in 3:
+			var texture = AtlasTexture.new()
+			texture.atlas = health_icon_animated
+			texture.region = Rect2(16 * col, 16 * row, 16, 16)
+			node.texture = texture
+			await get_tree().create_timer(heart_loss_frame_length).timeout
 	
 func _change_max_health():
 	for node in %Health.get_children():

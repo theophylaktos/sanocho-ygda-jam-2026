@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwn8ypto7o7jl"
-path="res://.godot/imported/spear.png-cfcd0dcd2b217f61842be50e1649d93f.ctex"
+uid="uid://bhut60woybcnx"
+path="res://.godot/imported/heart-container.png-a072472843c8d605ea04d3022734e891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/spear.png"
-dest_files=["res://.godot/imported/spear.png-cfcd0dcd2b217f61842be50e1649d93f.ctex"]
+source_file="res://1 assets/art/ui/items/heart-container.png"
+dest_files=["res://.godot/imported/heart-container.png-a072472843c8d605ea04d3022734e891.ctex"]
 
 [params]
 

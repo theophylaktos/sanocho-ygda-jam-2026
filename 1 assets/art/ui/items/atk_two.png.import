@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2hshq4wc3crf"
-path="res://.godot/imported/bow-two-arrows.png-999ecbf872ae6ccf47ebf3832be0f221.ctex"
+uid="uid://v24kksj3gc81"
+path="res://.godot/imported/atk_two.png-ed5ec8271e16aa599a6e07943ab831e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/bow-two-arrows.png"
-dest_files=["res://.godot/imported/bow-two-arrows.png-999ecbf872ae6ccf47ebf3832be0f221.ctex"]
+source_file="res://1 assets/art/ui/items/atk_two.png"
+dest_files=["res://.godot/imported/atk_two.png-ed5ec8271e16aa599a6e07943ab831e4.ctex"]
 
 [params]
 

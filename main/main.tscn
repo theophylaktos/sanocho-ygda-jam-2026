@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://b3j75vuo2n56a" path="res://main/main.gd" id="1_kfbq2"]
 [ext_resource type="Texture2D" uid="uid://dntwcxptij5q1" path="res://1 assets/art/backgrounds/grass_bg.png" id="2_4dugh"]
 [ext_resource type="PackedScene" uid="uid://c66vu3d2k881i" path="res://level/level.tscn" id="3_xwkvk"]
-[ext_resource type="Texture2D" uid="uid://ba3p4xkleu16q" path="res://1 assets/programmer_art/move_icon.png" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://dy8kdfo4ueb6i" path="res://main/ui.gd" id="5_67ri8"]
-[ext_resource type="Texture2D" uid="uid://b5m36i1cyrvs8" path="res://1 assets/art/ui/health.png" id="6_0i4oc"]
-[ext_resource type="Texture2D" uid="uid://68rolvwokb64" path="res://1 assets/programmer_art/attack_icon.png" id="6_67ri8"]
+[ext_resource type="Texture2D" uid="uid://b5m36i1cyrvs8" path="res://1 assets/art/ui/icons/health.png" id="6_0i4oc"]
+[ext_resource type="Texture2D" uid="uid://bh4jbss3p34a4" path="res://1 assets/art/ui/icons/move_icon.png" id="8_n3o0a"]
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
+[ext_resource type="Texture2D" uid="uid://dvem5fcvpnvuh" path="res://1 assets/art/ui/icons/attack_icon.png" id="9_n3o0a"]
 [ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="10_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
@@ -21,6 +21,14 @@
 shader = ExtResource("9_grrlh")
 shader_parameter/pixel_size = 10
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3o0a"]
+atlas = ExtResource("8_n3o0a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amlcg"]
+atlas = ExtResource("9_n3o0a")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_73k8k"]
 atlas = ExtResource("12_na0o7")
 region = Rect2(0, 0, 32, 32)
@@ -29,7 +37,7 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("12_na0o7")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3o0a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue0mw"]
 atlas = ExtResource("12_na0o7")
 region = Rect2(64, 0, 32, 32)
 
@@ -115,7 +123,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5xyti")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n3o0a")
+"texture": SubResource("AtlasTexture_ue0mw")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s758e")
@@ -227,7 +235,7 @@ alignment = 2
 
 [node name="Heart" type="TextureRect" parent="UI/Health" unique_id=393814255]
 layout_mode = 2
-texture = ExtResource("6_0i4oc")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Heart2" type="TextureRect" parent="UI/Health" unique_id=304222132]
@@ -260,17 +268,17 @@ alignment = 2
 
 [node name="Move" type="TextureRect" parent="UI/Moves" unique_id=484487003]
 layout_mode = 2
-texture = ExtResource("5_4dugh")
+texture = SubResource("AtlasTexture_n3o0a")
 stretch_mode = 5
 
 [node name="Move1" type="TextureRect" parent="UI/Moves" unique_id=665290958]
 layout_mode = 2
-texture = ExtResource("5_4dugh")
+texture = SubResource("AtlasTexture_n3o0a")
 stretch_mode = 5
 
 [node name="Move2" type="TextureRect" parent="UI/Moves" unique_id=2026849405]
 layout_mode = 2
-texture = ExtResource("5_4dugh")
+texture = SubResource("AtlasTexture_n3o0a")
 stretch_mode = 5
 
 [node name="Attacks" type="HBoxContainer" parent="UI" unique_id=1069732647]
@@ -283,7 +291,7 @@ alignment = 2
 
 [node name="Attack" type="TextureRect" parent="UI/Attacks" unique_id=2072788313]
 layout_mode = 2
-texture = ExtResource("6_67ri8")
+texture = SubResource("AtlasTexture_amlcg")
 stretch_mode = 5
 
 [node name="Weapons" type="HBoxContainer" parent="UI" unique_id=1073725015]
@@ -347,7 +355,6 @@ frame_progress = 0.95289284
 
 [node name="Settings" type="Control" parent="." unique_id=597416382]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15

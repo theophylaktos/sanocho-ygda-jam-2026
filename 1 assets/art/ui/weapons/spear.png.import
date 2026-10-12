@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn65pyff78c3n"
-path="res://.godot/imported/health_drain.png-6f36b6c07fbef006ae9f11a8dfae78dc.ctex"
+uid="uid://bwn8ypto7o7jl"
+path="res://.godot/imported/spear.png-ba995179bbb1ecdb3fba6179bee0cc7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/ui/health_drain.png"
-dest_files=["res://.godot/imported/health_drain.png-6f36b6c07fbef006ae9f11a8dfae78dc.ctex"]
+source_file="res://1 assets/art/ui/weapons/spear.png"
+dest_files=["res://.godot/imported/spear.png-ba995179bbb1ecdb3fba6179bee0cc7d.ctex"]
 
 [params]
 
