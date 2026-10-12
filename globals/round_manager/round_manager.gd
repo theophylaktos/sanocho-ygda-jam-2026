@@ -73,4 +73,30 @@ func start_enemy_attack_phase():
 				if GameState.object_locations[ring][degree] is Player:
 					GameState.object_locations[ring][degree].take_damage(1)
 	
+	start_enemy_move_phase()
+func start_enemy_move_phase():
+	for ring in GameState.segments.size():
+		for degree in GameState.segments[0].size():
+			if(GameState.object_locations[ring][degree] is Enemy and not null):
+				var mover : int=randi_range(0,3)
+				match mover:
+					0:
+						if(ring<2 and GameState.object_locations[ring+1][degree]==null):
+							GameState.position_node(GameState.object_locations[ring][degree], ring+1, degree, 0.5)
+							GameState.update_position(ring,degree,ring+1,degree,GameState.object_locations[ring][degree])
+					1:
+						if(ring>0 and GameState.object_locations[ring-1][degree]==null):
+							GameState.position_node(GameState.object_locations[ring][degree], ring-1, degree, 0.5)
+							GameState.update_position(ring,degree,ring-1,degree,GameState.object_locations[ring][degree])
+					2:
+						if(GameState.object_locations[ring][(degree+1)%8]==null):
+							GameState.position_node(GameState.object_locations[ring][degree], ring, (degree+1)%8, 0.5)
+							GameState.update_position(ring,degree,ring,(degree+1)%8,GameState.object_locations[ring][degree])
+					3:
+						if(GameState.object_locations[ring][(degree-1)%8]==null):
+							GameState.position_node(GameState.object_locations[ring][degree], ring, (degree-1)%8, 0.5)
+							GameState.update_position(ring,degree,ring,(degree-1)%8,GameState.object_locations[ring][degree])
+				print(ring)
+				print(degree)
+	GameState.refresh_enemy_highlights()
 	start_move_phase()
