@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture: hint_screen_texture;
 
-uniform int pixel_size: hint_range(0.0, 100.0);
+uniform int pixel_size;
 
 void fragment() {
 	vec2 texture_size_px = 1.0 / SCREEN_PIXEL_SIZE;

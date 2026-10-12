@@ -19,6 +19,9 @@ var selected_direction: String = "W"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameState.player = self
+	RoundManager.move_phase_started.connect(_move_phase_started)
+	RoundManager.attack_phase_started.connect(_attack_phase_started)
+	RoundManager.enemy_attack_phase_started.connect(_enemy_attack_phase_started)
 
 func _process(_delta: float) -> void:
 	
@@ -111,6 +114,17 @@ func _process(_delta: float) -> void:
 				_rotate_ring(-1)
 			if direction == "Up":
 				_move_in()
+	
+func _move_phase_started():
+	%AnimatedSprite2D.play("move_phase_start_front")
+	await %AnimatedSprite2D.animation_finished
+	%AnimatedSprite2D.play("move_phase_idle_front")
+	
+func _enemy_attack_phase_started():
+	%AnimatedSprite2D.play("idle_front")
+
+func _attack_phase_started():
+	%AnimatedSprite2D.play("idle_front")
 
 func _rotate_ring(amount: int):
 	GameState.moves_left -= 1

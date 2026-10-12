@@ -24,8 +24,8 @@ RoundManager="*uid://bs65uhkg7j7wc"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=240
+window/size/viewport_height=135
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

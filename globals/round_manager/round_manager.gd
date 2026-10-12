@@ -10,6 +10,10 @@ extends Node
 
 signal round_completed
 
+signal move_phase_started
+signal attack_phase_started
+signal enemy_attack_phase_started
+
 func change_scene_to_menu():
 	get_tree().change_scene_to_file("uid://clc5dgdphsk57")
 
@@ -22,9 +26,7 @@ func change_scene_to_shop():
 	get_tree().change_scene_to_file("uid://iy5jea5tf8ka")
 	
 func start_round():
-	current_phase = "Move"
-	GameState.moves_left = GameState.max_moves
-	GameState.attacks_left = GameState.max_attacks
+	start_move_phase()
 	var spawned_positions: Array[Array] = []
 	spawned_positions.resize(3)
 	for i in spawned_positions.size():
@@ -55,17 +57,20 @@ func randomly_spawn_enemy(node: PackedScene, spawned_positions: Array[Array]):
 		randomly_spawn_enemy(node, spawned_positions)
 
 func start_move_phase():
+	move_phase_started.emit()
 	current_phase = "Move"
 	GameState.moves_left = GameState.max_moves
 	GameState.attacks_left = GameState.max_attacks
 
 func start_attack_phase():
+	attack_phase_started.emit()
 	current_phase = "PlayerAttack"
 	GameState.clear_select_ring(0)
 	GameState.clear_select_ring(1)
 	GameState.clear_select_ring(2)
 	
 func start_enemy_attack_phase():
+	enemy_attack_phase_started.emit()
 	current_phase = "EnemyAttack"
 	GameState.clear_all_player_attack_segments()
 	

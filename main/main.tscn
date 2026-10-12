@@ -15,7 +15,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
 shader = ExtResource("9_grrlh")
-shader_parameter/pixel_size = 8
+shader_parameter/pixel_size = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fngjv"]
 
@@ -187,14 +187,12 @@ unique_name_in_owner = true
 position = Vector2(-55, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660505547]
-zoom = Vector2(4, 4)
 
 [node name="Player" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
 unique_name_in_owner = true
 position = Vector2(-54.999996, 0)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1574358632]
-visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_7bva4")
 anchors_preset = 15
