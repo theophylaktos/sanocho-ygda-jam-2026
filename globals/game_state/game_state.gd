@@ -145,7 +145,9 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 		tween.parallel().tween_property(node, "rotation", node.rotation + (degree * (PI / 4)), time)
 	
 	for i in object_locations[ring].size():
-		var node: Node2D = object_locations[ring][i]
+		var node: Node2D
+		if(object_locations[ring][i]!=null):
+			node = object_locations[ring][i]
 		if node != null:# and $node.rotateable == true:
 			GameState.position_node(node, node.ring, (degree + node.degree) % 8, time)
 			#node.rotateable = false
@@ -164,7 +166,7 @@ func _rotate_nodes(ring: int, degree: int):
 			for i in range(1, object_locations[0].size()):
 				object_locations[ring][-i] = object_locations[ring][-i - 1]
 			object_locations[ring][0] = temp
-		if degree < 0:
+		if degree < 0 and object_locations[ring][0]!=null:
 			var temp: Node = object_locations[ring][0]
 			for i in range(0, object_locations[0].size() - 1):
 				object_locations[ring][i] = object_locations[ring][i + 1]
