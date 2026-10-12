@@ -14,9 +14,9 @@ var attack_icons: Dictionary = {
 	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
 	"knight": preload("uid://c2hshq4wc3crf"),
-	"all_diagonals": null,
-	"all_horizontals": null,
-	"attack": null,
+	"all_diagonals": preload("uid://b4fj23dssqgx4"),
+	"all_horizontals": preload("uid://b4fj23dssqgx4"),
+	"attack": preload("uid://b4fj23dssqgx4"),
 }
 
 func _ready() -> void:
