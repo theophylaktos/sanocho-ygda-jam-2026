@@ -61,6 +61,8 @@ func pick_three_valid() -> Array[int]:
 	options.resize(3)
 	var possibility: int=0
 	var position: int = 0
+	var already_sold: Array[bool]
+	already_sold.resize(12)
 	if(GameState.health_left<GameState.max_health):
 		options[0]=0
 		possibility+=1
@@ -74,9 +76,10 @@ func pick_three_valid() -> Array[int]:
 	var current: int
 	while position<3:
 		current = randi_range(0,11)
-		if(items_had[current]==false and (current!=0 or GameState.health_left!=GameState.max_health)):
+		if(items_had[current]==false and (current!=0 or GameState.health_left!=GameState.max_health) and already_sold[current]==false):
 				options[position]=current
 				position+=1
+				already_sold[current]=true
 	return options
 
 func give_item():
@@ -114,19 +117,19 @@ func give_item():
 		4:
 			GameState.max_moves+=1
 		5:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		6:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		7:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		8:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		9:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		10:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 		11:
-			GameState.attacks[replaced] = shop[choice]
+			GameState.attacks[replaced] = shop[choices[choice]]
 
 
 func _on_texture_button_pressed() -> void:
