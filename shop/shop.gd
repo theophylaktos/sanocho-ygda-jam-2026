@@ -8,16 +8,16 @@ var choices: Array[int]
 var textures: Dictionary = {
 	"Heal 2": preload("uid://c822q0w7pcwgj"),
 	"Add Heart": preload("uid://bhut60woybcnx"),
-	"Add Attack": preload("uid://68rolvwokb64"),
+	"Add Attack": preload("uid://c822q0w7pcwgj"),
 	"More Damage": preload("uid://b04xm6fdq5o5l"),
 	"Add Movement": preload("uid://bga5uw67eyhr1"),
 	"diagonal": preload("uid://d30hood7b3jia"),
 	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
 	"knight": preload("uid://c2hshq4wc3crf"),
-	"all_diagonals": preload("uid://b4fj23dssqgx4"),
-	"all_horizontals": preload("uid://b4fj23dssqgx4"),
-	"attack": preload("uid://b4fj23dssqgx4"),
+	"all_diagonals": preload("uid://cskr21f181ur"),
+	"all_horizontals": preload("uid://cop404wtgqx3h"),
+	"attack": preload("uid://b7ptnpwn3k0ni"),
 }
 
 ## array of valid items to sell in a shop: valid=false
@@ -43,10 +43,16 @@ func _ready() -> void:
 	
 	if GameState.attacks[0] != "":
 		%FirstSlot.texture_normal = textures[GameState.attacks[0]]
+	else:
+		%FirstSlot.texture_normal = null
 	if GameState.attacks[1] != "":
 		%SecondSlot.texture_normal = textures[GameState.attacks[1]]
+	else:
+		%SecondSlot.texture_normal = null
 	if GameState.attacks[2] != "":
 		%ThirdSlot.texture_normal = textures[GameState.attacks[2]]
+	else:
+		%ThirdSlot.texture_normal = null
 	var options: Array[int] = [0,1,2]
 	print(options)
 	if textures[shop[options[0]]] != null:
@@ -148,12 +154,20 @@ func _on_third_slot_pressed() -> void:
 
 
 func _on_first_option_pressed() -> void:
-	choice=0
+	choice = 0
+	%FirstOption.material.set_shader_parameter("is_outlined", true)
+	%SecondOption.material.set_shader_parameter("is_outlined", false)
+	%ThirdOption.material.set_shader_parameter("is_outlined", false)
 
 
 func _on_second_option_pressed() -> void:
 	choice=1
-
+	%FirstOption.material.set_shader_parameter("is_outlined", false)
+	%SecondOption.material.set_shader_parameter("is_outlined", true)
+	%ThirdOption.material.set_shader_parameter("is_outlined", false)
 
 func _on_third_option_pressed() -> void:
 	choice=2
+	%FirstOption.material.set_shader_parameter("is_outlined", false)
+	%SecondOption.material.set_shader_parameter("is_outlined", false)
+	%ThirdOption.material.set_shader_parameter("is_outlined", true)

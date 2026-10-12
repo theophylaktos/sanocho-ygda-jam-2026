@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://dv5pe2ovwui3e" path="res://1 assets/programmer_art/pause.png" id="11_n3o0a"]
+[ext_resource type="Texture2D" uid="uid://c1p2whq2ry2tg" path="res://1 assets/art/ui/button-frame.png" id="11_s758e"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
 [ext_resource type="Script" uid="uid://b3k8q7ixdb81p" path="res://main/settings.gd" id="14_n3o0a"]
 [ext_resource type="Texture2D" uid="uid://dkip77ml57osf" path="res://1 assets/programmer_art/exit.png" id="15_s758e"]
@@ -28,6 +29,8 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_amlcg"]
 atlas = ExtResource("9_n3o0a")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73k8k"]
 atlas = ExtResource("12_na0o7")
@@ -299,7 +302,7 @@ layout_mode = 0
 offset_left = 134.0
 offset_top = 64.0
 offset_right = 242.0
-offset_bottom = 158.0
+offset_bottom = 97.5
 size_flags_horizontal = 3
 
 [node name="Weapon1Button" type="TextureButton" parent="UI/Weapons" unique_id=1925779258]
@@ -317,19 +320,50 @@ unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
-[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=899507074]
+[node name="SkipButtonNinePatch" type="NinePatchRect" parent="UI" unique_id=569923079]
 layout_mode = 0
-offset_left = 116.0
+offset_left = 123.0
+offset_top = 99.0
+offset_right = 165.0
+offset_bottom = 130.0
+texture = ExtResource("11_s758e")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="SubmitButtonNinePatch" type="NinePatchRect" parent="UI" unique_id=1871434284]
+layout_mode = 0
+offset_left = 170.0
 offset_top = 99.0
 offset_right = 237.0
 offset_bottom = 130.0
+texture = ExtResource("11_s758e")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
-[node name="SkipButton" type="Button" parent="UI/Buttons" unique_id=2138842112]
-layout_mode = 2
+[node name="SkipButton" type="Button" parent="UI" unique_id=2138842112]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 98.5
+offset_right = 163.0
+offset_bottom = 129.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bva4")
 text = "skip"
 
-[node name="SubmitButton" type="Button" parent="UI/Buttons" unique_id=660376527]
-layout_mode = 2
+[node name="SubmitButton" type="Button" parent="UI" unique_id=660376527]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 98.5
+offset_right = 237.0
+offset_bottom = 129.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7bva4")
 text = "sbmt atk"
 
 [node name="Escape" type="TextureButton" parent="UI" unique_id=764740718]
@@ -424,8 +458,8 @@ offset_bottom = 116.0
 [connection signal="pressed" from="UI/Weapons/Weapon1Button" to="UI" method="_on_weapon_1_button_pressed"]
 [connection signal="pressed" from="UI/Weapons/Weapon2Button" to="UI" method="_on_weapon_2_button_pressed"]
 [connection signal="pressed" from="UI/Weapons/Weapon3Button" to="UI" method="_on_weapon_3_button_pressed"]
-[connection signal="pressed" from="UI/Buttons/SkipButton" to="UI" method="_on_skip_button_pressed"]
-[connection signal="pressed" from="UI/Buttons/SubmitButton" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/SkipButton" to="UI" method="_on_skip_button_pressed"]
+[connection signal="pressed" from="UI/SubmitButton" to="UI" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Escape" to="UI" method="_on_escape_pressed"]
 [connection signal="pressed" from="Settings/Return" to="Settings" method="_on_return_pressed"]
 [connection signal="pressed" from="Settings/Exit" to="Settings" method="_on_exit_pressed"]
