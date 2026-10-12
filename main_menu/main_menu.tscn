@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clc5dgdphsk57"]
 
 [ext_resource type="Script" uid="uid://bvs544ki7vv48" path="res://main_menu/main_menu.gd" id="1_oa53l"]
+[ext_resource type="Texture2D" uid="uid://w1j6qk5alwtr" path="res://1 assets/art/backgrounds/pause_screen.png" id="2_d3a7t"]
 
 [node name="MainMenu" type="Control" unique_id=1458588434]
 layout_mode = 3
@@ -31,6 +32,11 @@ text = "SETTIGN"
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="PauseScreen" type="Sprite2D" parent="." unique_id=894706700]
+position = Vector2(960, 270)
+scale = Vector2(4, 4)
+texture = ExtResource("2_d3a7t")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
