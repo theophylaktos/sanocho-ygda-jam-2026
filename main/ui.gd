@@ -1,13 +1,23 @@
 extends Control
 
-const health_icon = preload("uid://dcq2kl2rd745w")
-const health_icon_used = preload("uid://d3d2wdudp08kk")
+const health_icon = preload("uid://b5m36i1cyrvs8")
+const health_icon_used = preload("uid://c32p5tt3tijbu")
 
 const move_icon = preload("uid://ba3p4xkleu16q")
 const move_icon_used = preload("uid://bq1rbfcvjbdwa")
 
 const attack_icon = preload("uid://68rolvwokb64")
 const attack_icon_used = preload("uid://wsslysm1iufd")
+
+var attack_icons: Dictionary = {
+	"all_diagonals": preload("uid://dncfsm8ae3hpp"),
+	"all_horizontals": preload("uid://wbgcybg6wl7w"),
+	"attack2": preload("uid://gvjrsb5poe8o"),
+	"attack4": preload("uid://nblycygllhr7"),
+	"attack": preload("uid://b4fj23dssqgx4"),
+	"diagonal": preload("uid://bsmxo5kxe8e4u"),
+	"knight": preload("uid://vkx6oum5e4pm"),
+}
 
 func _ready() -> void:
 	GameState.health_left_changed.connect(_change_health_left)
@@ -18,7 +28,8 @@ func _ready() -> void:
 
 	GameState.attacks_left_changed.connect(_change_attacks_left)
 	GameState.max_attacks_changed.connect(_change_max_attacks)
-
+	
+	GameState.attacks_changed.connect(_attacks_changed)
 
 func _change_moves_left():
 	if GameState.moves_left == GameState.max_moves:
@@ -90,6 +101,14 @@ func _on_weapon_1_button_pressed() -> void:
 func _on_weapon_2_button_pressed() -> void:
 	pass # Replace with function body.
 
-
 func _on_weapon_3_button_pressed() -> void:
 	pass # Replace with function body.
+	
+func _attacks_changed() -> void:
+	print("what the frig")
+	if attack_icons[GameState.attacks[0]] != null:
+		%Weapon1Button.texture = attack_icons[GameState.attacks[0]]
+	if attack_icons[GameState.attacks[1]] != null:
+		%Weapon1Button.texture = attack_icons[GameState.attacks[1]]
+	if attack_icons[GameState.attacks[2]] != null:
+		%Weapon1Button.texture = attack_icons[GameState.attacks[2]]
