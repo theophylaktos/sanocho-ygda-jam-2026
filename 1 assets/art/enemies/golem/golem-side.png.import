@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbcnlmanbocv"
-path="res://.godot/imported/golem-side.png-93f15768b84bc1e18be930e5a69a46bc.ctex"
+path="res://.godot/imported/golem-side.png-90c99d6638cd8bb548e57d32da90cb39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/enemies/golem-side.png"
-dest_files=["res://.godot/imported/golem-side.png-93f15768b84bc1e18be930e5a69a46bc.ctex"]
+source_file="res://1 assets/art/enemies/golem/golem-side.png"
+dest_files=["res://.godot/imported/golem-side.png-90c99d6638cd8bb548e57d32da90cb39.ctex"]
 
 [params]
 

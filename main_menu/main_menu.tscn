@@ -3,6 +3,28 @@
 [ext_resource type="Script" uid="uid://bvs544ki7vv48" path="res://main_menu/main_menu.gd" id="1_oa53l"]
 [ext_resource type="Texture2D" uid="uid://w1j6qk5alwtr" path="res://1 assets/art/backgrounds/pause_screen.png" id="2_d3a7t"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3a7t"]
+atlas = ExtResource("2_d3a7t")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3shxk"]
+atlas = ExtResource("2_d3a7t")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bva4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3a7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3shxk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control" unique_id=1458588434]
 layout_mode = 3
 anchors_preset = 15
@@ -11,6 +33,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa53l")
+
+[node name="PauseScreen" type="AnimatedSprite2D" parent="." unique_id=469727042]
+position = Vector2(480, 270)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_7bva4")
+autoplay = "default"
 
 [node name="PlayButton" type="Button" parent="." unique_id=88246534]
 layout_mode = 0
@@ -33,10 +61,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PauseScreen" type="Sprite2D" parent="." unique_id=894706700]
-position = Vector2(960, 270)
-scale = Vector2(4, 4)
-texture = ExtResource("2_d3a7t")
-
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

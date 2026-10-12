@@ -58,16 +58,8 @@ func highlight_attack():
 	return
 
 func attack():
-	for attack in attacks["attack"]:
-		var v = attack
-		if ring + v.x >= 0 and ring + v.x <= 2:
-			var new_y: int = degree + v.y
-			if new_y < 0:
-				new_y = 8 + new_y
-			new_y = new_y % 8
-			if GameState.object_locations[ring + v.x][new_y] == GameState.player:
-				GameState.health_left -= 1
 	is_attacking = true
+	print("grrr attck")
 	if degree == 7 or degree == 0:
 		animated_sprite_2d.play("attack_right")
 	if degree == 1 or degree == 2:
@@ -78,6 +70,7 @@ func attack():
 		animated_sprite_2d.play("attack_front")
 	await animated_sprite_2d.animation_finished
 	is_attacking = false
+
 func take_damage(damage: int):
 	health -= damage
 	if(health <= 0):

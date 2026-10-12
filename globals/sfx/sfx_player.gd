@@ -27,7 +27,8 @@ extends Node
 # Optionally, append a comment (##) after each id to describe where it is used
 ## List of all sounds. Add a new id here when you add a new sound.
 enum Id {
-	YOUR_ID,
+	BUTTON_HOVER,
+	BUTTON_PRESS,
 }
 
 const PRINT_DEBUG_MESSAGES: bool = false
@@ -39,7 +40,7 @@ var counter: int = 0
 ## A dictionary storing ids from [code]SFX.Id[/code] and the associated [code]sfx_settings.gd[/code]
 @export var id_to_setting: Dictionary[Id, SfxSettings]
 
-const SFX_PLAYER_SETTINGS = preload("uid://d1mff478o3ug3")
+const SFX_PLAYER_SETTINGS = preload("uid://j5v01dcmsryo")
 
 ## [b]Play a sound in a new [AudioStreamPlayer], as defined by [param id]. [br]
 ## [br]

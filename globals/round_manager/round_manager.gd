@@ -94,7 +94,10 @@ func start_enemy_attack_phase():
 				if GameState.object_locations[ring][degree] != null:
 					if GameState.object_locations[ring][degree] is Player:
 						GameState.object_locations[ring][degree].take_damage(1)
-	
+			if GameState.object_locations[ring][degree] is Enemy:
+				GameState.object_locations[ring][degree].attack()
+
+	await get_tree().create_timer(1.5).timeout
 	start_enemy_move_phase()
 	
 func start_enemy_move_phase():

@@ -1,7 +1,26 @@
 [gd_scene format=3 uid="uid://d1mff478o3ug3"]
 
 [ext_resource type="Script" uid="uid://lgdy71js6lx2" path="res://globals/sfx/sfx_player.gd" id="1_blmy5"]
+[ext_resource type="Script" uid="uid://ctasdanoh6yrq" path="res://globals/sfx/id_settings.gd" id="2_qrh1g"]
+[ext_resource type="AudioStream" uid="uid://cnympjhtcw4h8" path="res://1 assets/sounds/sfx/button_hover.wav" id="3_e4rca"]
+[ext_resource type="AudioStream" uid="uid://fo8xh6kuqo5f" path="res://1 assets/sounds/sfx/button_click.mp3" id="4_e4rca"]
+
+[sub_resource type="Resource" id="Resource_blmy5"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("3_e4rca")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_d3a7t"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("4_e4rca")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
 [node name="SfxPlayer" type="Node" unique_id=1790965844]
 process_mode = 3
 script = ExtResource("1_blmy5")
+id_to_setting = Dictionary[int, ExtResource("2_qrh1g")]({
+0: SubResource("Resource_blmy5"),
+1: SubResource("Resource_d3a7t")
+})

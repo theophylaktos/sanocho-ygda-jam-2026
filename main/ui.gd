@@ -140,8 +140,7 @@ func _change_max_health():
 		%Health.add_child(heart)
 
 
-func _on_button_pressed() -> void:
-	print(GameState.count_player_attacked_segments())
+func _on_submit_button_pressed() -> void:
 	if GameState.count_player_attacked_segments() > 0:
 		GameState.attacks_left -= 1
 
@@ -181,3 +180,11 @@ func _attacks_changed() -> void:
 func _on_escape_pressed() -> void:
 	%Settings.visible = true
 	GameState.settings_open = true
+
+
+func _on_button_pressed() -> void:
+	SFX.play(SFX.Id.BUTTON_PRESS)
+
+
+func _on_button_entered() -> void:
+	SFX.play(SFX.Id.BUTTON_HOVER)
