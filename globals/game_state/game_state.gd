@@ -23,10 +23,16 @@ var music_volume: float = 0.7
 var sfx_volume: float = 0.4
 var ambience_volume:float = 0.4
 
-var attacks: Array[String]=["attack","",""]:
+var attacks: Array[String]=["attack","attack2",""]:
 	set(new_value):
 		attacks = new_value
 		attacks_changed.emit()
+
+signal selected_attack_changed
+var selected_attack: String = "attack":
+	set(new_value):
+		selected_attack = new_value
+		selected_attack_changed.emit()
 
 var damage: int=1
 

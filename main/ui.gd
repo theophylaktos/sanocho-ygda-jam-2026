@@ -95,13 +95,13 @@ func _on_skip_button_pressed() -> void:
 
 
 func _on_weapon_1_button_pressed() -> void:
-	pass # Replace with function body.
+	GameState.selected_attack = GameState.attacks[0]
 
 func _on_weapon_2_button_pressed() -> void:
-	pass # Replace with function body.
+	GameState.selected_attack = GameState.attacks[1]
 
 func _on_weapon_3_button_pressed() -> void:
-	pass # Replace with function body.
+	GameState.selected_attack = GameState.attacks[2]
 	
 func _attacks_changed() -> void:
 	if attack_icons.get(GameState.attacks[0]) != null:

@@ -23,6 +23,8 @@ func _ready() -> void:
 	RoundManager.attack_phase_started.connect(_attack_phase_started)
 	RoundManager.enemy_attack_phase_started.connect(_enemy_attack_phase_started)
 	RoundManager.round_completed.connect(_round_completed)
+	
+	GameState.selected_attack_changed.connect(_selected_attack_changed)
 
 func _process(_delta: float) -> void:
 	
@@ -143,9 +145,9 @@ func _rotate_ring(amount: int):
 func toggle():
 	GameState.clear_all_player_attack_segments()
 	
-	for i in AttackPatterns.attack_patterns["attack"].size():
-		var x = AttackPatterns.attack_patterns["attack"][i].x
-		var y = AttackPatterns.attack_patterns["attack"][i].y
+	for i in AttackPatterns.attack_patterns[GameState.selected_attack].size():
+		var x = AttackPatterns.attack_patterns[GameState.selected_attack][i].x
+		var y = AttackPatterns.attack_patterns[GameState.selected_attack  ][i].y
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(ring, degree) + Vector2i(x, y),
@@ -238,3 +240,6 @@ func _move_out():
 
 func take_damage(damage: int):
 	GameState.health_left -= damage
+	
+func _selected_attack_changed():
+	toggle()
