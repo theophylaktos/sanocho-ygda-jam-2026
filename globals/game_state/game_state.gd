@@ -14,7 +14,12 @@ var enemies_folder: Node
 
 var center: Vector2 = Vector2(-55, 0)
 
-var attacks: Array[String]=["attack","",""]
+signal attacks_changed
+
+var attacks: Array[String]=["attack","",""]:
+	set(new_value):
+		attacks = new_value
+		attacks_changed.emit()
 
 var damage: int=1
 

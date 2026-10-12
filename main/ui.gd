@@ -30,6 +30,7 @@ func _ready() -> void:
 	GameState.max_attacks_changed.connect(_change_max_attacks)
 	
 	GameState.attacks_changed.connect(_attacks_changed)
+	GameState.attacks_changed.emit()
 
 func _change_moves_left():
 	if GameState.moves_left == GameState.max_moves:
@@ -105,10 +106,9 @@ func _on_weapon_3_button_pressed() -> void:
 	pass # Replace with function body.
 	
 func _attacks_changed() -> void:
-	print("what the frig")
-	if attack_icons[GameState.attacks[0]] != null:
-		%Weapon1Button.texture = attack_icons[GameState.attacks[0]]
-	if attack_icons[GameState.attacks[1]] != null:
-		%Weapon1Button.texture = attack_icons[GameState.attacks[1]]
-	if attack_icons[GameState.attacks[2]] != null:
-		%Weapon1Button.texture = attack_icons[GameState.attacks[2]]
+	if attack_icons.get(GameState.attacks[0]) != null:
+		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[0]]
+	if attack_icons.get(GameState.attacks[1]) != null:
+		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[1]]
+	if attack_icons.get(GameState.attacks[2]) != null:
+		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[2]]
