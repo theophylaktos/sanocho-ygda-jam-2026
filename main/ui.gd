@@ -66,7 +66,8 @@ func _change_moves_left():
 func animate_move_icon(frame: int):
 	frame = frame % 3
 	for node in %Moves.get_children():
-		node.texture.region = Rect2(frame * 16, 0, 16, 16)
+		if node.texture is AtlasTexture:
+			node.texture.region = Rect2(frame * 16, 0, 16, 16)
 	await get_tree().create_timer(moves_idle_frame_length).timeout
 	animate_move_icon(frame + 1)
 	
@@ -96,7 +97,8 @@ func _change_attacks_left():
 func animate_attack_icon(frame: int):
 	frame = frame % 8
 	for node in %Attacks.get_children():
-		node.texture.region = Rect2(frame * 16, 0, 16, 16)
+		if node.texture is AtlasTexture:
+			node.texture.region = Rect2(frame * 16, 0, 16, 16)
 	await get_tree().create_timer(attack_idle_frame_length).timeout
 	animate_attack_icon(frame + 1)
 	
@@ -139,7 +141,9 @@ func _change_max_health():
 
 
 func _on_button_pressed() -> void:
-	GameState.attacks_left -= 1
+	print(GameState.count_player_attacked_segments())
+	if GameState.count_player_attacked_segments() > 0:
+		GameState.attacks_left -= 1
 
 
 func _on_skip_button_pressed() -> void:

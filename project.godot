@@ -25,6 +25,7 @@ SFX="*uid://d1mff478o3ug3"
 GameState="*uid://c1svxnqyb4xtj"
 AttackPatterns="*uid://dxo02u5xgplfm"
 RoundManager="*uid://bs65uhkg7j7wc"
+Reset="*uid://bx16gwrt1j08v"
 
 [display]
 

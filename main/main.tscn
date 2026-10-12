@@ -355,6 +355,7 @@ frame_progress = 0.95289284
 
 [node name="Settings" type="Control" parent="." unique_id=597416382]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15

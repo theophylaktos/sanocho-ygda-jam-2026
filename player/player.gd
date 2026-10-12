@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 		if RoundManager.current_phase == "Move":
 			if GameState.moves_left <= 0:
 				return
-		
+			
 			if direction == "Right":
 				_move_in()
 			if direction == "Down":

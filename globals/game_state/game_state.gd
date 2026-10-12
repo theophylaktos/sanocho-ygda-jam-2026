@@ -34,7 +34,7 @@ var selected_attack: String = "attack":
 		selected_attack = new_value
 		selected_attack_changed.emit()
 
-var damage: int=1
+var damage: int = 1
 
 signal max_health_changed
 @export var max_health = 5:
@@ -166,7 +166,7 @@ func _rotate_nodes(ring: int, degree: int):
 			for i in range(1, object_locations[0].size()):
 				object_locations[ring][-i] = object_locations[ring][-i - 1]
 			object_locations[ring][0] = temp
-		if degree < 0 and object_locations[ring][0]!=null:
+		if degree < 0:
 			var temp: Node = object_locations[ring][0]
 			for i in range(0, object_locations[0].size() - 1):
 				object_locations[ring][i] = object_locations[ring][i + 1]
@@ -242,6 +242,15 @@ func count_enemies() -> int:
 			if object_locations[ring][degree] != null:
 				if object_locations[ring][degree] is Enemy:
 					count += 1
+	return count
+	
+func count_player_attacked_segments() -> int:
+	var count: int = 0
+	for ring in segments.size():
+		for degree in segments[0].size():
+			var material: ShaderMaterial = segments[ring][degree].get_material()
+			if material.get_shader_parameter("player_attack_enabled") == true:
+				count += 1
 	return count
 
 func refresh_enemy_highlights():
