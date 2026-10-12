@@ -12,9 +12,9 @@ var attack_icons: Dictionary = {
 	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
 	"knight": preload("uid://c2hshq4wc3crf"),
-	"all_diagonals": preload("uid://b4fj23dssqgx4"),
-	"all_horizontals": preload("uid://b4fj23dssqgx4"),
-	"attack": preload("uid://b4fj23dssqgx4"),
+	"all_diagonals": preload("uid://cskr21f181ur"),
+	"all_horizontals": preload("uid://cop404wtgqx3h"),
+	"attack": preload("uid://b7ptnpwn3k0ni"),
 }
 
 var health_icon_animated = preload("uid://cn65pyff78c3n")
@@ -153,12 +153,21 @@ func _on_skip_button_pressed() -> void:
 
 func _on_weapon_1_button_pressed() -> void:
 	GameState.selected_attack = GameState.attacks[0]
+	%Weapon1Button.material.set_shader_parameter("is_outlined", true)
+	%Weapon2Button.material.set_shader_parameter("is_outlined", false)
+	%Weapon3Button.material.set_shader_parameter("is_outlined", false)
 
 func _on_weapon_2_button_pressed() -> void:
 	GameState.selected_attack = GameState.attacks[1]
+	%Weapon1Button.material.set_shader_parameter("is_outlined", false)
+	%Weapon2Button.material.set_shader_parameter("is_outlined", true)
+	%Weapon3Button.material.set_shader_parameter("is_outlined", true)
 
 func _on_weapon_3_button_pressed() -> void:
 	GameState.selected_attack = GameState.attacks[2]
+	%Weapon1Button.material.set_shader_parameter("is_outlined", false)
+	%Weapon2Button.material.set_shader_parameter("is_outlined", false)
+	%Weapon3Button.material.set_shader_parameter("is_outlined", true)
 	
 func _attacks_changed() -> void:
 	if attack_icons.get(GameState.attacks[0]) != null:

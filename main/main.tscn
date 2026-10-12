@@ -9,13 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://bh4jbss3p34a4" path="res://1 assets/art/ui/icons/move_icon.png" id="8_n3o0a"]
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
 [ext_resource type="Texture2D" uid="uid://dvem5fcvpnvuh" path="res://1 assets/art/ui/icons/attack_icon.png" id="9_n3o0a"]
+[ext_resource type="Shader" uid="uid://vg6ttht4lrbf" path="res://shop/outline.gdshader" id="10_4hmqs"]
 [ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="10_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
-[ext_resource type="Texture2D" uid="uid://dv5pe2ovwui3e" path="res://1 assets/programmer_art/pause.png" id="11_n3o0a"]
-[ext_resource type="Texture2D" uid="uid://c1p2whq2ry2tg" path="res://1 assets/art/ui/button-frame.png" id="11_s758e"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
+[ext_resource type="Texture2D" uid="uid://cs37q8yaj3dem" path="res://1 assets/art/ui/skip_move.png" id="12_piupu"]
+[ext_resource type="Texture2D" uid="uid://cbf4s6ae8jy1l" path="res://1 assets/art/ui/confirm_attack.png" id="13_q0sk7"]
 [ext_resource type="Script" uid="uid://b3k8q7ixdb81p" path="res://main/settings.gd" id="14_n3o0a"]
+[ext_resource type="Texture2D" uid="uid://bmrrxtxmejvqb" path="res://1 assets/art/ui/icons/pause-button.png" id="14_piupu"]
 [ext_resource type="Texture2D" uid="uid://dkip77ml57osf" path="res://1 assets/programmer_art/exit.png" id="15_s758e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
@@ -30,7 +32,20 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("9_n3o0a")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s758e"]
+shader = ExtResource("10_4hmqs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hmqs"]
+shader = ExtResource("10_4hmqs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_piupu"]
+shader = ExtResource("10_4hmqs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73k8k"]
 atlas = ExtResource("12_na0o7")
@@ -299,80 +314,53 @@ stretch_mode = 5
 
 [node name="Weapons" type="HBoxContainer" parent="UI" unique_id=1073725015]
 layout_mode = 0
-offset_left = 134.0
+offset_left = 130.0
 offset_top = 64.0
-offset_right = 242.0
+offset_right = 238.0
 offset_bottom = 97.5
 size_flags_horizontal = 3
 
 [node name="Weapon1Button" type="TextureButton" parent="UI/Weapons" unique_id=1925779258]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_s758e")
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
 [node name="Weapon2Button" type="TextureButton" parent="UI/Weapons" unique_id=14622135]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4hmqs")
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
 [node name="Weapon3Button" type="TextureButton" parent="UI/Weapons" unique_id=19525765]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_piupu")
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
-[node name="SkipButtonNinePatch" type="NinePatchRect" parent="UI" unique_id=569923079]
-layout_mode = 0
-offset_left = 123.0
-offset_top = 99.0
-offset_right = 165.0
-offset_bottom = 130.0
-texture = ExtResource("11_s758e")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="SubmitButtonNinePatch" type="NinePatchRect" parent="UI" unique_id=1871434284]
-layout_mode = 0
-offset_left = 170.0
-offset_top = 99.0
-offset_right = 237.0
-offset_bottom = 130.0
-texture = ExtResource("11_s758e")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="SkipButton" type="Button" parent="UI" unique_id=2138842112]
+[node name="SkipButton" type="TextureButton" parent="UI" unique_id=400402974]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 98.5
 offset_right = 163.0
 offset_bottom = 129.5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 11
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7bva4")
-text = "skip"
+texture_normal = ExtResource("12_piupu")
 
-[node name="SubmitButton" type="Button" parent="UI" unique_id=660376527]
+[node name="SubmitButton" type="TextureButton" parent="UI" unique_id=500951425]
 layout_mode = 0
 offset_left = 170.0
 offset_top = 98.5
 offset_right = 237.0
-offset_bottom = 129.5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 11
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7bva4")
-text = "sbmt atk"
+offset_bottom = 130.5
+texture_normal = ExtResource("13_q0sk7")
 
 [node name="Escape" type="TextureButton" parent="UI" unique_id=764740718]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 17.0
-offset_bottom = 17.0
-texture_normal = ExtResource("11_n3o0a")
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 18.0
+offset_bottom = 18.5
+texture_normal = ExtResource("14_piupu")
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
 

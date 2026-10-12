@@ -8,7 +8,7 @@ var choices: Array[int]
 var textures: Dictionary = {
 	"Heal 2": preload("uid://c822q0w7pcwgj"),
 	"Add Heart": preload("uid://bhut60woybcnx"),
-	"Add Attack": preload("uid://c822q0w7pcwgj"),
+	"Add Attack": preload("uid://kxkjsccpf7n6"),
 	"More Damage": preload("uid://b04xm6fdq5o5l"),
 	"Add Movement": preload("uid://bga5uw67eyhr1"),
 	"diagonal": preload("uid://d30hood7b3jia"),
