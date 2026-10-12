@@ -60,14 +60,14 @@ func pick_three_valid() -> Array[int]:
 	var position: int
 	if(GameState.health_left<GameState.max_health):
 		options[0]=0
-		possibility+=2
+		possibility+=1
 		position+=1
 	for bool in items_had:
 		if(bool==false):
 			possibility+=1
-		if(possibility<4):
-			print("Out of stock!")
-			return options
+	if(possibility<4):
+		print("Out of stock!")
+		return options
 	var current: int
 	while position<3:
 		current = randi_range(0,11)
