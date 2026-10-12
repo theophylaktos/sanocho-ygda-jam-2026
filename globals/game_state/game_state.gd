@@ -237,13 +237,15 @@ func count_enemies() -> int:
 	var count: int = 0
 	for ring in object_locations.size():
 		for degree in object_locations[0].size():
-			if object_locations[ring][degree] is Enemy:
-				count += 1
+			if object_locations[ring][degree] != null:
+				if object_locations[ring][degree] is Enemy:
+					count += 1
 	return count
 
 func refresh_enemy_highlights():
 	clear_all_enemy_attack_segments()
 	for r in object_locations.size():
 		for d in object_locations[0].size():
-			if object_locations[r][d] is Enemy:
-				object_locations[r][d].highlight_attack()
+			if object_locations[r][d] != null:
+				if object_locations[r][d] is Enemy:
+					object_locations[r][d].highlight_attack()

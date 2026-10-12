@@ -11,5 +11,5 @@ attack_patterns = Dictionary[String, Array]({
 "attack2": [Vector2i(2, 0)],
 "attack4": [Vector2i(3, 0)],
 "diagonal": [Vector2i(1, 1)],
-"knight": [Vector2i(2, 1), Vector2i(1, 2)]
+"knight": [Vector2i(2, 1), Vector2i(1, 2), null]
 })

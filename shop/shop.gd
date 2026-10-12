@@ -39,7 +39,7 @@ func _ready() -> void:
 	shop[11]="attack"
 	items_had[11]=true
 	
-	choices=pick_three_valid()
+	choices = pick_three_valid()
 	
 	if GameState.attacks[0] != "":
 		%FirstSlot.texture_normal = textures[GameState.attacks[0]]
@@ -101,9 +101,8 @@ func give_item():
 			for attack in shop.size():
 				if(shop[attack]==GameState.attacks[replaced]):
 					items_had[attack]=false
-	print(choice)
-	
-	match choice:
+					
+	match choices[choice]:
 		0:
 			GameState.health_left+=2
 			if(GameState.health_left>GameState.max_health):
@@ -111,7 +110,7 @@ func give_item():
 		1:
 			GameState.max_health+=1
 		2:
-			GameState.max_attacks+=1
+			GameState.max_attacks += 1
 		3:
 			GameState.damage*=2
 		4:
@@ -129,6 +128,7 @@ func give_item():
 		10:
 			GameState.attacks[replaced] = shop[choices[choice]]
 		11:
+			print("hi")
 			GameState.attacks[replaced] = shop[choices[choice]]
 
 

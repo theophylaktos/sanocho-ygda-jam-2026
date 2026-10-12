@@ -31,20 +31,30 @@ func _ready() -> void:
 	
 	GameState.attacks_changed.connect(_attacks_changed)
 	GameState.attacks_changed.emit()
+	
+	GameState.max_health = GameState.max_health
+	GameState.health_left = GameState.health_left
+	
+	GameState.max_moves = GameState.max_moves
+	GameState.moves_left = GameState.moves_left
+
+	GameState.max_attacks = GameState.max_attacks
+	GameState.attacks_left = GameState.attacks_left
 
 func _change_moves_left():
 	if GameState.moves_left == GameState.max_moves:
 		for child in %Moves.get_children():
 			child.texture = move_icon
 	if GameState.moves_left < GameState.max_moves:
-		%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
+		if %Moves.get_child(GameState.max_moves - GameState.moves_left - 1) != null:
+			%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
 	if GameState.moves_left == 0:
 		RoundManager.start_attack_phase()
 	
 func _change_max_moves():
 	for node in %Moves.get_children():
 		node.queue_free()
-	for count in GameState.max_attacks:
+	for count in GameState.max_moves:
 		var moves = TextureRect.new()
 		moves.texture = move_icon
 		%Moves.add_child(moves)
@@ -55,7 +65,8 @@ func _change_attacks_left():
 			child.texture = attack_icon
 	if GameState.attacks_left < GameState.max_attacks:
 		GameState.damage_enemies()
-		%Attacks.get_child(GameState.max_attacks - GameState.attacks_left - 1).texture = attack_icon_used
+		if %Attacks.get_child(GameState.max_attacks - GameState.attacks_left - 1) != null:
+			%Attacks.get_child(GameState.max_attacks - GameState.attacks_left - 1).texture = attack_icon_used
 	if GameState.attacks_left == 0:
 		RoundManager.start_enemy_attack_phase()
 	
@@ -72,7 +83,8 @@ func _change_health_left():
 		for child in %Health.get_children():
 			child.texture = health_icon
 	if GameState.health_left < GameState.max_health:
-		%Health.get_child(GameState.max_health - GameState.health_left - 1).texture = health_icon_used
+		if %Health.get_child(GameState.max_health - GameState.health_left - 1) != null:
+			%Health.get_child(GameState.max_health - GameState.health_left - 1).texture = health_icon_used
 	if GameState.health_left == 0:
 		RoundManager.change_scene_to_menu()
 	
