@@ -82,5 +82,5 @@ func die():
 	self.queue_free()
 	
 func play_attack_sound():
-	if type == "Ghost"
-	
+	if self.type == "Ghost":
+		pass
