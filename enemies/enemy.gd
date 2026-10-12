@@ -80,3 +80,7 @@ func take_damage(damage: int):
 func die():
 	GameState.object_locations[ring][degree] = null
 	self.queue_free()
+	
+func play_attack_sound():
+	if type == "Ghost"
+	

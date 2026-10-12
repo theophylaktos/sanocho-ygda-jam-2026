@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuxhtawjiyi4j"
+path="res://.godot/imported/mushroom_attack.wav-620d504dd8a40ab96030b2856262664d.sample"
+
+[deps]
+
+source_file="res://1 assets/sounds/sfx/mushroom/mushroom_attack.wav"
+dest_files=["res://.godot/imported/mushroom_attack.wav-620d504dd8a40ab96030b2856262664d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

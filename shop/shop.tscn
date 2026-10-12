@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bwc4qn8le42ll" path="res://shop/shop.gd" id="1_r2p71"]
 [ext_resource type="Texture2D" uid="uid://cmucgsum7x5gr" path="res://1 assets/art/shop/shopmenu.png" id="2_2wf2a"]
-[ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="2_givde"]
-[ext_resource type="Texture2D" uid="uid://bsmxo5kxe8e4u" path="res://1 assets/programmer_art/weapons/diagonal.png" id="2_sxvro"]
-[ext_resource type="Texture2D" uid="uid://dvbybg2jd43vn" path="res://1 assets/programmer_art/leave.png" id="4_mrnko"]
 [ext_resource type="Shader" uid="uid://vg6ttht4lrbf" path="res://shop/outline.gdshader" id="5_xad5q"]
+[ext_resource type="Texture2D" uid="uid://bafqxipa4hcox" path="res://1 assets/art/ui/upgrade_background.png" id="6_2wf2a"]
 [ext_resource type="Texture2D" uid="uid://d30hood7b3jia" path="res://1 assets/art/ui/weapons/sword.png" id="6_ljlg5"]
+[ext_resource type="Texture2D" uid="uid://1iobcrs1uqin" path="res://1 assets/art/leave_button.png" id="7_2wf2a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wf2a"]
 shader = ExtResource("5_xad5q")
@@ -66,7 +65,7 @@ offset_left = -44.0
 offset_top = 31.0
 offset_right = -12.0
 offset_bottom = 63.0
-texture_normal = ExtResource("2_sxvro")
+texture_normal = ExtResource("6_ljlg5")
 
 [node name="ThirdOption" type="TextureButton" parent="Options" unique_id=295367526]
 unique_name_in_owner = true
@@ -75,7 +74,7 @@ offset_left = -5.0
 offset_top = 31.0
 offset_right = 27.0
 offset_bottom = 63.0
-texture_normal = ExtResource("2_sxvro")
+texture_normal = ExtResource("6_ljlg5")
 
 [node name="Slots" type="Node" parent="." unique_id=1218747636]
 
@@ -84,7 +83,7 @@ offset_left = 85.0
 offset_top = -39.0
 offset_right = 117.0
 offset_bottom = -7.0
-texture = ExtResource("2_givde")
+texture = ExtResource("6_2wf2a")
 stretch_mode = 5
 
 [node name="SecondSlotBG" type="TextureRect" parent="Slots" unique_id=694676871]
@@ -92,7 +91,7 @@ offset_left = 85.0
 offset_top = -4.0
 offset_right = 117.0
 offset_bottom = 28.0
-texture = ExtResource("2_givde")
+texture = ExtResource("6_2wf2a")
 stretch_mode = 5
 
 [node name="ThirdSlotBG" type="TextureRect" parent="Slots" unique_id=1421027340]
@@ -100,7 +99,7 @@ offset_left = 85.0
 offset_top = 30.0
 offset_right = 117.0
 offset_bottom = 62.0
-texture = ExtResource("2_givde")
+texture = ExtResource("6_2wf2a")
 stretch_mode = 5
 
 [node name="FirstSlot" type="TextureButton" parent="Slots" unique_id=1847269254]
@@ -133,11 +132,11 @@ stretch_mode = 5
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1581685387]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 42.0
-offset_right = 88.0
-offset_bottom = 82.0
-texture_normal = ExtResource("4_mrnko")
+offset_left = 75.0
+offset_top = -67.0
+offset_right = 123.0
+offset_bottom = -35.0
+texture_normal = ExtResource("7_2wf2a")
 
 [connection signal="pressed" from="Options/FirstOption" to="." method="_on_first_option_pressed"]
 [connection signal="pressed" from="Options/SecondOption" to="." method="_on_second_option_pressed"]

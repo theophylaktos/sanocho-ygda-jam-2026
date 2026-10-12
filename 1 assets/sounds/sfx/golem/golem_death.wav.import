@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://e4yewjmlu0np"
+path="res://.godot/imported/golem_death.wav-e77b0f7fd34a1741319f8bc8ddec3fbe.sample"
+
+[deps]
+
+source_file="res://1 assets/sounds/sfx/golem/golem_death.wav"
+dest_files=["res://.godot/imported/golem_death.wav-e77b0f7fd34a1741319f8bc8ddec3fbe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

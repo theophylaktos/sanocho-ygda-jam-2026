@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcxv0lrpo8xw7"
+path="res://.godot/imported/ghost_attack.wav-78f7639a6063268e53ea74f894c68d95.sample"
+
+[deps]
+
+source_file="res://1 assets/sounds/sfx/ghost/ghost_attack.wav"
+dest_files=["res://.godot/imported/ghost_attack.wav-78f7639a6063268e53ea74f894c68d95.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
