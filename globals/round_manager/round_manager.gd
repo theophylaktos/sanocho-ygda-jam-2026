@@ -78,16 +78,18 @@ func start_enemy_attack_phase():
 		for degree in GameState.segments[0].size():
 			var material: ShaderMaterial = GameState.segments[ring][degree].get_material()
 			if material.get_shader_parameter("enemy_attack_enabled") == true:
-				if GameState.object_locations[ring][degree] is Player:
-					GameState.object_locations[ring][degree].take_damage(1)
+				if GameState.object_locations[ring][degree] != null:
+					if GameState.object_locations[ring][degree] is Player:
+						GameState.object_locations[ring][degree].take_damage(1)
 	
 	start_enemy_move_phase()
 	
 func start_enemy_move_phase():
 	for ring in GameState.segments.size():
 		for degree in GameState.segments[0].size():
-			if(GameState.object_locations[ring][degree] is Enemy):
-				GameState.object_locations[ring][degree].can_move = true;
+			if GameState.object_locations[ring][degree] != null:
+				if(GameState.object_locations[ring][degree] is Enemy):
+					GameState.object_locations[ring][degree].can_move = true;
 	
 	for ring in GameState.segments.size():
 		for degree in GameState.segments[0].size():
