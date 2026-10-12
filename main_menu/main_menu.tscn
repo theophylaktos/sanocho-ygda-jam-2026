@@ -11,10 +11,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa53l")
 
-[node name="Button" type="Button" parent="." unique_id=88246534]
+[node name="PlayButton" type="Button" parent="." unique_id=88246534]
 layout_mode = 0
-offset_right = 893.0
-offset_bottom = 491.0
+offset_left = 241.0
+offset_top = 205.0
+offset_right = 843.0
+offset_bottom = 313.0
 text = "PLAY"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="SettingsButton" type="Button" parent="." unique_id=1610111823]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 347.0
+offset_right = 862.0
+offset_bottom = 455.0
+text = "SETTIGN"
+
+[node name="Control" type="Control" parent="." unique_id=2057550451]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
