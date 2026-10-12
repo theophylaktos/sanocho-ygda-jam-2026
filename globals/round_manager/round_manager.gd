@@ -8,6 +8,8 @@ extends Node
 
 @export var starting_position: Vector2i = Vector2i(2, 6)
 
+var random_enemy_points: int = 0
+
 signal round_completed
 
 signal move_phase_started
@@ -37,9 +39,15 @@ func start_round():
 	GameState.add_node(GameState.player, starting_position.x, starting_position.y)
 	GameState.toggle_select_ring(starting_position.x)
 	spawned_positions[2][6] = true
-	
-	for node in rounds[current_round]:
-		randomly_spawn_enemy(node, spawned_positions)
+	if(current_round<11):
+		for node in rounds[current_round]:
+			randomly_spawn_enemy(node, spawned_positions)
+	else:
+		var i: int=0
+		while((int)(i<current_round*1.5)):
+			var current: PackedScene=random_enemy()
+			randomly_spawn_enemy(current, spawned_positions)
+			i+=random_enemy_points+1
 	
 	for ring in GameState.object_locations.size():
 		for degree in GameState.object_locations[0].size():
@@ -119,3 +127,20 @@ func start_enemy_move_phase():
 							GameState.update_position(ring,degree,ring,new_degree,GameState.object_locations[ring][degree])
 	GameState.refresh_enemy_highlights()
 	start_move_phase()
+func random_enemy() -> PackedScene:
+	var choice: int=randi_range(1,5)
+	if(choice==1):
+		random_enemy_points=2
+		return preload("uid://by52rlb2ob5qc")
+	elif(choice==2):
+		random_enemy_points=1
+		return preload("uid://2d6hvyas8v7c")
+	elif(choice==3):
+		random_enemy_points=1
+		return preload("uid://b7mh580xxik10")
+	elif(choice==4):
+		random_enemy_points=2
+		return preload("uid://dktx6iodn45ko")
+	else:
+		random_enemy_points=2
+		return preload("uid://57ce4qqyp5pq")
