@@ -230,6 +230,7 @@ func damage_enemies():
 	refresh_enemy_highlights()
 	
 	if count_enemies() == 0:
+		RoundManager.current_round += 1
 		RoundManager.change_scene_to_shop()
 
 func count_enemies() -> int:

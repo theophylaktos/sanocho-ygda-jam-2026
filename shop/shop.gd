@@ -98,7 +98,8 @@ func give_item():
 			for attack in shop.size():
 				if(shop[attack]==GameState.attacks[replaced]):
 					items_had[attack]=false
-		
+	print(choice)
+	
 	match choice:
 		0:
 			GameState.health_left+=2
@@ -113,22 +114,23 @@ func give_item():
 		4:
 			GameState.max_moves+=1
 		5:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		6:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		7:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		8:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		9:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		10:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 		11:
-			GameState.attack[replaced]=shop[choice]
+			GameState.attacks[replaced] = shop[choice]
 
 
 func _on_texture_button_pressed() -> void:
+	give_item()
 	RoundManager.change_scene_to_main()
 
 
@@ -137,7 +139,6 @@ func _on_first_slot_pressed() -> void:
 
 func _on_second_slot_pressed() -> void:
 	replaced=1
-
 
 func _on_third_slot_pressed() -> void:
 	replaced=2

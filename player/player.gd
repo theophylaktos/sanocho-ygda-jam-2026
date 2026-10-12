@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("location"):
 		print(GameState.object_locations)
+		print(GameState.attacks)
 	
 	if GameState.rotating == true:
 		return
@@ -242,4 +243,5 @@ func take_damage(damage: int):
 	GameState.health_left -= damage
 	
 func _selected_attack_changed():
-	toggle()
+	if RoundManager.current_phase == "PlayerAttack":
+		toggle()
