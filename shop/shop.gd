@@ -65,9 +65,9 @@ func pick_three_valid() -> Array[int]:
 	for bool in items_had:
 		if(bool==false):
 			possibility+=1
-		if(possibility<4):
-			print("Out of stock!")
-			return options
+	if(possibility<4):
+		print("Out of stock!")
+		return options
 	var current: int
 	while position<3:
 		current = randi_range(0,11)
