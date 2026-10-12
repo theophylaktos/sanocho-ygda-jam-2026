@@ -16,6 +16,13 @@ var center: Vector2 = Vector2(-55, 0)
 
 signal attacks_changed
 
+var settings_open = false
+
+var master_volume: float = 0.5
+var music_volume: float = 0.7
+var sfx_volume: float = 0.4
+var ambience_volume:float = 0.4
+
 var attacks: Array[String]=["attack","",""]:
 	set(new_value):
 		attacks = new_value
@@ -109,15 +116,17 @@ func position_node(node: Node2D, ring: int, degree: int, time: float):
 	
 	tween.tween_method(
 		func(value: float) -> void:
-			node.rotation = lerp_angle(global_rotation, (PI / 8) + degree * (PI / 4), value), 0.0, 1.0, time
+			if node != null:
+				node.rotation = lerp_angle(global_rotation, (PI / 8) + degree * (PI / 4), value), 0.0, 1.0, time
 	)
 	
 	tween.parallel().tween_method(
 		func(value: float) -> void:
-			node.local.rotation = lerp_angle(local_rotation, -1 * ((PI / 8) + degree * (PI / 4)), value), 0.0, 1.0, time
+			if node != null:
+				node.local.rotation = lerp_angle(local_rotation, -1 * ((PI / 8) + degree * (PI / 4)), value), 0.0, 1.0, time
 	)
-	
-	tween.parallel().tween_property(node.local, "position", Vector2(distance[ring], 0), time)
+	if node != null:
+		tween.parallel().tween_property(node.local, "position", Vector2(distance[ring], 0), time)
 	
 	await tween.finished
 	rotating = false

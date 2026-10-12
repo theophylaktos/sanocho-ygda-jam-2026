@@ -110,3 +110,8 @@ func _attacks_changed() -> void:
 		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[1]]
 	if attack_icons.get(GameState.attacks[2]) != null:
 		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[2]]
+
+
+func _on_escape_pressed() -> void:
+	%Settings.visible = true
+	GameState.settings_open = true

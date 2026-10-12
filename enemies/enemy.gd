@@ -24,6 +24,8 @@ class_name Enemy
 
 @export var animated_sprite_2d: AnimatedSprite2D
 
+@export var can_move = false
+
 var is_attacking = false
 
 var is_dying = false

@@ -10,16 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://68rolvwokb64" path="res://1 assets/programmer_art/attack_icon.png" id="6_67ri8"]
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
 [ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="10_fwcvl"]
+[ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
+[ext_resource type="Texture2D" uid="uid://dv5pe2ovwui3e" path="res://1 assets/programmer_art/pause.png" id="11_n3o0a"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
+[ext_resource type="Script" uid="uid://b3k8q7ixdb81p" path="res://main/settings.gd" id="14_n3o0a"]
+[ext_resource type="Texture2D" uid="uid://dkip77ml57osf" path="res://1 assets/programmer_art/exit.png" id="15_s758e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
 shader = ExtResource("9_grrlh")
-shader_parameter/pixel_size = 4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fngjv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
+shader_parameter/pixel_size = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73k8k"]
 atlas = ExtResource("12_na0o7")
@@ -187,12 +187,14 @@ unique_name_in_owner = true
 position = Vector2(-55, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1660505547]
+zoom = Vector2(4, 4)
 
 [node name="Player" parent="." unique_id=2070042470 instance=ExtResource("1_53q0u")]
 unique_name_in_owner = true
 position = Vector2(-54.999996, 0)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1574358632]
+visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_7bva4")
 anchors_preset = 15
@@ -215,142 +217,120 @@ offset_right = 120.0
 offset_bottom = 67.5
 script = ExtResource("5_67ri8")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1776847383]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="RightSide" type="VBoxContainer" parent="UI/MarginContainer" unique_id=847588583]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.23
-
-[node name="Health" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=1741781118]
+[node name="Health" type="HBoxContainer" parent="UI" unique_id=1741781118]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 18.0
 alignment = 2
 
-[node name="Heart" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=393814255]
+[node name="Heart" type="TextureRect" parent="UI/Health" unique_id=393814255]
 layout_mode = 2
 texture = ExtResource("6_0i4oc")
 stretch_mode = 5
 
-[node name="Heart2" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=304222132]
+[node name="Heart2" type="TextureRect" parent="UI/Health" unique_id=304222132]
 layout_mode = 2
 texture = ExtResource("6_0i4oc")
 stretch_mode = 5
 
-[node name="Heart3" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=1968834977]
+[node name="Heart3" type="TextureRect" parent="UI/Health" unique_id=1968834977]
 layout_mode = 2
 texture = ExtResource("6_0i4oc")
 stretch_mode = 5
 
-[node name="Heart4" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=1318150643]
+[node name="Heart4" type="TextureRect" parent="UI/Health" unique_id=1318150643]
 layout_mode = 2
 texture = ExtResource("6_0i4oc")
 stretch_mode = 5
 
-[node name="Heart5" type="TextureRect" parent="UI/MarginContainer/RightSide/Health" unique_id=1016056403]
+[node name="Heart5" type="TextureRect" parent="UI/Health" unique_id=1016056403]
 layout_mode = 2
 texture = ExtResource("6_0i4oc")
 stretch_mode = 5
 
-[node name="Moves" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=1424306176]
+[node name="Moves" type="HBoxContainer" parent="UI" unique_id=1424306176]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
+offset_top = 19.0
+offset_right = 238.0
+offset_bottom = 35.0
 alignment = 2
 
-[node name="Move" type="TextureRect" parent="UI/MarginContainer/RightSide/Moves" unique_id=484487003]
+[node name="Move" type="TextureRect" parent="UI/Moves" unique_id=484487003]
 layout_mode = 2
 texture = ExtResource("5_4dugh")
 stretch_mode = 5
 
-[node name="Move1" type="TextureRect" parent="UI/MarginContainer/RightSide/Moves" unique_id=665290958]
+[node name="Move1" type="TextureRect" parent="UI/Moves" unique_id=665290958]
 layout_mode = 2
 texture = ExtResource("5_4dugh")
 stretch_mode = 5
 
-[node name="Move2" type="TextureRect" parent="UI/MarginContainer/RightSide/Moves" unique_id=2026849405]
+[node name="Move2" type="TextureRect" parent="UI/Moves" unique_id=2026849405]
 layout_mode = 2
 texture = ExtResource("5_4dugh")
 stretch_mode = 5
 
-[node name="Attacks" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=1069732647]
+[node name="Attacks" type="HBoxContainer" parent="UI" unique_id=1069732647]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
+offset_top = 37.0
+offset_right = 238.0
+offset_bottom = 53.0
 alignment = 2
 
-[node name="Attack" type="TextureRect" parent="UI/MarginContainer/RightSide/Attacks" unique_id=2072788313]
+[node name="Attack" type="TextureRect" parent="UI/Attacks" unique_id=2072788313]
 layout_mode = 2
 texture = ExtResource("6_67ri8")
 stretch_mode = 5
 
-[node name="Middle" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=958755075]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="UI/MarginContainer/RightSide/Middle" unique_id=479510280]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fngjv")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/RightSide/Middle" unique_id=489980995]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 9
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/RightSide/Middle/MarginContainer" unique_id=1073725015]
-layout_mode = 2
+[node name="Weapons" type="HBoxContainer" parent="UI" unique_id=1073725015]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 64.0
+offset_right = 242.0
+offset_bottom = 158.0
 size_flags_horizontal = 3
 
-[node name="Weapon1Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=1925779258]
+[node name="Weapon1Button" type="TextureButton" parent="UI/Weapons" unique_id=1925779258]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
-[node name="Weapon2Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=14622135]
+[node name="Weapon2Button" type="TextureButton" parent="UI/Weapons" unique_id=14622135]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
-[node name="Weapon3Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=19525765]
+[node name="Weapon3Button" type="TextureButton" parent="UI/Weapons" unique_id=19525765]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("10_fwcvl")
 
-[node name="Bottom" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=952358066]
-layout_mode = 2
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=899507074]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 99.0
+offset_right = 237.0
+offset_bottom = 130.0
 
-[node name="Panel" type="Panel" parent="UI/MarginContainer/RightSide/Bottom" unique_id=1399014379]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_7bva4")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/RightSide/Bottom" unique_id=699235023]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/RightSide/Bottom/MarginContainer" unique_id=899507074]
-layout_mode = 2
-
-[node name="SkipButton" type="Button" parent="UI/MarginContainer/RightSide/Bottom/MarginContainer/HBoxContainer" unique_id=2138842112]
+[node name="SkipButton" type="Button" parent="UI/Buttons" unique_id=2138842112]
 layout_mode = 2
 text = "skip"
 
-[node name="SubmitButton" type="Button" parent="UI/MarginContainer/RightSide/Bottom/MarginContainer/HBoxContainer" unique_id=660376527]
+[node name="SubmitButton" type="Button" parent="UI/Buttons" unique_id=660376527]
 layout_mode = 2
 text = "sbmt atk"
+
+[node name="Escape" type="TextureButton" parent="UI" unique_id=764740718]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture_normal = ExtResource("11_n3o0a")
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
 
@@ -365,8 +345,83 @@ sprite_frames = SubResource("SpriteFrames_7bva4")
 frame = 17
 frame_progress = 0.95289284
 
-[connection signal="pressed" from="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer/Weapon1Button" to="UI" method="_on_weapon_1_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer/Weapon2Button" to="UI" method="_on_weapon_2_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer/Weapon3Button" to="UI" method="_on_weapon_3_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/RightSide/Bottom/MarginContainer/HBoxContainer/SkipButton" to="UI" method="_on_skip_button_pressed"]
-[connection signal="pressed" from="UI/MarginContainer/RightSide/Bottom/MarginContainer/HBoxContainer/SubmitButton" to="UI" method="_on_button_pressed"]
+[node name="Settings" type="Control" parent="." unique_id=597416382]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -67.0
+offset_right = 120.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_n3o0a")
+
+[node name="ColorRect" type="ColorRect" parent="Settings" unique_id=533730289]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 126.0
+color = Color(0.25407654, 0.44219273, 0.42843273, 1)
+
+[node name="Return" type="TextureButton" parent="Settings" unique_id=503676589]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 10.0
+offset_right = 230.0
+offset_bottom = 42.0
+texture_normal = ExtResource("15_s758e")
+
+[node name="Exit" type="TextureButton" parent="Settings" unique_id=1696064398]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 47.0
+offset_bottom = 42.0
+texture_normal = ExtResource("11_5xyti")
+
+[node name="MasterHSlider" type="HSlider" parent="Settings" unique_id=2110010262]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 48.0
+offset_right = 156.0
+offset_bottom = 64.0
+
+[node name="MusicHSlider" type="HSlider" parent="Settings" unique_id=1033742650]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 63.0
+offset_right = 177.0
+offset_bottom = 79.0
+
+[node name="SFXHSlider" type="HSlider" parent="Settings" unique_id=132385549]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 82.0
+offset_right = 169.0
+offset_bottom = 98.0
+
+[node name="AmbienceHSlider" type="HSlider" parent="Settings" unique_id=922683120]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 100.0
+offset_right = 225.0
+offset_bottom = 116.0
+
+[connection signal="pressed" from="UI/Weapons/Weapon1Button" to="UI" method="_on_weapon_1_button_pressed"]
+[connection signal="pressed" from="UI/Weapons/Weapon2Button" to="UI" method="_on_weapon_2_button_pressed"]
+[connection signal="pressed" from="UI/Weapons/Weapon3Button" to="UI" method="_on_weapon_3_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/SkipButton" to="UI" method="_on_skip_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/SubmitButton" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Escape" to="UI" method="_on_escape_pressed"]
+[connection signal="pressed" from="Settings/Return" to="Settings" method="_on_return_pressed"]
+[connection signal="pressed" from="Settings/Exit" to="Settings" method="_on_exit_pressed"]
+[connection signal="value_changed" from="Settings/MasterHSlider" to="Settings" method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MusicHSlider" to="Settings" method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/SFXHSlider" to="Settings" method="_on_sfx_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/AmbienceHSlider" to="Settings" method="_on_ambience_h_slider_value_changed"]

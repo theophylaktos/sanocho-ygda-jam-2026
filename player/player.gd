@@ -22,6 +22,7 @@ func _ready() -> void:
 	RoundManager.move_phase_started.connect(_move_phase_started)
 	RoundManager.attack_phase_started.connect(_attack_phase_started)
 	RoundManager.enemy_attack_phase_started.connect(_enemy_attack_phase_started)
+	RoundManager.round_completed.connect(_round_completed)
 
 func _process(_delta: float) -> void:
 	
@@ -124,6 +125,9 @@ func _enemy_attack_phase_started():
 	%AnimatedSprite2D.play("idle_front")
 
 func _attack_phase_started():
+	%AnimatedSprite2D.play("idle_front")
+	
+func _round_completed():
 	%AnimatedSprite2D.play("idle_front")
 
 func _rotate_ring(amount: int):
