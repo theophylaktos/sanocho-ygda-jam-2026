@@ -2,7 +2,6 @@ extends Control
 var shop: Array[String]
 ## array of strings that corrospond to upgrades
 var items_had: Array[bool]
-var next_attack: int=0
 
 var textures: Dictionary = {
 	"Heal": preload("uid://o37gts8apes7"),
@@ -76,7 +75,7 @@ func pick_three_valid() -> Array[int]:
 				position+=1
 	return options
 
-func give_item(choice: int):
+func give_item(choice: int, replaced: int):
 	var is_removed: bool
 	if(choice==0):
 		is_removed=false
@@ -91,11 +90,10 @@ func give_item(choice: int):
 	if(is_removed):
 		items_had[choice]=true
 	if(choice>=5):
-		if(GameState.attacks[next_attack]!=""):
+		if(GameState.attacks[replaced]!=""):
 			for attack in shop.size():
-				if(shop[attack]==GameState.attacks[next_attack]):
+				if(shop[attack]==GameState.attacks[replaced]):
 					items_had[attack]=false
-		next_attack=(next_attack+1)%3 ##picks next slot, replaces last weapon
 		
 	match choice:
 		0:
@@ -111,19 +109,19 @@ func give_item(choice: int):
 		4:
 			GameState.max_moves+=1
 		5:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		6:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		7:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		8:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		9:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		10:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 		11:
-			GameState.attack[next_attack]=shop[choice]
+			GameState.attack[replaced]=shop[choice]
 
 
 func _on_texture_button_pressed() -> void:
