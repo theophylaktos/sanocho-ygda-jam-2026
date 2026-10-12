@@ -63,6 +63,8 @@ func _ready() -> void:
 		%ThirdOption.texture_normal = textures[shop[choices[2]]]
 
 func pick_three_valid() -> Array[int]:
+	if(RoundManager.current_round<2):
+		return [6,7,8]
 	var options: Array[int]
 	options.resize(3)
 	var possibility: int=0

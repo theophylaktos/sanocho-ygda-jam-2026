@@ -23,7 +23,7 @@ var music_volume: float = 0.7
 var sfx_volume: float = 0.4
 var ambience_volume:float = 0.4
 
-var attacks: Array[String]=["attack","attack2",""]:
+var attacks: Array[String]=["attack","",""]:
 	set(new_value):
 		attacks = new_value
 		attacks_changed.emit()
@@ -233,7 +233,10 @@ func damage_enemies():
 	
 	if count_enemies() == 0:
 		RoundManager.current_round += 1
-		RoundManager.change_scene_to_shop()
+		if(RoundManager.current_round%2==1):
+			RoundManager.change_scene_to_shop()
+		else:
+			RoundManager.do_not_change_scene_to_shop()
 
 func count_enemies() -> int:
 	var count: int = 0
