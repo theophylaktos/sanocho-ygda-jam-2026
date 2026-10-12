@@ -66,14 +66,16 @@ func give_item(choice: int):
 		next_attack=(next_attack+1)%3 ##picks next slot, replaces last weapon
 		
 	match choice:
-		1:
+		0:
 			GameState.health_left+=2
 			if(GameState.health_left>GameState.max_health):
 				GameState.health_left=GameState.max_health
-		2:
+		1:
 			GameState.max_health+=1
-		3:
+		2:
 			GameState.max_attacks+=1
+		3:
+			GameState.damage+=1
 		4:
 			GameState.max_moves+=1
 		5:

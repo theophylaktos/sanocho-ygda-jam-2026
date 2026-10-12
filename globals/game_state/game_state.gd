@@ -16,6 +16,8 @@ var center: Vector2 = Vector2(-55, 0)
 
 var attacks: Array[String]=["attack","",""]
 
+var damage: int=1
+
 signal max_health_changed
 @export var max_health = 5:
 	set(new_value):
@@ -204,7 +206,7 @@ func damage_enemies():
 			var material: ShaderMaterial = segments[ring][degree].get_material()
 			if material.get_shader_parameter("player_attack_enabled") == true:
 				if object_locations[ring][degree] is Enemy:
-					object_locations[ring][degree].take_damage(1)
+					object_locations[ring][degree].take_damage(damage)
 	refresh_enemy_highlights()
 	
 	if count_enemies() == 0:
