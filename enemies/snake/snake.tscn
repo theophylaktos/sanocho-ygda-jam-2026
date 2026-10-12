@@ -49,10 +49,11 @@ sprite_frames = SubResource("SpriteFrames_suq1p")
 
 [node name="HealthBar" type="ProgressBar" parent="Local" unique_id=1656121042]
 y_sort_enabled = true
-offset_left = -8.0
-offset_top = 2.0
-offset_right = 7.0
-offset_bottom = 6.0
+offset_left = -13.0
+offset_top = 4.0
+offset_right = 2.0
+offset_bottom = 8.0
+rotation = -1.5707964
 theme_override_styles/background = SubResource("StyleBoxFlat_0sd6a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aoj2i")
 max_value = 1.0

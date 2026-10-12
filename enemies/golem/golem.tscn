@@ -44,14 +44,16 @@ animated_sprite_2d = NodePath("Local/AnimatedSprite2D")
 [node name="Local" type="Node2D" parent="." unique_id=1118463028]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1466242329]
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_f2x0q")
 
 [node name="HealthBar" type="ProgressBar" parent="Local" unique_id=123147748]
 y_sort_enabled = true
-offset_left = -8.0
-offset_top = 2.0
-offset_right = 7.0
-offset_bottom = 6.0
+offset_left = -12.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 7.0
+rotation = -1.5707964
 theme_override_styles/background = SubResource("StyleBoxFlat_kit87")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1aw1j")
 max_value = 1.0
