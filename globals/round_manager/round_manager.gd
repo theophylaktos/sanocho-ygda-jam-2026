@@ -74,6 +74,7 @@ func start_enemy_attack_phase():
 					GameState.object_locations[ring][degree].take_damage(1)
 	
 	start_enemy_move_phase()
+	
 func start_enemy_move_phase():
 	for ring in GameState.segments.size():
 		for degree in GameState.segments[0].size():

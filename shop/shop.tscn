@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://iy5jea5tf8ka"]
 
 [ext_resource type="Script" uid="uid://bwc4qn8le42ll" path="res://shop/shop.gd" id="1_r2p71"]
+[ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="2_givde"]
+[ext_resource type="Texture2D" uid="uid://bsmxo5kxe8e4u" path="res://1 assets/programmer_art/weapons/diagonal.png" id="2_sxvro"]
+[ext_resource type="Texture2D" uid="uid://dvbybg2jd43vn" path="res://1 assets/programmer_art/leave.png" id="4_mrnko"]
 
 [node name="Shop" type="Control" unique_id=455458879]
 layout_mode = 3
@@ -10,3 +13,119 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r2p71")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=274641931]
+zoom = Vector2(4, 4)
+
+[node name="Options" type="Node" parent="." unique_id=50542802]
+
+[node name="FirstOptionBackground" type="TextureRect" parent="Options" unique_id=1997882919]
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 23.0
+offset_bottom = 26.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="SecondOptionBackground" type="TextureRect" parent="Options" unique_id=1429560835]
+offset_left = 31.0
+offset_top = -6.0
+offset_right = 63.0
+offset_bottom = 26.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="ThirdOptionBackground" type="TextureRect" parent="Options" unique_id=1936310710]
+offset_left = 70.0
+offset_top = -6.0
+offset_right = 102.0
+offset_bottom = 26.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="FirstOption" type="TextureButton" parent="Options" unique_id=1584503074]
+unique_name_in_owner = true
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 34.0
+texture_normal = ExtResource("2_sxvro")
+
+[node name="SecondOption" type="TextureButton" parent="Options" unique_id=596426983]
+unique_name_in_owner = true
+offset_left = 31.0
+offset_top = -6.0
+offset_right = 71.0
+offset_bottom = 34.0
+texture_normal = ExtResource("2_sxvro")
+
+[node name="ThirdOption" type="TextureButton" parent="Options" unique_id=295367526]
+unique_name_in_owner = true
+offset_left = 70.0
+offset_top = -6.0
+offset_right = 110.0
+offset_bottom = 34.0
+texture_normal = ExtResource("2_sxvro")
+
+[node name="Slots" type="Node" parent="." unique_id=1218747636]
+
+[node name="FirstSlotBG" type="TextureRect" parent="Slots" unique_id=1380539857]
+offset_left = -117.0
+offset_top = 32.0
+offset_right = -85.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="ThirdSlotBG" type="TextureRect" parent="Slots" unique_id=1421027340]
+offset_left = -38.0
+offset_top = 32.0
+offset_right = -6.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="SecondSlotBG" type="TextureRect" parent="Slots" unique_id=694676871]
+offset_left = -77.0
+offset_top = 32.0
+offset_right = -45.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="FirstSlot" type="TextureRect" parent="Slots" unique_id=1404906216]
+unique_name_in_owner = true
+offset_left = -117.0
+offset_top = 32.0
+offset_right = -85.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="SecondSlot" type="TextureRect" parent="Slots" unique_id=710001582]
+unique_name_in_owner = true
+offset_left = -77.0
+offset_top = 32.0
+offset_right = -45.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="ThirdSlot" type="TextureRect" parent="Slots" unique_id=1677283971]
+unique_name_in_owner = true
+offset_left = -38.0
+offset_top = 32.0
+offset_right = -6.0
+offset_bottom = 64.0
+texture = ExtResource("2_givde")
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1581685387]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 27.0
+offset_right = 120.0
+offset_bottom = 67.0
+texture_normal = ExtResource("4_mrnko")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

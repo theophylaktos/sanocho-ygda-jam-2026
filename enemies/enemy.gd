@@ -22,6 +22,28 @@ class_name Enemy
 		
 @export var health_bar: ProgressBar
 
+@export var animated_sprite_2d: AnimatedSprite2D
+
+var is_attacking = false
+
+var is_dying = false
+
+func _process(delta: float) -> void:
+	if animated_sprite_2d != null:
+		if not is_attacking or is_dying:
+			if degree == 7 or degree == 0:
+				if animated_sprite_2d.animation != "idle_right":
+					animated_sprite_2d.play("idle_right")
+			if degree == 1 or degree == 2:
+				if animated_sprite_2d.animation != "idle_back":
+					animated_sprite_2d.play("idle_back")
+			if degree == 3 or degree == 4:
+				if animated_sprite_2d.animation != "idle_left":
+					animated_sprite_2d.play("idle_left")
+			if degree == 5 or degree == 6:
+				if animated_sprite_2d.animation != "idle_front":
+					animated_sprite_2d.play("idle_front")
+
 func highlight_attack():
 	for attack in attacks["attack"]:
 		var v= (Vector2i)(attack)
@@ -43,8 +65,17 @@ func attack():
 			new_y = new_y % 8
 			if GameState.object_locations[ring + v.x][new_y] == GameState.player:
 				GameState.health_left -= 1
-	return
-
+	is_attacking = true
+	if degree == 7 or degree == 0:
+		animated_sprite_2d.play("attack_right")
+	if degree == 1 or degree == 2:
+		animated_sprite_2d.play("attack_back")
+	if degree == 3 or degree == 4:
+		animated_sprite_2d.play("attack_left")
+	if degree == 5 or degree == 6:
+		animated_sprite_2d.play("attack_front")
+	await animated_sprite_2d.animation_finished
+	is_attacking = false
 func take_damage(damage: int):
 	health -= damage
 	if(health <= 0):

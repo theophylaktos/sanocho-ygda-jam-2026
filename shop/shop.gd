@@ -3,6 +3,22 @@ var shop: Array[String]
 ## array of strings that corrospond to upgrades
 var items_had: Array[bool]
 var next_attack: int=0
+
+var textures: Dictionary = {
+	"Heal": preload("uid://o37gts8apes7"),
+	"Add Heart": null,
+	"Add Attack": null,
+	"More Damage": null,
+	"Add Movement": null,
+	"diagonal": preload("uid://bwn8ypto7o7jl"),
+	"attack2": "",
+	"attack4": preload("uid://ddlottmvshgpf"),
+	"knight": null,
+	"all_diagonals": null,
+	"all_horizontals": null,
+	"attack": preload("uid://d30hood7b3jia"),
+}
+
 ## array of valid items to sell in a shop: valid=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,9 +38,22 @@ func _ready() -> void:
 	shop[11]="attack"
 	items_had[11]=true
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	
+	if GameState.attacks[0] != "":
+		%FirstSlot.texture = textures[GameState.attacks[0]]
+	if GameState.attacks[1] != "":
+		%FirstSlot.texture = textures[GameState.attacks[1]]
+	if GameState.attacks[2] != "":
+		%FirstSlot.texture = textures[GameState.attacks[2]]
+	var options: Array[int] = [0,1,2]
+	print(options)
+	if textures[shop[options[0]]] != null:
+		%FirstOption.texture_normal = textures[shop[options[0]]]
+	if textures[shop[options[1]]] != null:
+		%FirstOption.texture_normal = textures[shop[options[1]]]
+	if textures[shop[options[2]]] != null:
+		%FirstOption.texture_normal = textures[shop[options[2]]]
+
 func pick_three_valid() -> Array[int]:
 	var options: Array[int]
 	var possibility: int
@@ -46,6 +75,7 @@ func pick_three_valid() -> Array[int]:
 				options[position]=current
 				position+=1
 	return options
+
 func give_item(choice: int):
 	var is_removed: bool
 	if(choice==0):
@@ -94,3 +124,7 @@ func give_item(choice: int):
 			GameState.attack[next_attack]=shop[choice]
 		11:
 			GameState.attack[next_attack]=shop[choice]
+
+
+func _on_texture_button_pressed() -> void:
+	RoundManager.change_scene_to_main()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvfmanfqa8ihr"
-path="res://.godot/imported/goblin-side.png-f9ddd70e669502aaebcabbaa2d3fab03.ctex"
+uid="uid://cdifvk1b2whnc"
+path="res://.godot/imported/ghost-right.png-5d9cfd40f597e16f8ae85f633bd3cb53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/enemies/goblin-side.png"
-dest_files=["res://.godot/imported/goblin-side.png-f9ddd70e669502aaebcabbaa2d3fab03.ctex"]
+source_file="res://1 assets/art/enemies/ghost/ghost-right.png"
+dest_files=["res://.godot/imported/ghost-right.png-5d9cfd40f597e16f8ae85f633bd3cb53.ctex"]
 
 [params]
 

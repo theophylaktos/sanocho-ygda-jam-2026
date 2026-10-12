@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbs3cbw8l742i"
-path="res://.godot/imported/goblin-back.png-2ae9272b12b47e86281ef66bb58cb158.ctex"
+uid="uid://b3v4se271cr67"
+path="res://.godot/imported/attack-ghost-right.png-2753d215ce3db1cef759737160171668.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/enemies/goblin-back.png"
-dest_files=["res://.godot/imported/goblin-back.png-2ae9272b12b47e86281ef66bb58cb158.ctex"]
+source_file="res://1 assets/art/enemies/ghost/attack-ghost-right.png"
+dest_files=["res://.godot/imported/attack-ghost-right.png-2753d215ce3db1cef759737160171668.ctex"]
 
 [params]
 

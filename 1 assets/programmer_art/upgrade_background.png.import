@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2amybk3ebt2"
-path="res://.godot/imported/goblin-front.png-ebf5e0e2432950e7840dd4fd51bb0a73.ctex"
+uid="uid://bv8e603s65b52"
+path="res://.godot/imported/upgrade_background.png-a2fd6e3d3d6af7f795a87f0e14e00eed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/enemies/goblin-front.png"
-dest_files=["res://.godot/imported/goblin-front.png-ebf5e0e2432950e7840dd4fd51bb0a73.ctex"]
+source_file="res://1 assets/programmer_art/upgrade_background.png"
+dest_files=["res://.godot/imported/upgrade_background.png-a2fd6e3d3d6af7f795a87f0e14e00eed.ctex"]
 
 [params]
 
