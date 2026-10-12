@@ -107,9 +107,9 @@ func _attacks_changed() -> void:
 	if attack_icons.get(GameState.attacks[0]) != null:
 		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[0]]
 	if attack_icons.get(GameState.attacks[1]) != null:
-		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[1]]
+		%Weapon2Button.texture_normal = attack_icons[GameState.attacks[1]]
 	if attack_icons.get(GameState.attacks[2]) != null:
-		%Weapon1Button.texture_normal = attack_icons[GameState.attacks[2]]
+		%Weapon3Button.texture_normal = attack_icons[GameState.attacks[2]]
 
 
 func _on_escape_pressed() -> void:
