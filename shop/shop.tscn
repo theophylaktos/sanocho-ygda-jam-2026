@@ -93,31 +93,28 @@ offset_bottom = 64.0
 texture = ExtResource("2_givde")
 stretch_mode = 5
 
-[node name="FirstSlot" type="TextureRect" parent="Slots" unique_id=1404906216]
+[node name="FirstSlot" type="TextureButton" parent="Slots" unique_id=1847269254]
 unique_name_in_owner = true
 offset_left = -117.0
 offset_top = 32.0
 offset_right = -85.0
 offset_bottom = 64.0
-texture = ExtResource("2_givde")
 stretch_mode = 5
 
-[node name="SecondSlot" type="TextureRect" parent="Slots" unique_id=710001582]
+[node name="SecondSlot" type="TextureButton" parent="Slots" unique_id=491005710]
 unique_name_in_owner = true
 offset_left = -77.0
 offset_top = 32.0
 offset_right = -45.0
 offset_bottom = 64.0
-texture = ExtResource("2_givde")
 stretch_mode = 5
 
-[node name="ThirdSlot" type="TextureRect" parent="Slots" unique_id=1677283971]
+[node name="ThirdSlot" type="TextureButton" parent="Slots" unique_id=831410264]
 unique_name_in_owner = true
 offset_left = -38.0
 offset_top = 32.0
 offset_right = -6.0
 offset_bottom = 64.0
-texture = ExtResource("2_givde")
 stretch_mode = 5
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1581685387]
@@ -128,4 +125,10 @@ offset_right = 120.0
 offset_bottom = 67.0
 texture_normal = ExtResource("4_mrnko")
 
+[connection signal="pressed" from="Options/FirstOption" to="." method="_on_first_option_pressed"]
+[connection signal="pressed" from="Options/SecondOption" to="." method="_on_second_option_pressed"]
+[connection signal="pressed" from="Options/ThirdOption" to="." method="_on_third_option_pressed"]
+[connection signal="pressed" from="Slots/FirstSlot" to="." method="_on_first_slot_pressed"]
+[connection signal="pressed" from="Slots/SecondSlot" to="." method="_on_second_slot_pressed"]
+[connection signal="pressed" from="Slots/ThirdSlot" to="." method="_on_third_slot_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

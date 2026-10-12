@@ -2,7 +2,9 @@ extends Control
 var shop: Array[String]
 ## array of strings that corrospond to upgrades
 var items_had: Array[bool]
-
+var replaced: int=2
+var choice: int=0
+var choices: Array[int]
 var textures: Dictionary = {
 	"Heal 2": preload("uid://c822q0w7pcwgj"),
 	"Add Heart": preload("uid://bhut60woybcnx"),
@@ -13,9 +15,9 @@ var textures: Dictionary = {
 	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
 	"knight": preload("uid://c2hshq4wc3crf"),
-	"all_diagonals": null,
-	"all_horizontals": null,
-	"attack": null,
+	"all_diagonals": preload("uid://b4fj23dssqgx4"),
+	"all_horizontals": preload("uid://b4fj23dssqgx4"),
+	"attack": preload("uid://b4fj23dssqgx4"),
 }
 
 ## array of valid items to sell in a shop: valid=false
@@ -23,7 +25,7 @@ var textures: Dictionary = {
 func _ready() -> void:
 	shop.resize(12)
 	items_had.resize(12)
-	shop[0]="Heal"
+	shop[0]="Heal 2"
 	shop[1]="Add Heart"
 	shop[2]="Add Attack"
 	shop[3]="More Damage"
@@ -36,33 +38,35 @@ func _ready() -> void:
 	shop[10]="all_horizontals"
 	shop[11]="attack"
 	items_had[11]=true
-	pass
+	
+	choices=pick_three_valid()
 	
 	if GameState.attacks[0] != "":
-		%FirstSlot.texture = textures[GameState.attacks[0]]
+		%FirstSlot.texture_normal = textures[GameState.attacks[0]]
 	if GameState.attacks[1] != "":
-		%FirstSlot.texture = textures[GameState.attacks[1]]
+		%SecondSlot.texture_normal = textures[GameState.attacks[1]]
 	if GameState.attacks[2] != "":
-		%FirstSlot.texture = textures[GameState.attacks[2]]
+		%ThirdSlot.texture_normal = textures[GameState.attacks[2]]
 	var options: Array[int] = [0,1,2]
 	print(options)
 	if textures[shop[options[0]]] != null:
-		%FirstOption.texture_normal = textures[shop[options[0]]]
+		%FirstOption.texture_normal = textures[shop[choices[0]]]
 	if textures[shop[options[1]]] != null:
-		%FirstOption.texture_normal = textures[shop[options[1]]]
+		%SecondOption.texture_normal = textures[shop[choices[1]]]
 	if textures[shop[options[2]]] != null:
-		%FirstOption.texture_normal = textures[shop[options[2]]]
+		%ThirdOption.texture_normal = textures[shop[choices[2]]]
 
 func pick_three_valid() -> Array[int]:
 	var options: Array[int]
-	var possibility: int
-	var position: int
+	options.resize(3)
+	var possibility: int=0
+	var position: int = 0
 	if(GameState.health_left<GameState.max_health):
 		options[0]=0
 		possibility+=1
 		position+=1
-	for bool in items_had:
-		if(bool==false):
+	for value in items_had:
+		if(value==false):
 			possibility+=1
 	if(possibility<4):
 		print("Out of stock!")
@@ -75,7 +79,7 @@ func pick_three_valid() -> Array[int]:
 				position+=1
 	return options
 
-func give_item(choice: int, replaced: int):
+func give_item():
 	var is_removed: bool
 	if(choice==0):
 		is_removed=false
@@ -126,3 +130,26 @@ func give_item(choice: int, replaced: int):
 
 func _on_texture_button_pressed() -> void:
 	RoundManager.change_scene_to_main()
+
+
+func _on_first_slot_pressed() -> void:
+	replaced=0
+
+func _on_second_slot_pressed() -> void:
+	replaced=1
+
+
+func _on_third_slot_pressed() -> void:
+	replaced=2
+
+
+func _on_first_option_pressed() -> void:
+	choice=0
+
+
+func _on_second_option_pressed() -> void:
+	choice=1
+
+
+func _on_third_option_pressed() -> void:
+	choice=2
