@@ -75,7 +75,7 @@ func give_item(choice: int):
 		2:
 			GameState.max_attacks+=1
 		3:
-			GameState.damage+=1
+			GameState.damage*=2
 		4:
 			GameState.max_moves+=1
 		5:
