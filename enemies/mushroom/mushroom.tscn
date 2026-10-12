@@ -174,7 +174,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack_back",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,7 +194,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack_front",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -214,7 +214,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack_left",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -234,7 +234,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack_right",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -285,7 +285,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_left",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -302,7 +302,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle_right",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofswk"]
@@ -339,7 +339,7 @@ y_sort_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1525012640]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_7bva4")
-animation = &"attack_right"
+animation = &"idle_left"
 
 [node name="HealthBar" type="ProgressBar" parent="Local" unique_id=240309242]
 offset_left = -12.0

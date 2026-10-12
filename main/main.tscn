@@ -10,15 +10,21 @@
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
 [ext_resource type="Texture2D" uid="uid://dvem5fcvpnvuh" path="res://1 assets/art/ui/icons/attack_icon.png" id="9_n3o0a"]
 [ext_resource type="Shader" uid="uid://vg6ttht4lrbf" path="res://shop/outline.gdshader" id="10_4hmqs"]
-[ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="10_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
+[ext_resource type="Texture2D" uid="uid://bafqxipa4hcox" path="res://1 assets/art/ui/upgrade_background.png" id="11_re7it"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
 [ext_resource type="Texture2D" uid="uid://cs37q8yaj3dem" path="res://1 assets/art/ui/skip_move.png" id="12_piupu"]
 [ext_resource type="Texture2D" uid="uid://cbf4s6ae8jy1l" path="res://1 assets/art/ui/confirm_attack.png" id="13_q0sk7"]
+[ext_resource type="Texture2D" uid="uid://d0jy3fp0qtmvh" path="res://1 assets/art/ui/skip_move_press.png" id="13_re7it"]
+[ext_resource type="Texture2D" uid="uid://bm6qj5awns1iu" path="res://1 assets/art/ui/skip_move_hover.png" id="13_vapsy"]
 [ext_resource type="Script" uid="uid://b3k8q7ixdb81p" path="res://main/settings.gd" id="14_n3o0a"]
-[ext_resource type="Texture2D" uid="uid://bmrrxtxmejvqb" path="res://1 assets/art/ui/icons/pause-button.png" id="14_piupu"]
 [ext_resource type="Texture2D" uid="uid://dkip77ml57osf" path="res://1 assets/programmer_art/exit.png" id="15_s758e"]
+[ext_resource type="Texture2D" uid="uid://bg84doph3wav0" path="res://1 assets/art/ui/confirm_attack_hover.png" id="15_vapsy"]
+[ext_resource type="Texture2D" uid="uid://cakpkc15koqx5" path="res://1 assets/art/ui/confirm_attack_press.png" id="16_oagth"]
+[ext_resource type="Texture2D" uid="uid://bc41ju0m1rhfd" path="res://1 assets/art/ui/pause-button.png" id="18_n53tw"]
+[ext_resource type="Texture2D" uid="uid://dpm2qgr8lme76" path="res://1 assets/art/ui/pause_button_press.png" id="19_d00gp"]
+[ext_resource type="Texture2D" uid="uid://cb47mw65ui4oa" path="res://1 assets/art/ui/pause_button_hover.png" id="20_d8vpj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
 shader = ExtResource("9_grrlh")
@@ -253,6 +259,7 @@ alignment = 2
 
 [node name="Heart" type="TextureRect" parent="UI/Health" unique_id=393814255]
 layout_mode = 2
+texture = ExtResource("6_0i4oc")
 expand_mode = 3
 stretch_mode = 5
 
@@ -324,19 +331,19 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_s758e")
 layout_mode = 2
-texture_normal = ExtResource("10_fwcvl")
+texture_normal = ExtResource("11_re7it")
 
 [node name="Weapon2Button" type="TextureButton" parent="UI/Weapons" unique_id=14622135]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_4hmqs")
 layout_mode = 2
-texture_normal = ExtResource("10_fwcvl")
+texture_normal = ExtResource("11_re7it")
 
 [node name="Weapon3Button" type="TextureButton" parent="UI/Weapons" unique_id=19525765]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_piupu")
 layout_mode = 2
-texture_normal = ExtResource("10_fwcvl")
+texture_normal = ExtResource("11_re7it")
 
 [node name="SkipButton" type="TextureButton" parent="UI" unique_id=400402974]
 layout_mode = 0
@@ -345,6 +352,8 @@ offset_top = 98.5
 offset_right = 163.0
 offset_bottom = 129.5
 texture_normal = ExtResource("12_piupu")
+texture_pressed = ExtResource("13_re7it")
+texture_hover = ExtResource("13_vapsy")
 
 [node name="SubmitButton" type="TextureButton" parent="UI" unique_id=500951425]
 layout_mode = 0
@@ -353,6 +362,8 @@ offset_top = 98.5
 offset_right = 237.0
 offset_bottom = 130.5
 texture_normal = ExtResource("13_q0sk7")
+texture_pressed = ExtResource("16_oagth")
+texture_hover = ExtResource("15_vapsy")
 
 [node name="Escape" type="TextureButton" parent="UI" unique_id=764740718]
 layout_mode = 0
@@ -360,7 +371,9 @@ offset_left = 2.0
 offset_top = 2.5
 offset_right = 18.0
 offset_bottom = 18.5
-texture_normal = ExtResource("14_piupu")
+texture_normal = ExtResource("18_n53tw")
+texture_pressed = ExtResource("19_d00gp")
+texture_hover = ExtResource("20_d8vpj")
 
 [node name="Enemies" type="Node" parent="." unique_id=1213600632]
 
