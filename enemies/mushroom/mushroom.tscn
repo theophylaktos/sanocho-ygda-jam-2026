@@ -88,3 +88,7 @@ position = Vector2(41, 0)
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_7bva4")
 animation = &"idle_back"
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1559944994]
+offset_right = 4.0
+offset_bottom = 27.0

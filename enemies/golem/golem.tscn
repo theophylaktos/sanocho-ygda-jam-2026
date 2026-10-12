@@ -26,3 +26,7 @@ health = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Local" unique_id=1466242329]
 sprite_frames = SubResource("SpriteFrames_f2x0q")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=612787799]
+offset_right = 4.0
+offset_bottom = 27.0
