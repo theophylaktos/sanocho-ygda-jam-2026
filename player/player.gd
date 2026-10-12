@@ -146,9 +146,12 @@ func _rotate_ring(amount: int):
 func toggle():
 	GameState.clear_all_player_attack_segments()
 	
+	print(AttackPatterns.attack_patterns[GameState.selected_attack].size())
 	for i in AttackPatterns.attack_patterns[GameState.selected_attack].size():
+		print("GameState.selected_attack", GameState.selected_attack)
+		print("i", i)
 		var x = AttackPatterns.attack_patterns[GameState.selected_attack][i].x
-		var y = AttackPatterns.attack_patterns[GameState.selected_attack  ][i].y
+		var y = AttackPatterns.attack_patterns[GameState.selected_attack][i].y
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(ring, degree) + Vector2i(x, y),
