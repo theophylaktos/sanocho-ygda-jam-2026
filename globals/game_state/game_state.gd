@@ -36,7 +36,7 @@ signal health_left_changed
 		health_left_changed.emit()
 
 signal max_moves_changed
-@export var max_moves = 100:
+@export var max_moves = 3:
 	set(new_value):
 		max_moves = new_value
 		max_moves_changed.emit()

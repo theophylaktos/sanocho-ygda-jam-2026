@@ -30,7 +30,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
 
-[node name="Golem" type="Node2D" unique_id=598334917 node_paths=PackedStringArray("local", "health_bar")]
+[node name="Golem" type="Node2D" unique_id=598334917 node_paths=PackedStringArray("local", "health_bar", "animated_sprite_2d")]
 script = ExtResource("1_mkirv")
 local = NodePath("Local")
 attacks = Dictionary[String, Array]({
@@ -39,6 +39,7 @@ attacks = Dictionary[String, Array]({
 max_health = 2
 health = 2
 health_bar = NodePath("Local/HealthBar")
+animated_sprite_2d = NodePath("Local/AnimatedSprite2D")
 
 [node name="Local" type="Node2D" parent="." unique_id=1118463028]
 

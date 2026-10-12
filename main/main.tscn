@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://dy8kdfo4ueb6i" path="res://main/ui.gd" id="5_67ri8"]
 [ext_resource type="Texture2D" uid="uid://b5m36i1cyrvs8" path="res://1 assets/art/ui/health.png" id="6_0i4oc"]
 [ext_resource type="Texture2D" uid="uid://68rolvwokb64" path="res://1 assets/programmer_art/attack_icon.png" id="6_67ri8"]
-[ext_resource type="Texture2D" uid="uid://c47eqkwck28ja" path="res://1 assets/programmer_art/weapon_one_icon.png" id="9_0i4oc"]
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
+[ext_resource type="Texture2D" uid="uid://bv8e603s65b52" path="res://1 assets/programmer_art/upgrade_background.png" id="10_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
 
@@ -315,17 +315,17 @@ size_flags_horizontal = 3
 [node name="Weapon1Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=1925779258]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("9_0i4oc")
+texture_normal = ExtResource("10_fwcvl")
 
 [node name="Weapon2Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=14622135]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("9_0i4oc")
+texture_normal = ExtResource("10_fwcvl")
 
 [node name="Weapon3Button" type="TextureButton" parent="UI/MarginContainer/RightSide/Middle/MarginContainer/HBoxContainer" unique_id=19525765]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("9_0i4oc")
+texture_normal = ExtResource("10_fwcvl")
 
 [node name="Bottom" type="HBoxContainer" parent="UI/MarginContainer/RightSide" unique_id=952358066]
 layout_mode = 2
@@ -361,6 +361,7 @@ position = Vector2(-55, 0)
 texture = ExtResource("11_fwcvl")
 
 [node name="CompletionCircle" type="AnimatedSprite2D" parent="." unique_id=438709985]
+unique_name_in_owner = true
 position = Vector2(-55, 0)
 sprite_frames = SubResource("SpriteFrames_7bva4")
 frame = 17

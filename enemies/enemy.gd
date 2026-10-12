@@ -10,7 +10,7 @@ class_name Enemy
 	set(new_value):
 		health = new_value
 		if health_bar != null:
-			health_bar.value = health * 1.0 / max_health
+			health_bar.value = (health * 1.0) / max_health
 
 @export var ring: int
 

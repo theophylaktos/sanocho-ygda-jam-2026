@@ -314,7 +314,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
 
-[node name="Ghost" type="Node2D" unique_id=2112427627 node_paths=PackedStringArray("local", "health_bar")]
+[node name="Ghost" type="Node2D" unique_id=2112427627 node_paths=PackedStringArray("local", "health_bar", "animated_sprite_2d")]
 script = ExtResource("1_4xhpb")
 local = NodePath("Local")
 attacks = Dictionary[String, Array]({
@@ -323,6 +323,7 @@ attacks = Dictionary[String, Array]({
 max_health = 1
 health = 1
 health_bar = NodePath("Local/HealthBar")
+animated_sprite_2d = NodePath("Local/AnimatedSprite2D")
 
 [node name="Local" type="Node2D" parent="." unique_id=2020720134]
 y_sort_enabled = true

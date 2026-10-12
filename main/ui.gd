@@ -37,8 +37,7 @@ func _change_moves_left():
 		for child in %Moves.get_children():
 			child.texture = move_icon
 	if GameState.moves_left < GameState.max_moves:
-		pass
-		#%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
+		%Moves.get_child(GameState.max_moves - GameState.moves_left - 1).texture = move_icon_used
 	if GameState.moves_left == 0:
 		RoundManager.start_attack_phase()
 	
@@ -58,7 +57,6 @@ func _change_attacks_left():
 		GameState.damage_enemies()
 		%Attacks.get_child(GameState.max_attacks - GameState.attacks_left - 1).texture = attack_icon_used
 	if GameState.attacks_left == 0:
-		GameState.damage_enemies()
 		RoundManager.start_enemy_attack_phase()
 	
 func _change_max_attacks():
@@ -98,7 +96,6 @@ func _on_skip_button_pressed() -> void:
 
 func _on_weapon_1_button_pressed() -> void:
 	pass # Replace with function body.
-
 
 func _on_weapon_2_button_pressed() -> void:
 	pass # Replace with function body.

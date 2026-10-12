@@ -1,20 +1,87 @@
 [gd_scene format=3 uid="uid://2d6hvyas8v7c"]
 
 [ext_resource type="Script" uid="uid://x0dmnaqfrw2c" path="res://enemies/goblin/goblin.gd" id="1_yx8al"]
-[ext_resource type="Texture2D" uid="uid://onov2tvup251" path="res://1 assets/programmer_art/goblin.png" id="2_r03s4"]
+[ext_resource type="Texture2D" uid="uid://bbs3cbw8l742i" path="res://1 assets/art/enemies/goblin/goblin-back.png" id="2_5cujc"]
+[ext_resource type="Texture2D" uid="uid://t2amybk3ebt2" path="res://1 assets/art/enemies/goblin/goblin-front.png" id="3_62ogw"]
+[ext_resource type="Texture2D" uid="uid://b264g0fj7gf3k" path="res://1 assets/art/enemies/goblin/goblin_left.png" id="4_e4xgm"]
+[ext_resource type="Texture2D" uid="uid://bvfmanfqa8ihr" path="res://1 assets/art/enemies/goblin/goblin-side.png" id="5_nh2jo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nqqj1"]
-atlas = ExtResource("2_r03s4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2itpt"]
+atlas = ExtResource("2_5cujc")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2r11"]
+atlas = ExtResource("2_5cujc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtti1"]
+atlas = ExtResource("3_62ogw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml4r0"]
+atlas = ExtResource("3_62ogw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpup7"]
+atlas = ExtResource("4_e4xgm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yog07"]
+atlas = ExtResource("4_e4xgm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp0bf"]
+atlas = ExtResource("5_nh2jo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1dmc"]
+atlas = ExtResource("5_nh2jo")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p0yn0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nqqj1")
+"texture": SubResource("AtlasTexture_2itpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2r11")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle_back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtti1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml4r0")
+}],
+"loop": 1,
+"name": &"idle_front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpup7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yog07")
+}],
+"loop": 1,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp0bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1dmc")
+}],
+"loop": 1,
+"name": &"idle_right",
 "speed": 5.0
 }]
 
@@ -34,27 +101,30 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.10980392, 0.15686275, 0.3019608, 1)
 
-[node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local", "health_bar")]
+[node name="Goblin" type="Node2D" unique_id=550289069 node_paths=PackedStringArray("local", "health_bar", "animated_sprite_2d")]
 script = ExtResource("1_yx8al")
 local = NodePath("Node2D")
 attacks = Dictionary[String, Array]({
 "attack": [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]
 })
-max_health = 3
-health = 3
+max_health = 2
+health = 2
 health_bar = NodePath("Node2D/HealthBar")
+animated_sprite_2d = NodePath("Node2D/AnimatedSprite2D")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=254523115]
 y_sort_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=121862124]
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_p0yn0")
+animation = &"idle_left"
 
 [node name="HealthBar" type="ProgressBar" parent="Node2D" unique_id=201845594]
 offset_left = -8.0
-offset_top = 6.0
+offset_top = 3.0
 offset_right = 7.0
-offset_bottom = 10.0
+offset_bottom = 7.0
 theme_override_styles/background = SubResource("StyleBoxFlat_r03s4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nqqj1")
 max_value = 1.0

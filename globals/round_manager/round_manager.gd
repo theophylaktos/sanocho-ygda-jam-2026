@@ -8,6 +8,8 @@ extends Node
 
 @export var starting_position: Vector2i = Vector2i(2, 6)
 
+signal round_completed
+
 func change_scene_to_menu():
 	get_tree().change_scene_to_file("uid://clc5dgdphsk57")
 
@@ -15,7 +17,8 @@ func change_scene_to_main():
 	get_tree().change_scene_to_file("uid://j0l0agjlk84b")
 	
 func change_scene_to_shop():
-	await get_tree().create_timer(2).timeout
+	round_completed.emit()
+	await get_tree().create_timer(5).timeout
 	get_tree().change_scene_to_file("uid://iy5jea5tf8ka")
 	
 func start_round():
