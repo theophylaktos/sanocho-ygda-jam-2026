@@ -9,6 +9,18 @@
 [ext_resource type="AudioStream" uid="uid://fp18640tenyo" path="res://1 assets/sounds/sfx/goblin/goblin_attack.wav" id="7_tpd11"]
 [ext_resource type="AudioStream" uid="uid://blkpulf7ya35x" path="res://1 assets/sounds/sfx/goblin/goblin_death.wav" id="8_at2dc"]
 [ext_resource type="AudioStream" uid="uid://p3feav8of8h" path="res://1 assets/sounds/sfx/golem/golem_attack.wav" id="9_w1kx6"]
+[ext_resource type="AudioStream" uid="uid://e4yewjmlu0np" path="res://1 assets/sounds/sfx/golem/golem_death.wav" id="10_c704v"]
+[ext_resource type="AudioStream" uid="uid://cuxhtawjiyi4j" path="res://1 assets/sounds/sfx/mushroom/mushroom_attack.wav" id="11_2ho8t"]
+[ext_resource type="AudioStream" uid="uid://cyr7jinh36oq3" path="res://1 assets/sounds/sfx/mushroom/mushroom_death.wav" id="12_jl0vw"]
+[ext_resource type="AudioStream" uid="uid://dgrb8v62s6j6u" path="res://1 assets/sounds/sfx/general_hit_sound.wav" id="13_idabs"]
+[ext_resource type="AudioStream" uid="uid://c5qhbegxhngy7" path="res://1 assets/sounds/sfx/glass_tap.wav" id="14_crtpl"]
+[ext_resource type="AudioStream" uid="uid://bl8ylxdwkgjtb" path="res://1 assets/sounds/sfx/metal_tap.wav" id="15_h4csc"]
+[ext_resource type="AudioStream" uid="uid://b5jhfla48x2fc" path="res://1 assets/sounds/sfx/rock.wav" id="16_he3nv"]
+[ext_resource type="AudioStream" uid="uid://da2hnpdqwlr02" path="res://1 assets/sounds/sfx/slime.wav" id="17_hh722"]
+[ext_resource type="AudioStream" uid="uid://bdk0mm0nb0xn1" path="res://1 assets/sounds/sfx/wind.wav" id="18_laeho"]
+[ext_resource type="AudioStream" uid="uid://x8wofbd8a4j2" path="res://1 assets/sounds/sfx/wood.wav" id="19_pivx8"]
+[ext_resource type="AudioStream" uid="uid://c65swm5ph4xdx" path="res://1 assets/sounds/sfx/snake/Snake Attack.wav" id="20_jl0vw"]
+[ext_resource type="AudioStream" uid="uid://ob67vcs6bxue" path="res://1 assets/sounds/sfx/snake/Snake Death.wav" id="21_idabs"]
 
 [sub_resource type="Resource" id="Resource_blmy5"]
 script = ExtResource("2_qrh1g")
@@ -51,6 +63,79 @@ stream = ExtResource("9_w1kx6")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
+[sub_resource type="Resource" id="Resource_8tlo5"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("10_c704v")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_820rp"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("11_2ho8t")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_tvh47"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("12_jl0vw")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_d2kxp"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("13_idabs")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_skdox"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("14_crtpl")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_jb5si"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("15_h4csc")
+bus = "SFX"
+pitch = 0.6
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_7e57h"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("16_he3nv")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_3otsf"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("17_hh722")
+bus = "SFSX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_nfpse"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("18_laeho")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_1lmql"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("19_pivx8")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_crtpl"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("20_jl0vw")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_h4csc"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("21_idabs")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
 [node name="SfxPlayer" type="Node" unique_id=1790965844]
 process_mode = 3
 script = ExtResource("1_blmy5")
@@ -61,5 +146,17 @@ id_to_setting = Dictionary[int, ExtResource("2_qrh1g")]({
 3: SubResource("Resource_mnq6a"),
 4: SubResource("Resource_neydw"),
 5: SubResource("Resource_3ny5u"),
-6: SubResource("Resource_hfyi1")
+6: SubResource("Resource_hfyi1"),
+7: SubResource("Resource_8tlo5"),
+8: SubResource("Resource_820rp"),
+9: SubResource("Resource_tvh47"),
+10: SubResource("Resource_d2kxp"),
+11: SubResource("Resource_skdox"),
+12: SubResource("Resource_jb5si"),
+13: SubResource("Resource_7e57h"),
+14: SubResource("Resource_3otsf"),
+15: SubResource("Resource_nfpse"),
+16: SubResource("Resource_1lmql"),
+17: SubResource("Resource_crtpl"),
+18: SubResource("Resource_h4csc")
 })

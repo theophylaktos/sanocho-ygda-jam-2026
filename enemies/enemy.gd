@@ -83,4 +83,12 @@ func die():
 	
 func play_attack_sound():
 	if self.type == "Ghost":
-		pass
+		SFX.play(SFX.Id.GHOST_ATTACK)
+	elif self.type == "Golem":
+		SFX.play(SFX.Id.GOLEM_ATTACK)
+	elif self.type == "Mushroom":
+		SFX.play(SFX.Id.MUSHROOM_ATTACK)
+	elif self.type == "Goblin":
+		SFX.play(SFX.Id.GOBLIN_ATTACK)
+	elif self.type == "Snake":
+		SFX.play(SFX.Id.SNAKE_ATTACK)

@@ -240,6 +240,7 @@ func _move_out():
 	GameState.position_node(self, ring - 1, degree, SPEED)
 
 func take_damage(damage: int):
+	SFX.play(SFX.Id.GENERAL_HIT_SOUND)
 	GameState.health_left -= damage
 	
 func _selected_attack_changed():
