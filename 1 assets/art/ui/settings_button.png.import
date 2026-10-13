@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1iobcrs1uqin"
-path="res://.godot/imported/leave_button.png-7a91286c1d8bf2e70e29fc76706a3bcd.ctex"
+uid="uid://dommt436ggx45"
+path="res://.godot/imported/settings_button.png-fc64f11d52ee7bf31a814fe725842c6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1 assets/art/leave_button.png"
-dest_files=["res://.godot/imported/leave_button.png-7a91286c1d8bf2e70e29fc76706a3bcd.ctex"]
+source_file="res://1 assets/art/ui/settings_button.png"
+dest_files=["res://.godot/imported/settings_button.png-fc64f11d52ee7bf31a814fe725842c6d.ctex"]
 
 [params]
 

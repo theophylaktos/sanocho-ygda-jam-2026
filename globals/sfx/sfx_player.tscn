@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://xpthd02oppq5" path="res://1 assets/sounds/sfx/ghost/ghost_move.wav" id="22_crtpl"]
 [ext_resource type="AudioStream" uid="uid://dsdggu8ogwbp2" path="res://1 assets/sounds/sfx/goblin/goblin_move.wav" id="23_h4csc"]
 [ext_resource type="AudioStream" uid="uid://bunql1clkyu4v" path="res://1 assets/sounds/sfx/snake/Snake Move.wav" id="24_h4csc"]
+[ext_resource type="AudioStream" uid="uid://fafv1tc6q5bu" path="res://1 assets/sounds/sfx/mushroom/mushroom_move.wav" id="24_he3nv"]
 
 [sub_resource type="Resource" id="Resource_hh722"]
 script = ExtResource("2_qrh1g")
@@ -151,21 +152,21 @@ stream = ExtResource("23_h4csc")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
-[sub_resource type="Resource" id="Resource_laeho"]
+[sub_resource type="Resource" id="Resource_tqadf"]
 script = ExtResource("2_qrh1g")
-stream = ExtResource("24_h4csc")
+stream = ExtResource("16_he3nv")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
 [sub_resource type="Resource" id="Resource_pivx8"]
 script = ExtResource("2_qrh1g")
-stream = ExtResource("11_2ho8t")
+stream = ExtResource("24_he3nv")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
-[sub_resource type="Resource" id="Resource_tqadf"]
+[sub_resource type="Resource" id="Resource_laeho"]
 script = ExtResource("2_qrh1g")
-stream = ExtResource("10_c704v")
+stream = ExtResource("24_h4csc")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 

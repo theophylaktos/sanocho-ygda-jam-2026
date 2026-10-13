@@ -1,5 +1,7 @@
 extends Node
 
+var first_time = true
+
 var object_locations: Array[Array] = []
 
 var segments: Array[Array] = []

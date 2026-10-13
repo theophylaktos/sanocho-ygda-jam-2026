@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bvs544ki7vv48" path="res://main_menu/main_menu.gd" id="1_oa53l"]
 [ext_resource type="Texture2D" uid="uid://w1j6qk5alwtr" path="res://1 assets/art/backgrounds/pause_screen.png" id="2_d3a7t"]
+[ext_resource type="AudioStream" uid="uid://dbwe2q72ebccc" path="res://1 assets/sounds/music/revolution_menu.ogg" id="3_3shxk"]
+[ext_resource type="Texture2D" uid="uid://d1sy3x4x5ehay" path="res://1 assets/art/ui/play_button_press.png" id="3_ia84y"]
+[ext_resource type="Texture2D" uid="uid://d1rmovu548lyp" path="res://1 assets/art/ui/play_button.png" id="4_6at21"]
+[ext_resource type="Texture2D" uid="uid://nngff4e483na" path="res://1 assets/art/ui/play_button_hover.png" id="5_og6xe"]
+[ext_resource type="Texture2D" uid="uid://dommt436ggx45" path="res://1 assets/art/ui/settings_button.png" id="6_mvfl2"]
+[ext_resource type="Texture2D" uid="uid://63sqk3log45b" path="res://1 assets/art/ui/settings_button_hover.png" id="7_qvn4f"]
+[ext_resource type="Script" uid="uid://cjxreoun735pw" path="res://main_menu/settings_main_menu.gd" id="9_kwfav"]
+[ext_resource type="Shader" uid="uid://7182s12njdb2" path="res://main/dim.gdshader" id="10_n70vs"]
+[ext_resource type="Texture2D" uid="uid://cebwyqk5ioth5" path="res://1 assets/art/settings/settings_with_slime.png" id="11_tr6y3"]
+[ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://1 assets/art/settings/settings_back.png" id="13_iri28"]
+[ext_resource type="Texture2D" uid="uid://jp3cch011661" path="res://1 assets/art/settings/settings_back_hover.png" id="13_n70vs"]
+[ext_resource type="Texture2D" uid="uid://dxtchn11rn2x3" path="res://1 assets/art/enemies/ghost/attack-ghost-back.png" id="14_kwfav"]
+[ext_resource type="Texture2D" uid="uid://ckshm8ubdcphw" path="res://1 assets/art/settings/settings_slider.png" id="14_qq33v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3a7t"]
 atlas = ExtResource("2_d3a7t")
@@ -25,45 +38,253 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ie3af"]
+shader = ExtResource("10_n70vs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifnh7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f1p5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ombju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ru8rc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xayta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bphs3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rectb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cda7c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vuvo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n70vs"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(0, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr6y3"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(16, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj6np"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(32, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iri28"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(48, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq33v"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(48, 4, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie3af"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(48, 8, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifnh7"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(32, 8, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f1p5"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(16, 8, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ombju"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(16, 4, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8rc"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(32, 4, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xayta"]
+atlas = ExtResource("14_kwfav")
+region = Rect2(32, 12, 16, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fngjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n70vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr6y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj6np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iri28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq33v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie3af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifnh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f1p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ombju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xayta")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control" unique_id=1458588434]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oa53l")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1441985586]
+zoom = Vector2(4, 4)
+
 [node name="PauseScreen" type="AnimatedSprite2D" parent="." unique_id=469727042]
-position = Vector2(480, 270)
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_7bva4")
 autoplay = "default"
 
-[node name="PlayButton" type="Button" parent="." unique_id=88246534]
+[node name="PlayButton" type="TextureButton" parent="." unique_id=804023223]
 layout_mode = 0
-offset_left = 241.0
-offset_top = 205.0
-offset_right = 843.0
-offset_bottom = 313.0
-text = "PLAY"
+offset_left = 38.0
+offset_top = -28.5
+offset_right = 97.0
+offset_bottom = 5.5
+texture_normal = ExtResource("3_ia84y")
+texture_pressed = ExtResource("4_6at21")
+texture_hover = ExtResource("5_og6xe")
+stretch_mode = 4
 
-[node name="SettingsButton" type="Button" parent="." unique_id=1610111823]
+[node name="SettingsButton" type="TextureButton" parent="." unique_id=1830899112]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 347.0
-offset_right = 862.0
-offset_bottom = 455.0
-text = "SETTIGN"
+offset_left = 10.0
+offset_top = 6.5
+offset_right = 117.0
+offset_bottom = 43.5
+texture_normal = ExtResource("6_mvfl2")
+texture_hover = ExtResource("7_qvn4f")
+stretch_mode = 4
 
-[node name="Control" type="Control" parent="." unique_id=2057550451]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1995624478]
+stream = ExtResource("3_3shxk")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="Settings" type="Control" parent="." unique_id=1906507406]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -67.0
+offset_right = 120.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_kwfav")
+
+[node name="Dim" type="ColorRect" parent="Settings" unique_id=1937287926]
+material = SubResource("ShaderMaterial_ie3af")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Settings" unique_id=890625480]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 135.0
+texture = ExtResource("11_tr6y3")
+
+[node name="Exit" type="TextureButton" parent="Settings" unique_id=1320172318]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture_normal = ExtResource("13_iri28")
+texture_hover = ExtResource("13_n70vs")
+
+[node name="MasterHSlider" type="HSlider" parent="Settings" unique_id=288233147]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 47.0
+offset_right = 183.0
+offset_bottom = 60.0
+theme_override_icons/grabber = ExtResource("14_qq33v")
+theme_override_icons/grabber_highlight = ExtResource("14_qq33v")
+theme_override_icons/grabber_disabled = ExtResource("14_qq33v")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_ifnh7")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_7f1p5")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ombju")
+max_value = 1.0
+step = 0.0
+
+[node name="MusicHSlider" type="HSlider" parent="Settings" unique_id=433748146]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 67.0
+offset_right = 185.0
+offset_bottom = 83.0
+theme_override_icons/grabber = ExtResource("14_qq33v")
+theme_override_icons/grabber_highlight = ExtResource("14_qq33v")
+theme_override_icons/grabber_disabled = ExtResource("14_qq33v")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_ru8rc")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_xayta")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_bphs3")
+max_value = 1.0
+step = 0.0
+
+[node name="SFXHSlider" type="HSlider" parent="Settings" unique_id=308137088]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 89.0
+offset_right = 177.0
+offset_bottom = 105.0
+theme_override_icons/grabber = ExtResource("14_qq33v")
+theme_override_icons/grabber_highlight = ExtResource("14_qq33v")
+theme_override_icons/grabber_disabled = ExtResource("14_qq33v")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_rectb")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_cda7c")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_7vuvo")
+max_value = 1.0
+step = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1989606209]
+sprite_frames = SubResource("SpriteFrames_fngjv")
 
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="SettingsButton" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Settings/Exit" to="Settings" method="_on_exit_pressed"]
+[connection signal="value_changed" from="Settings/MasterHSlider" to="Settings" method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MusicHSlider" to="Settings" method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/SFXHSlider" to="Settings" method="_on_sfx_h_slider_value_changed"]
