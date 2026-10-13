@@ -123,14 +123,14 @@ func _change_health_left():
 		RoundManager.change_scene_to_menu()
 	
 func play_health_loss_animation(node: Node):
-	if node !=null:
 		for row in 4:
 			for col in 3:
-				var texture = AtlasTexture.new()
-				texture.atlas = health_icon_animated
-				texture.region = Rect2(16 * col, 16 * row, 16, 16)
-				node.texture = texture
-				await get_tree().create_timer(heart_loss_frame_length).timeout
+				if node !=null:
+					var texture = AtlasTexture.new()
+					texture.atlas = health_icon_animated
+					texture.region = Rect2(16 * col, 16 * row, 16, 16)
+					node.texture = texture
+					await get_tree().create_timer(heart_loss_frame_length).timeout
 	
 func _change_max_health():
 	for node in %Health.get_children():
