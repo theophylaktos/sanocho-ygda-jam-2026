@@ -121,6 +121,7 @@ func _change_health_left():
 			play_health_loss_animation(%Health.get_child(GameState.max_health - GameState.health_left - 1))
 	if GameState.health_left == 0:
 		RoundManager.change_scene_to_menu()
+		Reset.reset()
 	
 func play_health_loss_animation(node: Node):
 		for row in 4:
