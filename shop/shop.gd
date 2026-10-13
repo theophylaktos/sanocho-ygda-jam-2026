@@ -6,7 +6,7 @@ var replaced: int=2
 var choice: int=0
 var choices: Array[int]
 var textures: Dictionary = {
-	"Heal 2": preload("uid://c822q0w7pcwgj"),
+	"Heal 2": preload("uid://o37gts8apes7"),
 	"Add Heart": preload("uid://bhut60woybcnx"),
 	"Add Attack": preload("uid://kxkjsccpf7n6"),
 	"More Damage": preload("uid://b04xm6fdq5o5l"),
@@ -147,12 +147,20 @@ func _on_texture_button_pressed() -> void:
 
 func _on_first_slot_pressed() -> void:
 	replaced=0
+	
+	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
+
 
 func _on_second_slot_pressed() -> void:
 	replaced=1
+	
+	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
+
 
 func _on_third_slot_pressed() -> void:
-	replaced=2
+	replaced = 2
+	
+	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
 
 
 func _on_first_option_pressed() -> void:
@@ -160,16 +168,31 @@ func _on_first_option_pressed() -> void:
 	%FirstOption.material.set_shader_parameter("is_outlined", true)
 	%SecondOption.material.set_shader_parameter("is_outlined", false)
 	%ThirdOption.material.set_shader_parameter("is_outlined", false)
-
+	
+	play_sound_on_item_clicked(choices[choice])
 
 func _on_second_option_pressed() -> void:
-	choice=1
+	choice = 1
 	%FirstOption.material.set_shader_parameter("is_outlined", false)
 	%SecondOption.material.set_shader_parameter("is_outlined", true)
 	%ThirdOption.material.set_shader_parameter("is_outlined", false)
 
+	play_sound_on_item_clicked(choices[choice])
+
 func _on_third_option_pressed() -> void:
-	choice=2
+	choice = 2
 	%FirstOption.material.set_shader_parameter("is_outlined", false)
 	%SecondOption.material.set_shader_parameter("is_outlined", false)
 	%ThirdOption.material.set_shader_parameter("is_outlined", true)
+	
+	play_sound_on_item_clicked(choices[choice])
+
+func play_sound_on_item_clicked(item: int) -> void:
+	if [0, 1, 2, 3, 4].has(item):
+		SFX.play(SFX.Id.GLASS_TAP)
+	if [6, 5, 9, 10, 11].has(item):
+		SFX.play(SFX.Id.METAL_TAP)
+	if [7, 8].has(item):
+		SFX.play(SFX.Id.WOOD)
+	else:
+		SFX.play(SFX.Id.WOOD)

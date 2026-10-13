@@ -161,7 +161,7 @@ func _on_weapon_2_button_pressed() -> void:
 	GameState.selected_attack = GameState.attacks[1]
 	%Weapon1Button.material.set_shader_parameter("is_outlined", false)
 	%Weapon2Button.material.set_shader_parameter("is_outlined", true)
-	%Weapon3Button.material.set_shader_parameter("is_outlined", true)
+	%Weapon3Button.material.set_shader_parameter("is_outlined", false)
 
 func _on_weapon_3_button_pressed() -> void:
 	GameState.selected_attack = GameState.attacks[2]

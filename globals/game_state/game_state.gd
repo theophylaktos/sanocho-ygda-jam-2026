@@ -21,7 +21,6 @@ var settings_open = false
 var master_volume: float = 0.5
 var music_volume: float = 0.7
 var sfx_volume: float = 0.4
-var ambience_volume:float = 0.4
 
 var attacks: Array[String]=["attack","",""]:
 	set(new_value):

@@ -44,6 +44,8 @@ enum Id {
 	SLIME,
 	WIND,
 	WOOD,
+	SNAKE_ATTACK,
+	SNAKE_DEATH,
 }
 
 const PRINT_DEBUG_MESSAGES: bool = false

@@ -390,7 +390,6 @@ frame_progress = 0.95289284
 
 [node name="Settings" type="Control" parent="." unique_id=597416382]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -430,31 +429,24 @@ texture_normal = ExtResource("11_5xyti")
 
 [node name="MasterHSlider" type="HSlider" parent="Settings" unique_id=2110010262]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 48.0
-offset_right = 156.0
-offset_bottom = 64.0
+offset_left = 38.0
+offset_top = 51.0
+offset_right = 175.0
+offset_bottom = 67.0
 
 [node name="MusicHSlider" type="HSlider" parent="Settings" unique_id=1033742650]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 63.0
-offset_right = 177.0
-offset_bottom = 79.0
+offset_left = 29.0
+offset_top = 72.0
+offset_right = 190.0
+offset_bottom = 88.0
 
 [node name="SFXHSlider" type="HSlider" parent="Settings" unique_id=132385549]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 82.0
-offset_right = 169.0
-offset_bottom = 98.0
-
-[node name="AmbienceHSlider" type="HSlider" parent="Settings" unique_id=922683120]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 100.0
-offset_right = 225.0
-offset_bottom = 116.0
+offset_left = 32.0
+offset_top = 97.0
+offset_right = 185.0
+offset_bottom = 113.0
 
 [connection signal="pressed" from="UI/Weapons/Weapon1Button" to="UI" method="_on_weapon_1_button_pressed"]
 [connection signal="pressed" from="UI/Weapons/Weapon2Button" to="UI" method="_on_weapon_2_button_pressed"]
@@ -473,4 +465,3 @@ offset_bottom = 116.0
 [connection signal="value_changed" from="Settings/MasterHSlider" to="Settings" method="_on_master_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/MusicHSlider" to="Settings" method="_on_music_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/SFXHSlider" to="Settings" method="_on_sfx_h_slider_value_changed"]
-[connection signal="value_changed" from="Settings/AmbienceHSlider" to="Settings" method="_on_ambience_h_slider_value_changed"]
