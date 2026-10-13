@@ -6,12 +6,10 @@ func _ready():
 	$MasterHSlider.value = GameState.master_volume
 	$MusicHSlider.value = GameState.music_volume
 	$SFXHSlider.value = GameState.sfx_volume
-	$AmbienceHSlider.value = GameState.ambience_volume
 	
 	change_bus_volume("Master", GameState.master_volume)
 	change_bus_volume("Music", GameState.music_volume)
 	change_bus_volume("SFX", GameState.sfx_volume)
-	change_bus_volume("Ambience", GameState.ambience_volume)
 	
 func _on_master_h_slider_value_changed(value):
 	change_bus_volume("Master", value)
@@ -21,9 +19,6 @@ func _on_music_h_slider_value_changed(value):
 
 func _on_sfx_h_slider_value_changed(value):
 	change_bus_volume("SFX", value)
-	
-func _on_ambience_h_slider_value_changed(value):
-	change_bus_volume("Ambience", value)
 
 func change_bus_volume(bus, linear_value):
 	if bus == "Master":
