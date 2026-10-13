@@ -160,7 +160,7 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	
 func _rotate_nodes(ring: int, degree: int):
 	for degrees in abs(degree):
-		if degree > 0 and object_locations[ring][-1]!=null:
+		if degree > 0:
 			var temp: Node = object_locations[ring][-1]
 			for i in range(1, object_locations[0].size()):
 				object_locations[ring][-i] = object_locations[ring][-i - 1]
