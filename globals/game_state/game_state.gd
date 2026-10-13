@@ -226,8 +226,12 @@ func damage_enemies():
 		for degree in segments[0].size():
 			var material: ShaderMaterial = segments[ring][degree].get_material()
 			if material.get_shader_parameter("player_attack_enabled") == true:
-				if object_locations[ring][degree] is Enemy:
-					object_locations[ring][degree].take_damage(damage)
+				var node = object_locations[ring][degree]
+				if node is Enemy:
+					if node.max_health - node.health <= 0:
+						node.play_death_sound()
+					node.take_damage(damage)
+					await get_tree().create_timer(1).timeout
 	refresh_enemy_highlights()
 	
 	if count_enemies() == 0:
