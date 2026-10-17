@@ -92,3 +92,27 @@ func play_attack_sound():
 		SFX.play(SFX.Id.GOBLIN_ATTACK)
 	elif self.type == "Snake":
 		SFX.play(SFX.Id.SNAKE_ATTACK)
+		
+func play_death_sound():
+	if self.type == "Ghost":
+		SFX.play(SFX.Id.GHOST_DEATH)
+	elif self.type == "Golem":
+		SFX.play(SFX.Id.GOLEM_DEATH)
+	elif self.type == "Mushroom":
+		SFX.play(SFX.Id.MUSHROOM_DEATH)
+	elif self.type == "Goblin":
+		SFX.play(SFX.Id.GOBLIN_DEATH)
+	elif self.type == "Snake":
+		SFX.play(SFX.Id.SNAKE_DEATH)
+
+func play_move_sound():
+	if self.type == "Ghost":
+		SFX.play(SFX.Id.GHOST_MOVE)
+	elif self.type == "Golem":
+		SFX.play(SFX.Id.GOLEM_DEATH)
+	elif self.type == "Mushroom":
+		SFX.play(SFX.Id.MUSHROOM_MOVE)
+	elif self.type == "Goblin":
+		SFX.play(SFX.Id.GOBLIN_MOVE)
+	elif self.type == "Snake":
+		SFX.play(SFX.Id.SNAKE_MOVE)

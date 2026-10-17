@@ -1,5 +1,7 @@
 extends Node
 
+var first_time = true
+
 var object_locations: Array[Array] = []
 
 var segments: Array[Array] = []
@@ -160,7 +162,7 @@ func rotate_ring(ring: int, ring_parent: Node, degree: int, time: float):
 	
 func _rotate_nodes(ring: int, degree: int):
 	for degrees in abs(degree):
-		if degree > 0 and object_locations[ring][-1]!=null:
+		if degree > 0:
 			var temp: Node = object_locations[ring][-1]
 			for i in range(1, object_locations[0].size()):
 				object_locations[ring][-i] = object_locations[ring][-i - 1]
@@ -226,8 +228,12 @@ func damage_enemies():
 		for degree in segments[0].size():
 			var material: ShaderMaterial = segments[ring][degree].get_material()
 			if material.get_shader_parameter("player_attack_enabled") == true:
-				if object_locations[ring][degree] is Enemy:
-					object_locations[ring][degree].take_damage(damage)
+				var node = object_locations[ring][degree]
+				if node is Enemy:
+					if node.max_health - node.health <= 0:
+						node.play_death_sound()
+					node.take_damage(damage)
+					await get_tree().create_timer(1).timeout
 	refresh_enemy_highlights()
 	
 	if count_enemies() == 0:

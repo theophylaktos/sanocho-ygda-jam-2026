@@ -113,13 +113,14 @@ func start_enemy_move_phase():
 		for degree in GameState.segments[0].size():
 			var node = GameState.object_locations[ring][degree]
 			if(node != null and node is Enemy and node.can_move):
-				GameState.object_locations[ring][degree].can_move = false;
+				GameState.object_locations[ring][degree].can_move = false
 				var mover : int=randi_range(0,3)
 				match mover:
 					0:
 						if(ring<2 and GameState.object_locations[ring+1][degree]==null):
 							GameState.position_node(GameState.object_locations[ring][degree], ring+1, degree, 0.5)
 							GameState.update_position(ring,degree,ring+1,degree,GameState.object_locations[ring][degree])
+							GameState.object_locations[ring][degree].play_move
 					1:
 						if(ring>0 and GameState.object_locations[ring-1][degree]==null):
 							GameState.position_node(GameState.object_locations[ring][degree], ring-1, degree, 0.5)

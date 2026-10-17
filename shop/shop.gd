@@ -20,9 +20,12 @@ var textures: Dictionary = {
 	"attack": preload("uid://b7ptnpwn3k0ni"),
 }
 
+var empty_frame = preload("uid://bmfaeb5wwlfty")
+
 ## array of valid items to sell in a shop: valid=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	shop.resize(12)
 	items_had.resize(12)
 	shop[0]="Heal 2"
@@ -44,15 +47,15 @@ func _ready() -> void:
 	if GameState.attacks[0] != "":
 		%FirstSlot.texture_normal = textures[GameState.attacks[0]]
 	else:
-		%FirstSlot.texture_normal = null
+		%FirstSlot.texture_normal = empty_frame
 	if GameState.attacks[1] != "":
 		%SecondSlot.texture_normal = textures[GameState.attacks[1]]
 	else:
-		%SecondSlot.texture_normal = null
+		%SecondSlot.texture_normal = empty_frame
 	if GameState.attacks[2] != "":
 		%ThirdSlot.texture_normal = textures[GameState.attacks[2]]
 	else:
-		%ThirdSlot.texture_normal = null
+		%ThirdSlot.texture_normal = empty_frame
 	var options: Array[int] = [0,1,2]
 	print(options)
 	if textures[shop[options[0]]] != null:
@@ -146,20 +149,26 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_first_slot_pressed() -> void:
-	replaced=0
-	
+	replaced = 0
+	$Slots/FirstSlot.material.set_shader_parameter("is_outlined", true)
+	$Slots/SecondSlot.material.set_shader_parameter("is_outlined", false)
+	$Slots/ThirdSlot.material.set_shader_parameter("is_outlined", false)
 	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
 
 
 func _on_second_slot_pressed() -> void:
 	replaced=1
-	
+	$Slots/FirstSlot.material.set_shader_parameter("is_outlined", false)
+	$Slots/SecondSlot.material.set_shader_parameter("is_outlined", true)
+	$Slots/ThirdSlot.material.set_shader_parameter("is_outlined", false)
 	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
 
 
 func _on_third_slot_pressed() -> void:
 	replaced = 2
-	
+	$Slots/FirstSlot.material.set_shader_parameter("is_outlined", false)
+	$Slots/SecondSlot.material.set_shader_parameter("is_outlined", false)
+	$Slots/ThirdSlot.material.set_shader_parameter("is_outlined", true)
 	play_sound_on_item_clicked(shop.find(GameState.attacks[replaced]))
 
 

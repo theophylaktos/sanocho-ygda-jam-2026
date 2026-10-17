@@ -10,21 +10,26 @@
 [ext_resource type="Shader" uid="uid://d27onf0kabegd" path="res://main/testpixelation.gdshader" id="9_grrlh"]
 [ext_resource type="Texture2D" uid="uid://dvem5fcvpnvuh" path="res://1 assets/art/ui/icons/attack_icon.png" id="9_n3o0a"]
 [ext_resource type="Shader" uid="uid://vg6ttht4lrbf" path="res://shop/outline.gdshader" id="10_4hmqs"]
-[ext_resource type="Texture2D" uid="uid://jdqch3w55cqk" path="res://1 assets/programmer_art/escape.png" id="11_5xyti"]
+[ext_resource type="Texture2D" uid="uid://bmfaeb5wwlfty" path="res://1 assets/art/ui/empty_wooden_frame.png" id="11_d00gp"]
 [ext_resource type="Texture2D" uid="uid://r2mwjwph5k0k" path="res://1 assets/art/ring_segments/center_rock.png" id="11_fwcvl"]
-[ext_resource type="Texture2D" uid="uid://bafqxipa4hcox" path="res://1 assets/art/ui/upgrade_background.png" id="11_re7it"]
 [ext_resource type="Texture2D" uid="uid://rn3ykanp3jnl" path="res://1 assets/art/completion_circle/completion_circle.png" id="12_na0o7"]
 [ext_resource type="Texture2D" uid="uid://cs37q8yaj3dem" path="res://1 assets/art/ui/skip_move.png" id="12_piupu"]
 [ext_resource type="Texture2D" uid="uid://cbf4s6ae8jy1l" path="res://1 assets/art/ui/confirm_attack.png" id="13_q0sk7"]
 [ext_resource type="Texture2D" uid="uid://d0jy3fp0qtmvh" path="res://1 assets/art/ui/skip_move_press.png" id="13_re7it"]
 [ext_resource type="Texture2D" uid="uid://bm6qj5awns1iu" path="res://1 assets/art/ui/skip_move_hover.png" id="13_vapsy"]
 [ext_resource type="Script" uid="uid://b3k8q7ixdb81p" path="res://main/settings.gd" id="14_n3o0a"]
-[ext_resource type="Texture2D" uid="uid://dkip77ml57osf" path="res://1 assets/programmer_art/exit.png" id="15_s758e"]
 [ext_resource type="Texture2D" uid="uid://bg84doph3wav0" path="res://1 assets/art/ui/confirm_attack_hover.png" id="15_vapsy"]
 [ext_resource type="Texture2D" uid="uid://cakpkc15koqx5" path="res://1 assets/art/ui/confirm_attack_press.png" id="16_oagth"]
 [ext_resource type="Texture2D" uid="uid://bc41ju0m1rhfd" path="res://1 assets/art/ui/pause-button.png" id="18_n53tw"]
 [ext_resource type="Texture2D" uid="uid://dpm2qgr8lme76" path="res://1 assets/art/ui/pause_button_press.png" id="19_d00gp"]
 [ext_resource type="Texture2D" uid="uid://cb47mw65ui4oa" path="res://1 assets/art/ui/pause_button_hover.png" id="20_d8vpj"]
+[ext_resource type="Shader" uid="uid://7182s12njdb2" path="res://main/dim.gdshader" id="24_d8vpj"]
+[ext_resource type="Texture2D" uid="uid://cebwyqk5ioth5" path="res://1 assets/art/settings/settings_with_slime.png" id="25_frbr6"]
+[ext_resource type="AudioStream" uid="uid://dt3orovt8aiso" path="res://1 assets/sounds/music/revolution_battle_theme.ogg" id="26_d00gp"]
+[ext_resource type="Texture2D" uid="uid://dxc5odiqa1lnj" path="res://1 assets/art/settings/settings_x.png" id="26_o8j3b"]
+[ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://1 assets/art/settings/settings_back.png" id="27_wpkmi"]
+[ext_resource type="Texture2D" uid="uid://ckshm8ubdcphw" path="res://1 assets/art/settings/settings_slider.png" id="28_o0l78"]
+[ext_resource type="Texture2D" uid="uid://jp3cch011661" path="res://1 assets/art/settings/settings_back_hover.png" id="28_o8j3b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
 shader = ExtResource("9_grrlh")
@@ -208,6 +213,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fngjv"]
+shader = ExtResource("24_d8vpj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bva4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fngjv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dl6xb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e1wj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2oro"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bai6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agkkr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_majfb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyqgw"]
+
 [node name="Main" type="Node2D" unique_id=1035895957]
 script = ExtResource("1_kfbq2")
 
@@ -326,24 +352,25 @@ offset_top = 64.0
 offset_right = 238.0
 offset_bottom = 97.5
 size_flags_horizontal = 3
+theme_override_constants/separation = 2
 
 [node name="Weapon1Button" type="TextureButton" parent="UI/Weapons" unique_id=1925779258]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_s758e")
 layout_mode = 2
-texture_normal = ExtResource("11_re7it")
+texture_normal = ExtResource("11_d00gp")
 
 [node name="Weapon2Button" type="TextureButton" parent="UI/Weapons" unique_id=14622135]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_4hmqs")
 layout_mode = 2
-texture_normal = ExtResource("11_re7it")
+texture_normal = ExtResource("11_d00gp")
 
 [node name="Weapon3Button" type="TextureButton" parent="UI/Weapons" unique_id=19525765]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_piupu")
 layout_mode = 2
-texture_normal = ExtResource("11_re7it")
+texture_normal = ExtResource("11_d00gp")
 
 [node name="SkipButton" type="TextureButton" parent="UI" unique_id=400402974]
 layout_mode = 0
@@ -403,50 +430,90 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_n3o0a")
 
-[node name="ColorRect" type="ColorRect" parent="Settings" unique_id=533730289]
+[node name="Dim" type="ColorRect" parent="Settings" unique_id=123167938]
+material = SubResource("ShaderMaterial_fngjv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Settings" unique_id=39793236]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 8.0
-offset_right = 232.0
-offset_bottom = 126.0
-color = Color(0.25407654, 0.44219273, 0.42843273, 1)
+offset_right = 240.0
+offset_bottom = 135.0
+texture = ExtResource("25_frbr6")
 
 [node name="Return" type="TextureButton" parent="Settings" unique_id=503676589]
 layout_mode = 0
-offset_left = 198.0
-offset_top = 10.0
-offset_right = 230.0
-offset_bottom = 42.0
-texture_normal = ExtResource("15_s758e")
+offset_left = 215.0
+offset_top = 11.0
+offset_right = 228.0
+offset_bottom = 24.0
+texture_normal = ExtResource("26_o8j3b")
 
 [node name="Exit" type="TextureButton" parent="Settings" unique_id=1696064398]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 47.0
-offset_bottom = 42.0
-texture_normal = ExtResource("11_5xyti")
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture_normal = ExtResource("27_wpkmi")
+texture_hover = ExtResource("28_o8j3b")
 
 [node name="MasterHSlider" type="HSlider" parent="Settings" unique_id=2110010262]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 51.0
-offset_right = 175.0
-offset_bottom = 67.0
+offset_left = 23.0
+offset_top = 47.0
+offset_right = 183.0
+offset_bottom = 60.0
+theme_override_icons/grabber = ExtResource("28_o0l78")
+theme_override_icons/grabber_highlight = ExtResource("28_o0l78")
+theme_override_icons/grabber_disabled = ExtResource("28_o0l78")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_7bva4")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_fngjv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_dl6xb")
+max_value = 1.0
+step = 0.0
 
 [node name="MusicHSlider" type="HSlider" parent="Settings" unique_id=1033742650]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 72.0
-offset_right = 190.0
-offset_bottom = 88.0
+offset_left = 24.0
+offset_top = 67.0
+offset_right = 185.0
+offset_bottom = 83.0
+theme_override_icons/grabber = ExtResource("28_o0l78")
+theme_override_icons/grabber_highlight = ExtResource("28_o0l78")
+theme_override_icons/grabber_disabled = ExtResource("28_o0l78")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_8e1wj")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_a2oro")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1bai6")
+max_value = 1.0
+step = 0.0
 
 [node name="SFXHSlider" type="HSlider" parent="Settings" unique_id=132385549]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 97.0
-offset_right = 185.0
-offset_bottom = 113.0
+offset_left = 24.0
+offset_top = 89.0
+offset_right = 177.0
+offset_bottom = 105.0
+theme_override_icons/grabber = ExtResource("28_o0l78")
+theme_override_icons/grabber_highlight = ExtResource("28_o0l78")
+theme_override_icons/grabber_disabled = ExtResource("28_o0l78")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_agkkr")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_majfb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_pyqgw")
+max_value = 1.0
+step = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1968977476]
+stream = ExtResource("26_d00gp")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="UI/Weapons/Weapon1Button" to="UI" method="_on_weapon_1_button_pressed"]
 [connection signal="pressed" from="UI/Weapons/Weapon2Button" to="UI" method="_on_weapon_2_button_pressed"]

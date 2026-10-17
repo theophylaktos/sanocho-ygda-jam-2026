@@ -21,8 +21,12 @@
 [ext_resource type="AudioStream" uid="uid://x8wofbd8a4j2" path="res://1 assets/sounds/sfx/wood.wav" id="19_pivx8"]
 [ext_resource type="AudioStream" uid="uid://c65swm5ph4xdx" path="res://1 assets/sounds/sfx/snake/Snake Attack.wav" id="20_jl0vw"]
 [ext_resource type="AudioStream" uid="uid://ob67vcs6bxue" path="res://1 assets/sounds/sfx/snake/Snake Death.wav" id="21_idabs"]
+[ext_resource type="AudioStream" uid="uid://xpthd02oppq5" path="res://1 assets/sounds/sfx/ghost/ghost_move.wav" id="22_crtpl"]
+[ext_resource type="AudioStream" uid="uid://dsdggu8ogwbp2" path="res://1 assets/sounds/sfx/goblin/goblin_move.wav" id="23_h4csc"]
+[ext_resource type="AudioStream" uid="uid://bunql1clkyu4v" path="res://1 assets/sounds/sfx/snake/Snake Move.wav" id="24_h4csc"]
+[ext_resource type="AudioStream" uid="uid://fafv1tc6q5bu" path="res://1 assets/sounds/sfx/mushroom/mushroom_move.wav" id="24_he3nv"]
 
-[sub_resource type="Resource" id="Resource_blmy5"]
+[sub_resource type="Resource" id="Resource_hh722"]
 script = ExtResource("2_qrh1g")
 stream = ExtResource("3_e4rca")
 bus = "SFX"
@@ -136,11 +140,41 @@ stream = ExtResource("21_idabs")
 bus = "SFX"
 metadata/_custom_type_script = "uid://ctasdanoh6yrq"
 
+[sub_resource type="Resource" id="Resource_he3nv"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("22_crtpl")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_jxfyp"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("23_h4csc")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_tqadf"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("16_he3nv")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_pivx8"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("24_he3nv")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
+[sub_resource type="Resource" id="Resource_laeho"]
+script = ExtResource("2_qrh1g")
+stream = ExtResource("24_h4csc")
+bus = "SFX"
+metadata/_custom_type_script = "uid://ctasdanoh6yrq"
+
 [node name="SfxPlayer" type="Node" unique_id=1790965844]
 process_mode = 3
 script = ExtResource("1_blmy5")
 id_to_setting = Dictionary[int, ExtResource("2_qrh1g")]({
-0: SubResource("Resource_blmy5"),
+0: SubResource("Resource_hh722"),
 1: SubResource("Resource_d3a7t"),
 2: SubResource("Resource_e4rca"),
 3: SubResource("Resource_mnq6a"),
@@ -158,5 +192,10 @@ id_to_setting = Dictionary[int, ExtResource("2_qrh1g")]({
 15: SubResource("Resource_nfpse"),
 16: SubResource("Resource_1lmql"),
 17: SubResource("Resource_crtpl"),
-18: SubResource("Resource_h4csc")
+18: SubResource("Resource_h4csc"),
+19: SubResource("Resource_he3nv"),
+20: SubResource("Resource_jxfyp"),
+21: SubResource("Resource_tqadf"),
+22: SubResource("Resource_pivx8"),
+23: SubResource("Resource_laeho")
 })

@@ -142,6 +142,7 @@ func _rotate_ring(amount: int):
 			GameState.rotate_ring(1, %Level.ring_one, amount, SPEED)
 		2:
 			GameState.rotate_ring(2, %Level.ring_two, amount, SPEED)
+	SFX.play(SFX.Id.ROCK)
 	
 func toggle():
 	GameState.clear_all_player_attack_segments()
@@ -226,6 +227,7 @@ func _move_in():
 	GameState.toggle_select_ring(ring + 1)
 	GameState.update_position(ring, degree, ring + 1, degree, self)
 	GameState.position_node(self, ring + 1, degree, SPEED)
+	SFX.play(SFX.Id.SLIME)
 		
 func _move_out():
 	if ring <= 0:
@@ -238,6 +240,7 @@ func _move_out():
 	GameState.toggle_select_ring(ring - 1)
 	GameState.update_position(ring, degree, ring - 1, degree, self)
 	GameState.position_node(self, ring - 1, degree, SPEED)
+	SFX.play(SFX.Id.SLIME)
 
 func take_damage(damage: int):
 	SFX.play(SFX.Id.GENERAL_HIT_SOUND)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbwe2q72ebccc"
+path="res://.godot/imported/revolution_menu.ogg-08aa347ff3b70cc729a79ec2c152236c.oggvorbisstr"
+
+[deps]
+
+source_file="res://1 assets/sounds/music/revolution_menu.ogg"
+dest_files=["res://.godot/imported/revolution_menu.ogg-08aa347ff3b70cc729a79ec2c152236c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

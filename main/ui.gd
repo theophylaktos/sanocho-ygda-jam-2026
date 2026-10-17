@@ -121,6 +121,7 @@ func _change_health_left():
 			play_health_loss_animation(%Health.get_child(GameState.max_health - GameState.health_left - 1))
 	if GameState.health_left == 0:
 		RoundManager.change_scene_to_menu()
+		Reset.reset()
 	
 func play_health_loss_animation(node: Node):
 		for row in 4:
@@ -152,22 +153,34 @@ func _on_skip_button_pressed() -> void:
 
 
 func _on_weapon_1_button_pressed() -> void:
+	play_sound_on_item_clicked(GameState.attacks[0])
 	GameState.selected_attack = GameState.attacks[0]
 	%Weapon1Button.material.set_shader_parameter("is_outlined", true)
 	%Weapon2Button.material.set_shader_parameter("is_outlined", false)
 	%Weapon3Button.material.set_shader_parameter("is_outlined", false)
 
 func _on_weapon_2_button_pressed() -> void:
+	play_sound_on_item_clicked(GameState.attacks[1])
 	GameState.selected_attack = GameState.attacks[1]
 	%Weapon1Button.material.set_shader_parameter("is_outlined", false)
 	%Weapon2Button.material.set_shader_parameter("is_outlined", true)
 	%Weapon3Button.material.set_shader_parameter("is_outlined", false)
 
 func _on_weapon_3_button_pressed() -> void:
+	play_sound_on_item_clicked(GameState.attacks[2])
 	GameState.selected_attack = GameState.attacks[2]
 	%Weapon1Button.material.set_shader_parameter("is_outlined", false)
 	%Weapon2Button.material.set_shader_parameter("is_outlined", false)
 	%Weapon3Button.material.set_shader_parameter("is_outlined", true)
+	
+func play_sound_on_item_clicked(item: String) -> void:
+	if ["diagonal", "attack2", "all_diagonals", "all_horizontals", "attack"].has(item):
+		SFX.play(SFX.Id.GLASS_TAP)
+		SFX.play(SFX.Id.METAL_TAP)
+	if ["attack4", "knight"].has(item):
+		SFX.play(SFX.Id.WOOD)
+	else:
+		SFX.play(SFX.Id.WOOD)
 	
 func _attacks_changed() -> void:
 	if attack_icons.get(GameState.attacks[0]) != null:
@@ -176,7 +189,6 @@ func _attacks_changed() -> void:
 		%Weapon2Button.texture_normal = attack_icons[GameState.attacks[1]]
 	if attack_icons.get(GameState.attacks[2]) != null:
 		%Weapon3Button.texture_normal = attack_icons[GameState.attacks[2]]
-
 
 func _on_escape_pressed() -> void:
 	%Settings.visible = true
